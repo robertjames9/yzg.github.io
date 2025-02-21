@@ -895,4 +895,82 @@ section h2 {
     .about-image img {
         max-height: 200px;
     }
+}
+
+/* Footer样式 */
+footer {
+    background: var(--royal-blue-dark);
+    color: var(--white);
+    padding: 4rem 0;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-logo {
+    max-width: 200px;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: auto;
+}
+
+.company-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.info-item i {
+    color: var(--gold);
+    font-size: 1.2rem;
+}
+
+.info-item span {
+    color: var(--gray-light);
+}
+
+/* Footer响应式调整 */
+@media (max-width: 768px) {
+    footer {
+        padding: 3rem 0;
+    }
+
+    .footer-content {
+        padding: 0 1rem;
+    }
+
+    .footer-logo {
+        max-width: 150px;
+    }
+
+    .company-info {
+        gap: 1rem;
+    }
+
+    .info-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .info-item span {
+        font-size: 0.9rem;
+    }
 } 
