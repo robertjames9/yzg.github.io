@@ -207,26 +207,23 @@ h1, h2, h3, h4, h5, h6 {
         width: 75%;
         height: 100vh;
         background: var(--royal-blue-dark);
-        padding: 80px 15px 20px 15px;
+        padding: 60px 15px 20px 15px;
         box-sizing: border-box;
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 15px;
         opacity: 0;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
         border-left: 1px solid transparent;
+        overflow-y: auto;
+        display: flex !important;
     }
 
-    /* 菜单打开时的样式 */
+    /* 菜单打开时的样式 - 添加这部分 */
     .nav-links.active {
         right: 0;
         opacity: 1;
         border-left: 1px solid var(--gold);
-    }
-
-    /* 移除之前的伪元素光效 */
-    .nav-links.active::before {
-        display: none;
     }
 
     .nav-links a {
@@ -244,12 +241,14 @@ h1, h2, h3, h4, h5, h6 {
         background: rgba(255, 255, 255, 0.1);
     }
 
+    /* 按钮组样式 */
     .nav-buttons {
-        margin-top: 85px;
+        margin-top: 20px;
+        margin-bottom: 20px;
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 25px;
+        gap: 15px;
         padding: 0 15px;
     }
 
@@ -261,6 +260,7 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
         font-weight: 500;
         margin: 0 auto;
+        max-width: 200px;
     }
 
     .nav-buttons .btn.primary {
@@ -303,6 +303,11 @@ h1, h2, h3, h4, h5, h6 {
     /* 禁止背景滚动 */
     body.menu-open {
         overflow: hidden;
+    }
+
+    /* 移除之前添加的after伪元素 */
+    .nav-links::after {
+        display: none;
     }
 }
 
