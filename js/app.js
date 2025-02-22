@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 处理移动端菜单 - 只处理点击切换，不自动关闭
+    // 处理移动端菜单
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const backdrop = document.createElement('div');
@@ -47,12 +47,24 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.classList.toggle('active');
         backdrop.classList.toggle('active');
         document.body.classList.toggle('menu-open');
+        
+        // 调试日志
+        console.log('Menu toggled:', isMenuOpen);
+        console.log('Hamburger classes:', hamburger.classList);
+        console.log('Nav Links classes:', navLinks.classList);
     }
 
     // 汉堡菜单点击事件
     hamburger.addEventListener('click', (e) => {
         e.stopPropagation();
         toggleMenu();
+    });
+
+    // 点击背景遮罩关闭菜单
+    backdrop.addEventListener('click', () => {
+        if (isMenuOpen) {
+            toggleMenu();
+        }
     });
 
     // 点击导航链接关闭菜单
@@ -62,13 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 toggleMenu();
             }
         });
-    });
-
-    // 点击背景遮罩关闭菜单
-    backdrop.addEventListener('click', () => {
-        if (isMenuOpen) {
-            toggleMenu();
-        }
     });
 
     // 点击页面其他区域关闭菜单
@@ -242,4 +247,3 @@ window.addEventListener('scroll', () => {
         document.querySelector('.scroll-progress').style.transform = `scaleX(${progress})`;
     });
 });
-```

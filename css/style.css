@@ -29,12 +29,21 @@
     --text-light: var(--gray-light);
     --border-color: var(--gold-dark);
     --card-shadow: 0 10px 30px -10px rgba(13, 22, 66, 0.15);
+
+    /* 添加响应式断点变量 */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -50,7 +59,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 导航栏布局 */
 .navbar {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -60,13 +68,14 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     padding: 0 5%;
     background: var(--royal-blue-dark);
-    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--gold-dark);
     z-index: 1000;
 }
 
 /* Logo样式 */
 .navbar .logo {
+    position: relative;
+    z-index: 1002;
     width: 200px;
     height: 100px;
     padding: 15px 0;
@@ -81,6 +90,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 导航链接样式 */
 .nav-links {
+    position: relative;
+    z-index: 1001;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,6 +114,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 导航栏按钮组样式 */
 .nav-buttons {
+    position: relative;
+    z-index: 1001;
     width: 300px;
     display: flex;
     justify-content: flex-end;
@@ -152,26 +165,34 @@ h1, h2, h3, h4, h5, h6 {
 .hamburger {
     display: none;
     flex-direction: column;
+    justify-content: center;
     gap: 6px;
     cursor: pointer;
     padding: 10px;
     z-index: 1001;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
 }
 
 .hamburger span {
+    display: block;
     width: 25px;
     height: 2px;
     background-color: var(--white);
     transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
-/* 汉堡菜单动画 */
+/* 优化汉堡菜单动画 */
 .hamburger.active span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
     opacity: 0;
+    transform: translateX(-20px);
 }
 
 .hamburger.active span:nth-child(3) {
@@ -179,7 +200,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 移动端适配 */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    
+    /* 确保按钮在移动端也能正确显示 */
+    .button-container {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    /* 调整文字大小 */
+    h1 {
+        font-size: 24px;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+
     .navbar {
         height: 80px;
         padding: 0 1rem;
@@ -203,96 +244,100 @@ h1, h2, h3, h4, h5, h6 {
     .nav-links {
         position: fixed;
         top: 0;
-        right: -75%;
-        width: 75%;
-        height: 100vh;
+        right: -100%;
+        width: 85%;
+        height: 100%;
         background: var(--royal-blue-dark);
-        padding: 60px 15px 20px 15px;
-        box-sizing: border-box;
+        padding: 80px 0 20px;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
         opacity: 0;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
-        border-left: 1px solid transparent;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         overflow-y: auto;
-        display: flex !important;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        border-left: 1px solid var(--gold);
+        background: linear-gradient(
+            to right,
+            rgba(212, 175, 55, 0.1) 0px,
+            var(--royal-blue-dark) 3px
+        );
+        display: flex;
+        justify-content: flex-start;
     }
 
-    /* 菜单打开时的样式 - 添加这部分 */
     .nav-links.active {
         right: 0;
         opacity: 1;
-        border-left: 1px solid var(--gold);
+        visibility: visible;
+        transform: translateX(0);
     }
 
     .nav-links a {
-        display: block;
+        padding: 12px 30px;
         width: 100%;
         text-align: left;
-        font-size: 0.95rem;
-        padding: 8px 15px;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
+        font-size: 16px;
+        color: var(--white);
+        transition: all 0.3s ease;
     }
 
-    .nav-links a:active {
-        background: rgba(255, 255, 255, 0.1);
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding-left: 35px;
     }
 
     /* 按钮组样式 */
     .nav-buttons {
-        margin-top: auto;
-        margin-bottom: auto;
         width: 100%;
+        padding: 20px 30px;
+        margin-top: auto;
+        margin-bottom: 20px;
         display: flex;
         flex-direction: column;
-        gap: 15px;
-        padding: 0 15px;
+        align-items: center;
+        gap: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .nav-buttons .btn {
-        width: calc(100% - 30px);
-        padding: 10px 0;
+        width: 70%;
+        padding: 8px 0;
         font-size: 14px;
-        border-radius: 6px;
         text-align: center;
-        font-weight: 500;
-        margin: 0 auto;
-        max-width: 200px;
+        transition: all 0.3s ease;
+        border-radius: 4px;
     }
 
     .nav-buttons .btn.primary {
         background: var(--gold);
         color: var(--royal-blue-dark);
-        border: none;
-        max-width: 200px;
     }
 
     .nav-buttons .btn.accent {
         background: transparent;
-        color: white;
-        border: 2px solid rgb(255, 255, 255);
-        max-width: 200px;
+        color: var(--white);
+        border: 1px solid var(--white);
     }
 
-    .nav-buttons .btn:active {
-        transform: scale(0.98);
+    .nav-buttons .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
     }
 
+    /* 背景遮罩 */
     .backdrop {
-        display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         background: rgba(13, 22, 66, 0.85);
-        backdrop-filter: blur(4px);
         opacity: 0;
         transition: opacity 0.3s ease;
-        z-index: 99;
+        z-index: 998;
     }
 
     .backdrop.active {
@@ -754,8 +799,6 @@ section h2 {
     width: 100%;
     height: 100%;
     background: rgba(13, 22, 66, 0.3);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1753,4 +1796,126 @@ section h2 {
 .products-intro .intro-text .highlight {
     color: var(--gold);
     font-weight: 500;
+}
+
+/* 添加向下箭头样式 */
+.scroll-down {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    z-index: 2;
+}
+
+.scroll-down i {
+    color: var(--gold);
+    font-size: 2rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.scroll-down:hover i {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 添加更细致的响应式断点 */
+@media (max-width: 575.98px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* 平板和中等设备的优化 */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) {
+    /* 移除hover效果，改为active状态 */
+    .btn:active,
+    .card:active,
+    .nav-links a:active {
+        transform: scale(0.98);
+    }
+    
+    /* 优化触摸反馈 */
+    .advantage-card:active,
+    .product-card:active {
+        transform: translateY(-5px);
+    }
+}
+
+/* 优化动画性能 */
+.card,
+.btn,
+.nav-links a {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* 添加更平滑的滚动 */
+html {
+    scroll-behavior: smooth;
+    height: -webkit-fill-available; /* 修复iOS Safari 100vh问题 */
+}
+
+body {
+    min-height: -webkit-fill-available;
+    overflow-x: hidden; /* 防止水平滚动 */
+}
+
+/* 打印样式优化 */
+@media print {
+    .nav-buttons,
+    .hamburger,
+    .scroll-down,
+    .social-links {
+        display: none !important;
+    }
+    
+    body {
+        color: #000;
+        background: #fff;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+    }
 }
