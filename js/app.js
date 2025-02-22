@@ -242,4 +242,3 @@ window.addEventListener('scroll', () => {
         document.querySelector('.scroll-progress').style.transform = `scaleX(${progress})`;
     });
 });
-```
