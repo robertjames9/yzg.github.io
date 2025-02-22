@@ -1057,7 +1057,6 @@ section h2 {
 
 .business-hours p {
     margin-bottom: 0.5rem;
-    opacity: 0.8;
 }
 
 .footer-bottom {
@@ -1097,5 +1096,336 @@ section h2 {
 
     .info-item {
         justify-content: center;
+    }
+}
+
+/* 什么是种生基部分样式 */
+.what-is-section {
+    background: var(--royal-blue-dark);
+    color: var(--white);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.what-is-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 48%, rgba(212, 175, 55, 0.08) 50%, transparent 52%) 0 0 / 30px 30px,
+        radial-gradient(circle at 5% 5%, rgba(212, 175, 55, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 95% 95%, rgba(212, 175, 55, 0.15) 0%, transparent 35%);
+    pointer-events: none;
+}
+
+.what-is-section h2 {
+    color: var(--white);
+    margin-bottom: 3rem;
+}
+
+.what-is-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro-text {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+}
+
+.intro-text h3 {
+    color: var(--gold);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.principle-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.principle-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.principle-card h4 {
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.principle-card h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+}
+
+.principle-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.principle-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.principle-card ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.principle-card ul li::before {
+    content: '•';
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.principle-card strong {
+    color: var(--gold);
+    font-weight: 500;
+}
+
+.principle-note, .closing-note {
+    font-style: italic;
+    opacity: 0.95;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.highlight {
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .what-is-section {
+        padding: 4rem 0;
+    }
+
+    .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .intro-text {
+        padding: 0 1rem;
+    }
+
+    .intro-text h3 {
+        font-size: 1.8rem;
+    }
+
+    .principle-card {
+        padding: 1.5rem;
+    }
+}
+
+/* 介绍光元生基部分样式 */
+.intro-yuan-section {
+    background: var(--white);
+    color: var(--royal-blue-dark);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-yuan-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 48%, rgba(212, 175, 55, 0.08) 50%, transparent 52%) 0 0 / 30px 30px,
+        radial-gradient(circle at 5% 5%, rgba(212, 175, 55, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 95% 95%, rgba(212, 175, 55, 0.15) 0%, transparent 35%);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.intro-yuan-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .intro-yuan-section {
+        padding: 4rem 0;
+    }
+}
+
+/* 9大优势部分样式 */
+.advantages-section {
+    background: var(--royal-blue-dark);
+    color: var(--white);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.advantages-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 48%, rgba(212, 175, 55, 0.08) 50%, transparent 52%) 0 0 / 30px 30px,
+        radial-gradient(circle at 5% 5%, rgba(212, 175, 55, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 95% 95%, rgba(212, 175, 55, 0.15) 0%, transparent 35%);
+    pointer-events: none;
+}
+
+.advantages-section h2 {
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.advantage-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* 添加伪元素来处理hover效果 */
+.advantage-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.advantage-card:hover::before {
+    opacity: 1;
+}
+
+.advantage-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.advantage-icon i {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.advantage-card h3 {
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.advantage-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* 移动端适配 */
+@media (max-width: 1024px) {
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .advantages-section {
+        padding: 4rem 0;
+    }
+
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .advantage-card {
+        padding: 1.5rem;
+    }
+
+    .advantage-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .advantage-icon i {
+        font-size: 1.5rem;
     }
 }
