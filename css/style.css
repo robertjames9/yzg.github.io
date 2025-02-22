@@ -799,16 +799,20 @@ section h2 {
     scrollbar-color: var(--gold) var(--royal-blue-dark);
 }
 
-/* 关于元之光区块样式 */
+/* 关于元之光部分样式 */
 .about-section {
-    background: var(--white);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 248, 225, 0.5) 50%,
+        rgba(255, 255, 255, 1) 100%
+    );
     color: var(--royal-blue-dark);
+    padding: 6rem 0;
     position: relative;
     overflow: hidden;
-    padding: 6rem 0;
 }
 
-/* 金色装饰线条 */
+/* 添加装饰元素 */
 .about-section::before {
     content: '';
     position: absolute;
@@ -825,9 +829,10 @@ section h2 {
 
 .about-section h2 {
     color: var(--royal-blue-dark);
-    position: relative;
+    text-align: center;
     margin-bottom: 4rem;
     font-size: 2.5rem;
+    position: relative;
 }
 
 .about-section h2::after {
@@ -841,99 +846,115 @@ section h2 {
     background: var(--gold);
 }
 
-.about-content {
+.about-intro {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.main-intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--royal-blue-dark);
+}
+
+.about-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem;
-    align-items: center;
-    position: relative;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.about-text {
-    padding: 2.5rem;
+.about-card {
     background: var(--white);
-    border-radius: 20px;
     border: 1px solid rgba(212, 175, 55, 0.2);
-    box-shadow: 0 10px 30px rgba(13, 22, 66, 0.05);
-    position: relative;
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(13, 22, 66, 0.05);
 }
 
-/* 金色装饰角 */
-.about-text::before,
-.about-text::after {
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(13, 22, 66, 0.1);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.about-card h3 {
+    color: var(--royal-blue-dark);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.about-card h3::after {
     content: '';
     position: absolute;
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--gold);
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--gold);
 }
 
-.about-text::before {
-    top: 15px;
-    left: 15px;
-    border-right: none;
-    border-bottom: none;
+.about-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
 }
 
-.about-text::after {
-    bottom: 15px;
-    right: 15px;
-    border-left: none;
-    border-top: none;
+.about-card ul {
+    list-style: none;
+    padding-left: 0;
 }
 
-.about-text p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--royal-blue-dark);
-    text-align: justify;
-    margin: 0;
-}
-
-/* 图片区域样式调整 */
-.about-image {
+.about-card ul li {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-dark);
 }
 
-.about-image img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 300px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
+.about-card ul li::before {
+    content: '•';
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
-/* 移除之前的背景和阴影效果 */
-.about-image::before {
-    display: none;
+.highlight {
+    color: var(--gold);
+    font-weight: 500;
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
-    .about-content {
+    .about-section {
+        padding: 4rem 0;
+    }
+
+    .about-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
+        padding: 0 1rem;
     }
 
-    .about-text {
-        padding: 2rem;
+    .main-intro {
+        font-size: 1.1rem;
+        padding: 0 1rem;
     }
 
-    .about-text p {
-        font-size: 1rem;
+    .about-card {
+        padding: 1.5rem;
     }
 
-    .about-image {
-        padding: 1rem;
-    }
-
-    .about-image img {
-        max-height: 200px;
+    .about-card h3 {
+        font-size: 1.3rem;
     }
 }
 
