@@ -1899,6 +1899,7 @@ section h2 {
 .nav-links a {
     will-change: transform;
     transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 /* 添加更平滑的滚动 */

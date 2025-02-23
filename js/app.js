@@ -240,3 +240,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// 添加错误处理
+window.addEventListener('error', function(e) {
+    console.error('Global error:', e.message);
+});
+
+// 优化性能
+const debounce = (fn, delay) => {
+    let timer;
+    return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(this, args), delay);
+    };
+};
+
+// 优化滚动处理
+const handleScroll = debounce(() => {
+    const scrollProgress = document.querySelector('.scroll-progress');
+    if (scrollProgress) {
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = window.scrollY / windowHeight;
+        scrollProgress.style.transform = `scaleX(${progress})`;
+    }
+}, 16);
+
+// 优化事件监听器
+window.addEventListener('scroll', handleScroll, { passive: true });
+
+// 添加资源加载错误处理
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+        this.src = 'path/to/fallback-image.jpg';
+    });
+});
