@@ -101,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     gap: 3.5rem;
     margin: 0 auto;
-    pointer-events: none; /* 默认不接收事件 */
+    pointer-events: auto; /* 修改这里，允许点击事件 */
 }
 
 .nav-links a {
@@ -111,6 +111,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--white);
     transition: color 0.3s ease;
     white-space: nowrap;
+    pointer-events: auto; /* 确保链接可点击 */
 }
 
 .nav-links a:hover {
@@ -218,7 +219,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     /* 合并重复的section padding */
-    .hero-section,
     .about-section,
     .what-is-section,
     .advantages-section,
@@ -262,7 +262,7 @@ h1, h2, h3, h4, h5, h6 {
         top: 0;
         right: -100%;
         width: 85%;
-        height: 100%;
+        height: 100vh;
         background: rgba(13, 22, 66, 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -274,12 +274,7 @@ h1, h2, h3, h4, h5, h6 {
         transform: translateX(100%);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         overflow-y: auto;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         z-index: 999;
-        border-left: 1px solid rgba(212, 175, 55, 0.3);
-        display: flex;
-        justify-content: flex-start;
-        pointer-events: none; /* 默认不接收事件 */
     }
 
     .nav-links.active {
@@ -287,7 +282,6 @@ h1, h2, h3, h4, h5, h6 {
         opacity: 1;
         visibility: visible;
         transform: translateX(0);
-        pointer-events: auto; /* 激活时才接收事件 */
     }
 
     .nav-links a {
@@ -346,28 +340,37 @@ h1, h2, h3, h4, h5, h6 {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         background: rgba(13, 22, 66, 0.85);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-        z-index: 998;
-        pointer-events: none; /* 默认不接收事件 */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 997; /* 确保在导航栏下方但在其他内容上方 */
+        pointer-events: none;
     }
 
     .backdrop.active {
         opacity: 1;
         visibility: visible;
-        pointer-events: auto; /* 激活时才接收事件 */
+        pointer-events: auto;
     }
 
     /* 禁止背景滚动 */
     body.menu-open {
         overflow: hidden;
-        /* 移除可能影响触摸事件的属性 */
-        position: relative;
+        position: fixed;
+        width: 100%;
         height: 100%;
-        touch-action: none; /* 仅在菜单打开时禁用触摸 */
+    }
+
+    /* 确保主要内容区域在非菜单状态下可以正常触摸 */
+    main {
+        position: relative;
+        z-index: 1;
+        touch-action: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     /* 移除之前添加的after伪元素 */
@@ -604,7 +607,7 @@ section h2 {
 
     /* 移动端轮播图样式 */
     .hero-carousel {
-        position: static;
+        position: relative; /* 改为相对定位 */
         width: 100%;
         height: 35vh;
         min-height: 250px;
@@ -612,38 +615,17 @@ section h2 {
         margin: 0;
     }
 
-    .carousel-container {
-        position: relative;
+    .hero-swiper {
         width: 100%;
         height: 100%;
-        overflow: hidden;
-        touch-action: none;
     }
 
-    .carousel-track {
-        position: absolute;
-        top: 0;
-        left: 0;
+    .hero-swiper .swiper-slide {
         width: 100%;
         height: 100%;
-        display: flex;
-        will-change: transform;
-        transition: transform 0.3s ease-out;
-        touch-action: pan-x;
-        -webkit-overflow-scrolling: touch;
     }
 
-    .carousel-slide {
-        min-width: 100%;
-        height: 100%;
-        flex-shrink: 0;
-        touch-action: none;
-    }
-
-    .carousel-slide img {
-        pointer-events: none;
-        -webkit-user-drag: none;
-        user-select: none;
+    .hero-swiper .swiper-slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -719,91 +701,152 @@ section h2 {
     }
 }
 
-/* 卡片网格布局 */
+/* 合并卡片通用样式 */
+.feature-card,
+.advantage-card,
+.product-card,
+.history-card,
+.modern-card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* 合并卡片hover效果 */
+.feature-card:hover,
+.advantage-card:hover,
+.product-card:hover,
+.history-card:hover,
+.modern-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(13, 22, 66, 0.08);
+}
+
+/* 合并卡片标题样式 */
+.feature-card h4,
+.advantage-card h3,
+.product-card h3,
+.history-card h3,
+.modern-card h3 {
+    color: var(--royal-blue-dark);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* 合并卡片标题下划线效果 */
+.feature-card h4::after,
+.advantage-card h3::after,
+.product-card h3::after,
+.history-card h3::after,
+.modern-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+/* 合并网格布局样式 */
 .features-grid,
 .advantages-grid,
-.products-grid {
+.products-grid,
+.history-compare {
     display: grid;
     gap: 2rem;
     margin-top: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* 卡片通用样式 */
-.feature-card,
-.advantage-card,
-.product-card {
+/* 合并section通用样式 */
+.about-section,
+.what-is-section,
+.advantages-section,
+.products-section,
+.feedback-section,
+.faq-section,
+.intro-yuan-section {
+    padding: 6rem 0;
     position: relative;
-    background: var(--white);
-    border: 1px solid var(--gold-dark);
-    box-shadow: var(--card-shadow);
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.feature-card::before,
-.advantage-card::before,
-.product-card::before {
+/* 合并渐变背景section样式 */
+.about-section,
+.products-section,
+.intro-yuan-section {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 248, 225, 0.5) 50%,
+        rgba(255, 255, 255, 1) 100%
+    );
+}
+
+/* 合并深色背景section样式 */
+.what-is-section,
+.advantages-section {
+    background: var(--royal-blue-dark);
+    color: var(--white);
+    overflow: hidden;
+}
+
+/* 合并深色背景装饰效果 */
+.what-is-section::before,
+.advantages-section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        45deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 100%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+    background: 
+        linear-gradient(45deg, transparent 48%, rgba(212, 175, 55, 0.08) 50%, transparent 52%) 0 0 / 30px 30px,
+        radial-gradient(circle at 5% 5%, rgba(212, 175, 55, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 95% 95%, rgba(212, 175, 55, 0.15) 0%, transparent 35%);
+    pointer-events: none;
 }
 
-.feature-card:hover::before,
-.advantage-card:hover::before,
-.product-card:hover::before {
-    transform: translateX(100%);
-}
-
-/* 移除重复的卡片hover效果 */
-.feature-card:hover,
-.advantage-card:hover,
-.product-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--gold);
-    box-shadow: 0 20px 40px rgba(13, 22, 66, 0.08);
-}
-
-/* 图标样式 */
-.feature-card i,
-.advantage-card i {
-    position: relative;
-    display: inline-block;
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    color: var(--royal-blue-dark);
-}
-
-/* 移除重复的图标hover效果 */
-.feature-card:hover i,
-.advantage-card:hover i {
-    transform: scale(1.1);
-}
-
-/* 响应式调整 */
+/* 合并移动端适配样式 */
 @media (max-width: 768px) {
-    section {
-        padding: 3rem 0;
+    /* 合并section padding */
+    .about-section,
+    .what-is-section,
+    .advantages-section,
+    .products-section,
+    .feedback-section,
+    .faq-section,
+    .intro-yuan-section {
+        padding: 4rem 0;
     }
 
-    section h2 {
-        font-size: 2rem;
+    /* 合并网格布局 */
+    .features-grid,
+    .advantages-grid,
+    .products-grid,
+    .history-compare {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
     }
 
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
+    /* 合并卡片内边距 */
+    .feature-card,
+    .advantage-card,
+    .product-card,
+    .history-card,
+    .modern-card {
+        padding: 1.5rem;
     }
 }
 
@@ -867,12 +910,12 @@ section h2 {
 /* 用户反馈部分样式 */
 .feedback-section {
     background: var(--royal-blue-dark);
-    color: var(--white);
-    padding: 6rem 0;
+    padding: 8rem 0;
     position: relative;
     overflow: hidden;
 }
 
+/* 添加装饰背景 */
 .feedback-section::before {
     content: '';
     position: absolute;
@@ -887,55 +930,75 @@ section h2 {
     pointer-events: none;
 }
 
+/* 用户反馈部分标题样式 */
 .feedback-section h2 {
-    color: var(--white);
+    color: var(--white); /* 改为白色 */
     text-align: center;
     margin-bottom: 4rem;
-}
-
-/* 更新视频轮播样式 */
-.video-carousel {
+    font-size: 2.5rem;
     position: relative;
-    padding: 80px 0;
-    perspective: 3000px; /* 增加透视距离 */
-    max-width: 1600px; /* 增加容器宽度 */
-    margin: 0 auto;
 }
 
-.carousel-3d-container {
-    position: relative;
-    height: 700px; /* 增加容器高度 */
-}
-
-.carousel-3d-wrapper {
-    position: relative;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.video-card {
+.feedback-section h2::after {
+    content: '';
     position: absolute;
-    width: 800px; /* 增加卡片宽度 */
-    height: 500px; /* 增加卡片高度 */
+    bottom: -15px;
     left: 50%;
-    top: 50%;
-    background: var(--white);
-    border-radius: 20px;
-    transform-origin: center center -800px; /* 调整旋转原点 */
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--gold); /* 保持下划线为金色 */
+}
+
+.feedback-swiper {
+    width: 100%;
+    padding: 100px 0; /* 增加轮播区域上下间距 */
+    overflow: visible;
+    perspective: 1000px;
+}
+
+.feedback-swiper .swiper-slide {
+    width: 800px; /* 增加主卡片宽度 */
+    height: 450px; /* 增加主卡片高度 */
+    opacity: 0.3;
+    transform: scale(0.8) translateZ(-300px); /* 添加Z轴位移 */
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    pointer-events: none; /* 非活动卡片禁用点击 */
+}
+
+.feedback-swiper .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+    pointer-events: auto; /* 活动卡片启用点击 */
+}
+
+.feedback-swiper .swiper-slide-prev {
+    opacity: 0.5;
+    transform: scale(0.85) translateX(25%) translateZ(-150px) rotateY(-10deg);
+}
+
+.feedback-swiper .swiper-slide-next {
+    opacity: 0.5;
+    transform: scale(0.85) translateX(-25%) translateZ(-150px) rotateY(10deg);
+}
+
+/* 视频卡片样式 */
+.video-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
     overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+    background: var(--royal-blue-dark);
 }
 
 .video-thumbnail {
     position: relative;
     width: 100%;
-    height: 380px; /* 调整缩略图高度 */
-    overflow: hidden;
+    height: 100%;
 }
 
 .video-thumbnail img {
@@ -945,18 +1008,15 @@ section h2 {
     transition: transform 0.3s ease;
 }
 
-.video-card:hover .video-thumbnail img {
-    transform: scale(1.05);
-}
-
+/* 播放按钮样式 */
 .play-button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: var(--gold);
+    width: 50px;
+    height: 50px;
+    background: rgba(212, 175, 55, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -965,140 +1025,142 @@ section h2 {
 }
 
 .play-button i {
-    color: var(--white);
-    font-size: 24px;
-    margin-left: 4px;
+    color: var(--royal-blue-dark);
+    font-size: 20px;
+    margin-left: 3px;
 }
 
-.video-card:hover .play-button {
-    transform: translate(-50%, -50%) scale(1.1);
-    background: var(--gold-light);
-}
-
+/* 视频标题悬浮显示 */
 .video-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     padding: 20px;
-    background: var(--white);
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
 }
 
 .video-info h3 {
-    color: var(--royal-blue-dark);
-    font-size: 18px;
-    margin-bottom: 10px;
+    color: var(--gold); /* 标题改为金色 */
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
 }
 
 .video-info p {
-    color: var(--gray);
-    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
     line-height: 1.6;
 }
 
-/* 3D轮播定位样式 */
-.video-card.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) translateZ(400px) scale(1);
-    z-index: 2;
+.video-card:hover .video-info {
+    transform: translateY(0);
 }
 
-.video-card.prev {
-    opacity: 0.8;
-    visibility: visible;
-    transform: translate(-50%, -50%) translateZ(-200px) translateX(-120%) rotateY(45deg) scale(0.85);
+/* Hover效果 */
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
 }
 
-.video-card.next {
-    opacity: 0.8;
-    visibility: visible;
-    transform: translate(-50%, -50%) translateZ(-200px) translateX(120%) rotateY(-45deg) scale(0.85);
+.video-card:hover .play-button {
+    background: var(--gold);
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
-.video-card.far-prev {
-    opacity: 0.6;
-    visibility: visible;
-    transform: translate(-50%, -50%) translateZ(-400px) translateX(-180%) rotateY(55deg) scale(0.7);
-}
-
-.video-card.far-next {
-    opacity: 0.6;
-    visibility: visible;
-    transform: translate(-50%, -50%) translateZ(-400px) translateX(180%) rotateY(-55deg) scale(0.7);
-}
-
-/* 控制按钮样式 */
-.carousel-3d-prev,
-.carousel-3d-next {
-    position: absolute;
-    top: auto;
-    bottom: -80px;
-    transform: none;
-    width: 60px;
-    height: 60px;
+/* 导航按钮样式 */
+.feedback-swiper .swiper-button-next,
+.feedback-swiper .swiper-button-prev {
+    color: var(--gold);
+    background: rgba(13, 22, 66, 0.75);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    z-index: 10;
+    border: 2px solid var(--gold);
+    top: 50%;
+    transform: translateY(-50%);
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.carousel-3d-prev {
-    left: 8%;
+.feedback-swiper .swiper-button-prev {
+    left: calc(50% - 500px); /* 根据卡片宽度调整位置 */
 }
 
-.carousel-3d-next {
-    right: 8%;
+.feedback-swiper .swiper-button-next {
+    right: calc(50% - 500px);
 }
 
-.carousel-3d-prev i,
-.carousel-3d-next i {
-    color: var(--white);
-    font-size: 24px;
+.feedback-swiper .swiper-button-next:after,
+.feedback-swiper .swiper-button-prev:after {
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.carousel-3d-prev:hover,
-.carousel-3d-next:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+.feedback-swiper .swiper-button-next:hover,
+.feedback-swiper .swiper-button-prev:hover {
+    background: var(--gold);
+    color: var(--royal-blue-dark);
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
-    .carousel-3d-prev,
-    .carousel-3d-next {
-        width: 40px;
-        height: 40px;
-        bottom: -60px;
+    .feedback-swiper .swiper-slide {
+        width: 300px;
+        height: 180px;
+        transform: scale(0.8) translateZ(-100px);
     }
 
-    .carousel-3d-prev {
-        left: 5%;
+    .feedback-swiper .swiper-slide-prev {
+        transform: scale(0.85) translateX(15%) translateZ(-50px) rotateY(-5deg);
     }
 
-    .carousel-3d-next {
-        right: 5%;
+    .feedback-swiper .swiper-slide-next {
+        transform: scale(0.85) translateX(-15%) translateZ(-50px) rotateY(5deg);
     }
 
-    .carousel-3d-prev i,
-    .carousel-3d-next i {
-        font-size: 18px;
+    .feedback-swiper .swiper-button-prev {
+        left: 20px;
+    }
+
+    .feedback-swiper .swiper-button-next {
+        right: 20px;
     }
 }
 
-/* 视频弹窗样式 */
+/* 平板设备适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .feedback-swiper .swiper-slide {
+        width: 600px;
+        height: 350px;
+    }
+
+    .feedback-swiper .swiper-button-prev {
+        left: calc(50% - 400px);
+    }
+
+    .feedback-swiper .swiper-button-next {
+        right: calc(50% - 400px);
+    }
+}
+
+/* 视频弹窗样式优化 */
 .video-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.95);
-    z-index: 2000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
     opacity: 0;
     transition: opacity 0.3s ease;
+    padding: 80px;
 }
 
 .video-modal.active {
@@ -1108,36 +1170,55 @@ section h2 {
 
 .modal-content {
     position: relative;
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
+    width: 85%;
+    max-width: 1200px;
+    aspect-ratio: 16/9;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-modal.active .modal-content {
+    transform: scale(1);
 }
 
 .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
 .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     border: none;
 }
 
+/* 优化关闭按钮位置 */
 .modal-close {
     position: absolute;
-    top: -40px;
-    right: -40px;
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 24px;
+    top: -60px;
+    right: -60px;
+    width: 44px;
+    height: 44px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    padding: 10px;
+    transition: all 0.3s ease;
+    font-size: 24px;
+}
+
+.modal-close:hover {
+    background: var(--gold);
+    color: var(--royal-blue-dark);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
 }
 
 /* 关于元之光部分样式 */
@@ -1812,41 +1893,32 @@ section h2 {
     margin: 0 auto;
 }
 
+/* 优势卡片基础样式 */
 .advantage-card {
+    position: relative;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 15px;
     padding: 2rem;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
     z-index: 1;
     overflow: hidden;
+    /* 缩短transition时间，使用更快的缓动函数 */
+    transition: transform 0.2s ease-out,
+                background-color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
-/* 添加伪元素来处理hover效果 */
-.advantage-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: -1;
-}
-
+/* 优势卡片hover效果 */
 .advantage-card:hover {
-    transform: translateY(-5px);
+    transform: scale(1.03);
+    background: rgba(255, 255, 255, 0.1);
     border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(13, 22, 66, 0.2);
 }
 
-.advantage-card:hover::before {
-    opacity: 1;
-}
-
+/* 图标容器样式 */
 .advantage-icon {
     width: 80px;
     height: 80px;
@@ -1856,43 +1928,54 @@ section h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
+/* 图标样式 */
 .advantage-icon i {
     font-size: 2rem;
     color: var(--gold);
+    /* 单独设置旋转动画 */
+    transition: transform 0.3s ease, color 0.2s ease;
 }
 
+/* 修改图标旋转角度为20度 */
+.advantage-card:hover .advantage-icon i {
+    transform: rotate(20deg);
+    color: var(--gold-light);
+}
+
+/* 卡片hover时的图标容器效果 */
+.advantage-card:hover .advantage-icon {
+    background: rgba(212, 175, 55, 0.2);
+    transform: scale(1.1);
+}
+
+/* 标题hover效果 */
 .advantage-card h3 {
     color: var(--gold);
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
 }
 
+.advantage-card:hover h3 {
+    color: var(--gold-light);
+}
+
+/* 文字hover效果 */
 .advantage-card p {
-    font-size: 1rem;
-    line-height: 1.6;
+    color: var(--white);
     opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.advantage-card:hover p {
+    opacity: 1;
 }
 
 /* 移动端适配 */
-@media (max-width: 1024px) {
-    .advantages-grid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 0 1rem;
-    }
-}
-
 @media (max-width: 768px) {
-    .advantages-section {
-        padding: 4rem 0;
-    }
-
-    .advantages-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
     .advantage-card {
         padding: 1.5rem;
     }
@@ -1900,6 +1983,7 @@ section h2 {
     .advantage-icon {
         width: 60px;
         height: 60px;
+        margin-bottom: 1rem;
     }
 
     .advantage-icon i {
@@ -2381,199 +2465,412 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 2000; /* 提高层级确保在最上层 */
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95); /* 更改为半透明黑色背景 */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: none;
     opacity: 0;
-    visibility: hidden; /* 改用 visibility 代替 display */
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .image-viewer.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.viewer-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90vh;
     display: flex;
-    align-items: center;
+    opacity: 1;
     justify-content: center;
+    align-items: center;
 }
 
-.viewer-content img {
-    max-width: 100%;
-    max-height: 90vh;
+.image-viewer img {
+    max-width: 80%; /* 减小图片最大宽度 */
+    max-height: 80vh;
     object-fit: contain;
-    border-radius: 4px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* 图片切换时的过渡效果 */
-.viewer-content img.fade-out {
-    opacity: 0;
     transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
-.viewer-content img.fade-in {
-    opacity: 0;
-    transform: scale(1.05);
+.image-viewer.active img {
+    transform: scale(1);
 }
 
-.viewer-close {
-    position: fixed; /* 改为 fixed 定位 */
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 2001;
-}
-
-.viewer-close:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-}
-
-.viewer-nav {
-    position: fixed; /* 改为 fixed 定位 */
+/* 优化导航按钮样式 */
+.image-viewer .prev-btn,
+.image-viewer .next-btn {
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.15); /* 半透明金色背景 */
+    border: 1px solid var(--gold);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 18px;
+    color: var(--gold);
     transition: all 0.3s ease;
-    z-index: 2001;
+    opacity: 0.8;
 }
 
-.viewer-nav:hover {
-    background: rgba(255, 255, 255, 0.2);
+/* 调整按钮位置 */
+.image-viewer .prev-btn {
+    left: 120px; /* 增加内缩距离 */
+}
+
+.image-viewer .next-btn {
+    right: 120px; /* 增加内缩距离 */
+}
+
+.image-viewer .prev-btn:hover,
+.image-viewer .next-btn:hover {
+    background: var(--gold);
+    color: var(--royal-blue-dark);
     transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
 }
 
-.viewer-nav.prev {
-    left: 20px;
+/* 优化关闭按钮 */
+.image-viewer .close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 36px;
+    height: 36px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--gold);
+    transition: all 0.3s ease;
+    opacity: 0.8;
 }
 
-.viewer-nav.next {
-    right: 20px;
+.image-viewer .close-btn:hover {
+    background: var(--gold);
+    color: var(--royal-blue-dark);
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
-    .viewer-nav {
+    .image-viewer .prev-btn,
+    .image-viewer .next-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .image-viewer .prev-btn {
+        left: 20px;
+    }
+
+    .image-viewer .next-btn {
+        right: 20px;
+    }
+
+    .image-viewer .close-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+        top: 20px;
+        right: 20px;
+    }
+
+    .image-viewer img {
+        max-width: 90%;
+        max-height: 85vh;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .image-viewer .prev-btn {
+        left: 60px;
+    }
+
+    .image-viewer .next-btn {
+        right: 60px;
+    }
+}
+
+/* Hero Swiper样式 */
+.hero-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-swiper .swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 导航按钮样式 */
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+    color: var(--gold);
+    background: rgba(13, 22, 66, 0.75);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+    transform: translateY(-50%);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* 调整箭头位置 */
+.hero-swiper .swiper-button-prev {
+    left: 80px !important;
+}
+
+.hero-swiper .swiper-button-next {
+    right: 80px !important;
+}
+
+/* 调整箭头图标大小 */
+.hero-swiper .swiper-button-next:after,
+.hero-swiper .swiper-button-prev:after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* hover效果 */
+.hero-swiper .swiper-button-next:hover,
+.hero-swiper .swiper-button-prev:hover {
+    background: var(--gold);
+    color: var(--royal-blue-dark);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* 分页器样式 */
+.hero-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--white);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: var(--gold);
+    transform: scale(1.2);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .hero-swiper .swiper-button-prev {
+        left: 20px !important;
+    }
+
+    .hero-swiper .swiper-button-next {
+        right: 20px !important;
+    }
+
+    .hero-swiper .swiper-button-next,
+    .hero-swiper .swiper-button-prev {
         width: 40px;
         height: 40px;
     }
 
-    .viewer-nav.prev {
-        left: 10px;
-    }
-
-    .viewer-nav.next {
-        right: 10px;
+    .hero-swiper .swiper-button-next:after,
+    .hero-swiper .swiper-button-prev:after {
+        font-size: 16px;
     }
 }
 
-/* 轮播图基础样式 */
-.hero-carousel {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 55%;
-    height: 100%;
-    overflow: hidden;
-    clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%);
-    z-index: 1; /* 确保正确的层级 */
+/* 平板设备适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-swiper .swiper-button-prev {
+        left: 50px !important;
+    }
+
+    .hero-swiper .swiper-button-next {
+        right: 50px !important;
+    }
 }
 
-.carousel-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    touch-action: none; /* 禁用浏览器默认触摸行为 */
-}
-
-.carousel-track {
+/* 滚动指示箭头样式 */
+.scroll-indicator {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
     display: flex;
-    will-change: transform;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    animation: bounce 2s infinite;
 }
 
-.carousel-slide {
-    min-width: 100%;
-    height: 100%;
-    flex-shrink: 0;
-    pointer-events: auto; /* 确保可以接收事件 */
+.scroll-indicator i {
+    color: var(--gold);
+    font-size: 24px;
+    transition: all 0.3s ease;
 }
 
-/* 移动端样式 */
+.scroll-indicator:hover i {
+    color: var(--gold-light);
+    transform: translateY(5px);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 移动端适配 */
 @media (max-width: 768px) {
-    .hero-carousel {
-        position: relative; /* 改为相对定位 */
+    .scroll-indicator {
+        bottom: 20px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .scroll-indicator i {
+        font-size: 20px;
+    }
+}
+
+/* 9大优势部分移动端样式优化 */
+@media (max-width: 768px) {
+    .advantages-section {
+        padding: 4rem 0;
+    }
+
+    .advantages-grid {
+        grid-template-columns: 1fr; /* 改为单列布局 */
+        gap: 1.5rem;
+        padding: 0;
+        max-width: 90%; /* 控制整体宽度 */
+        margin: 0 auto;
+    }
+
+    .advantage-card {
+        padding: 2rem;
+        min-height: 180px; /* 调整最小高度 */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 1.5rem; /* 统一内部元素间距 */
+    }
+
+    /* 图标和标题容器 */
+    .advantage-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         width: 100%;
-        height: 35vh;
-        min-height: 250px;
-        clip-path: none;
+        margin: 0; /* 移除margin，使用gap控制间距 */
+    }
+
+    .advantage-icon {
+        width: 48px;
+        height: 48px;
         margin: 0;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .carousel-container {
-        touch-action: pan-x; /* 只允许水平滑动 */
-        user-select: none;
-        -webkit-user-select: none;
+    .advantage-icon i {
+        font-size: 1.2rem;
     }
 
-    .carousel-track {
-        position: relative;
-        touch-action: pan-x;
-        pointer-events: auto;
+    .advantage-card h3 {
+        font-size: 1.2rem;
+        margin: 0;
+        flex: 1;
+        line-height: 1.4;
     }
 
-    .carousel-slide {
-        touch-action: pan-x;
-        pointer-events: auto;
+    /* 内容区域 */
+    .advantage-content {
+        width: 100%;
+        margin: 0; /* 移除margin，使用gap控制间距 */
     }
 
-    .carousel-slide img {
-        pointer-events: none; /* 防止图片拖动 */
-        user-select: none;
-        -webkit-user-drag: none;
+    .advantage-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* 小屏幕额外优化 */
+@media (max-width: 375px) {
+    .advantages-grid {
+        max-width: 95%; /* 在更小的屏幕上稍微增加宽度 */
+    }
+
+    .advantage-card {
+        padding: 1.5rem;
+        min-height: 160px;
+        gap: 1.2rem; /* 稍微减小间距 */
+    }
+
+    .advantage-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .advantage-icon i {
+        font-size: 1.1rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .advantage-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* 中等屏幕优化 */
+@media (min-width: 376px) and (max-width: 768px) {
+    .advantages-grid {
+        max-width: 85%; /* 中等屏幕上可以更窄一些 */
     }
 }
 
 /* 自定义滚动条样式 */
 ::-webkit-scrollbar {
     width: 10px;
-    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -2583,6 +2880,7 @@ body {
 ::-webkit-scrollbar-thumb {
     background: var(--gold);
     border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -2595,12 +2893,12 @@ body {
     scrollbar-color: var(--gold) var(--royal-blue-dark);
 }
 
-/* 确保主要内容区域在非菜单状态下可以正常触摸 */
-main {
-    position: relative;
-    z-index: 1;
-    touch-action: auto;
-    -webkit-overflow-scrolling: touch;
+/* 移动端适配 */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
 }
+
 
 

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     
     <!-- 添加SEO优化 -->
     <meta name="description" content="元之光 - 运势的维他命，专业的现代化种生基服务">
@@ -79,51 +80,31 @@
             
             <!-- 添加轮播图 -->
             <div class="hero-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide" data-index="0">
+                <div class="swiper hero-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
                             <img src="./img/slide-1.jpg" alt="元之光展示图1">
                         </div>
-                        <div class="carousel-slide" data-index="1">
+                        <div class="swiper-slide">
                             <img src="./img/slide-2.jpg" alt="元之光展示图2">
                         </div>
-                        <div class="carousel-slide" data-index="2">
+                        <div class="swiper-slide">
                             <img src="./img/slide-3.jpg" alt="元之光展示图3">
                         </div>
                     </div>
-                    
-                    <!-- 轮播控制按钮 -->
-                    <button class="carousel-button prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-button next">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    
-                    <!-- 轮播指示器 -->
-                    <div class="carousel-indicators">
-                        <button class="indicator active" data-index="0"></button>
-                        <button class="indicator" data-index="1"></button>
-                        <button class="indicator" data-index="2"></button>
-                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </div>
         </section>
-
+        
         <!-- 图片查看器 -->
         <div class="image-viewer">
-            <div class="viewer-content">
-                <img src="" alt="大图预览" draggable="false">
-            </div>
-            <button class="viewer-close">
-                <i class="fas fa-times"></i>
-            </button>
-            <button class="viewer-nav prev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="viewer-nav next">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <button class="close-btn">×</button>
+            <button class="prev-btn">←</button>
+            <button class="next-btn">→</button>
+            <img src="" alt="预览图片">
         </div>
 
         <!-- 关于元之光 -->
@@ -425,86 +406,82 @@
             <div class="container">
                 <h2>用户反馈</h2>
                 <div class="video-carousel">
-                    <div class="carousel-3d-container">
-                        <div class="carousel-3d-wrapper">
-                            <!-- 视频卡片1 -->
-                            <div class="video-card" data-video-id="VIDEO_ID_1">
-                                <div class="video-thumbnail">
-                                    <img src="https://img.youtube.com/vi/VIDEO_ID_1/maxresdefault.jpg" alt="用户分享 - 健康提升">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
+                    <div class="swiper feedback-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="video-card" data-video-id="VIDEO_ID_1">
+                                    <div class="video-thumbnail">
+                                        <img src="https://img.youtube.com/vi/VIDEO_ID_1/maxresdefault.jpg" alt="用户分享 - 健康提升">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="video-info">
-                                    <h3>用户分享 - 健康提升</h3>
-                                    <p>身体状况明显改善，精力充沛，生活更有活力...</p>
+                                    <div class="video-info">
+                                        <h3>用户分享 - 健康提升</h3>
+                                        <p>身体状况明显改善，精力充沛，生活更有活力...</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <!-- 视频卡片2 -->
-                            <div class="video-card" data-video-id="VIDEO_ID_2">
-                                <div class="video-thumbnail">
-                                    <img src="https://img.youtube.com/vi/VIDEO_ID_2/maxresdefault.jpg" alt="用户分享 - 事业运提升">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
+                            <div class="swiper-slide">
+                                <div class="video-card" data-video-id="VIDEO_ID_2">
+                                    <div class="video-thumbnail">
+                                        <img src="https://img.youtube.com/vi/VIDEO_ID_2/maxresdefault.jpg" alt="用户分享 - 事业运提升">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="video-info">
-                                    <h3>用户分享 - 事业运提升</h3>
-                                    <p>短短三个月内就获得了理想的工作机会...</p>
+                                    <div class="video-info">
+                                        <h3>用户分享 - 事业运提升</h3>
+                                        <p>短短三个月内就获得了理想的工作机会...</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <!-- 视频卡片3 -->
-                            <div class="video-card" data-video-id="VIDEO_ID_3">
-                                <div class="video-thumbnail">
-                                    <img src="https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg" alt="用户分享 - 财运改善">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
+                            <div class="swiper-slide">
+                                <div class="video-card" data-video-id="VIDEO_ID_3">
+                                    <div class="video-thumbnail">
+                                        <img src="https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg" alt="用户分享 - 财运改善">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="video-info">
-                                    <h3>用户分享 - 财运改善</h3>
-                                    <p>投资更有方向，收益稳定提升...</p>
+                                    <div class="video-info">
+                                        <h3>用户分享 - 财运改善</h3>
+                                        <p>投资更有方向，收益稳定提升...</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <!-- 视频卡片4 -->
-                            <div class="video-card" data-video-id="VIDEO_ID_4">
-                                <div class="video-thumbnail">
-                                    <img src="https://img.youtube.com/vi/VIDEO_ID_4/maxresdefault.jpg" alt="用户分享 - 感情和谐">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
+                            <div class="swiper-slide">
+                                <div class="video-card" data-video-id="VIDEO_ID_4">
+                                    <div class="video-thumbnail">
+                                        <img src="https://img.youtube.com/vi/VIDEO_ID_4/maxresdefault.jpg" alt="用户分享 - 感情和谐">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="video-info">
-                                    <h3>用户分享 - 感情和谐</h3>
-                                    <p>通过元之光的服务，夫妻关系明显改善...</p>
+                                    <div class="video-info">
+                                        <h3>用户分享 - 感情和谐</h3>
+                                        <p>通过元之光的服务，夫妻关系明显改善...</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <!-- 视频卡片5 -->
-                            <div class="video-card" data-video-id="VIDEO_ID_5">
-                                <div class="video-thumbnail">
-                                    <img src="https://img.youtube.com/vi/VIDEO_ID_5/maxresdefault.jpg" alt="用户分享 - 全面提升">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
+                            <div class="swiper-slide">
+                                <div class="video-card" data-video-id="VIDEO_ID_5">
+                                    <div class="video-thumbnail">
+                                        <img src="https://img.youtube.com/vi/VIDEO_ID_5/maxresdefault.jpg" alt="用户分享 - 全面提升">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="video-info">
-                                    <h3>用户分享 - 全面提升</h3>
-                                    <p>生活各方面都有显著改善，整体运势明显提升...</p>
+                                    <div class="video-info">
+                                        <h3>用户分享 - 全面提升</h3>
+                                        <p>生活各方面都有显著改善，整体运势明显提升...</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- 控制按钮 -->
-                        <button class="carousel-3d-prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="carousel-3d-next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                 </div>
             </div>
@@ -618,8 +595,7 @@
             <div class="footer-section">
                 <h4>营业时间</h4>
                 <div class="business-hours">
-                    <p>周一至周五：10:00 AM - 6:00 PM</p>
-                    <p>周六：10:00 AM - 2:00 PM</p>
+                    <p>周一至周六：8:00 AM - 5:00 PM</p>
                     <p>周日：休息</p>
                 </div>
             </div>
@@ -633,6 +609,7 @@
 
     <!-- JavaScript引入 -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
