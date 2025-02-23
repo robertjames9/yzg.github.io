@@ -269,6 +269,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 启动自动播放
             startAutoplay();
+
+            // 初始化触摸滑动
+            initCarouselTouch();
         },
 
         videoCarousel: () => {
@@ -396,6 +399,104 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 执行所有初始化函数
     Object.values(init).forEach(initFn => initFn());
+
+    // 轮播图触摸滑动
+    function initCarouselTouch() {
+        const carousel = document.querySelector('.carousel-track');
+        if (!carousel) return;
+
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let isDragging = false;
+        let currentIndex = 0;
+        let startTime = 0;
+        const slides = carousel.children;
+
+        function getSlideWidth() {
+            return carousel.clientWidth;
+        }
+
+        function handleTouchStart(e) {
+            e.preventDefault(); // 阻止默认行为
+            startTime = Date.now();
+            startX = e.touches ? e.touches[0].clientX : e.clientX;
+            isDragging = true;
+            
+            const transform = window.getComputedStyle(carousel).transform;
+            prevTranslate = transform !== 'none' ? parseInt(transform.split(',')[4]) || 0 : 0;
+            
+            carousel.style.transition = 'none';
+        }
+
+        function handleTouchMove(e) {
+            if (!isDragging) return;
+            e.preventDefault(); // 阻止默认行为
+            
+            const currentX = e.touches ? e.touches[0].clientX : e.clientX;
+            const diff = currentX - startX;
+            currentTranslate = prevTranslate + diff;
+
+            // 添加边界限制和阻尼效果
+            const maxTranslate = 0;
+            const minTranslate = -(slides.length - 1) * getSlideWidth();
+            
+            if (currentTranslate > maxTranslate) {
+                currentTranslate = maxTranslate + (currentTranslate - maxTranslate) * 0.3;
+            } else if (currentTranslate < minTranslate) {
+                currentTranslate = minTranslate + (currentTranslate - minTranslate) * 0.3;
+            }
+
+            requestAnimationFrame(() => {
+                carousel.style.transform = `translateX(${currentTranslate}px)`;
+            });
+        }
+
+        function handleTouchEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const moveTime = Date.now() - startTime;
+            const moveDistance = currentTranslate - prevTranslate;
+            
+            carousel.style.transition = 'transform 0.3s ease-out';
+            
+            if (Math.abs(moveDistance) > getSlideWidth() * 0.3 || (Math.abs(moveDistance) > 30 && moveTime < 300)) {
+                if (moveDistance > 0 && currentIndex > 0) {
+                    currentIndex--;
+                } else if (moveDistance < 0 && currentIndex < slides.length - 1) {
+                    currentIndex++;
+                }
+            }
+            
+            currentTranslate = -currentIndex * getSlideWidth();
+            carousel.style.transform = `translateX(${currentTranslate}px)`;
+            
+            // 更新指示器
+            updateIndicators(currentIndex);
+        }
+
+        // 触摸事件监听器
+        carousel.addEventListener('touchstart', handleTouchStart, { passive: false });
+        carousel.addEventListener('touchmove', handleTouchMove, { passive: false });
+        carousel.addEventListener('touchend', handleTouchEnd);
+        carousel.addEventListener('touchcancel', handleTouchEnd);
+
+        // 阻止图片拖拽
+        carousel.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', e => e.preventDefault());
+        });
+
+        // 窗口大小改变时重新计算位置
+        window.addEventListener('resize', () => {
+            carousel.style.transition = 'none';
+            currentTranslate = -currentIndex * getSlideWidth();
+            carousel.style.transform = `translateX(${currentTranslate}px)`;
+        });
+    }
+
+    // 初始化触摸滑动
+    initCarouselTouch();
 });
 
 // 表单验证

@@ -205,22 +205,30 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 移动端适配 */
 @media (max-width: 768px) {
+    /* 合并重复的容器和网格样式 */
     .container,
     .products-grid,
     .advantages-grid,
     .intro-text,
-    .closing-statement {
+    .closing-statement,
+    .principles-grid,
+    .features-grid {
         padding: 0 1rem;
     }
 
+    /* 合并重复的section padding */
     .hero-section,
     .about-section,
     .what-is-section,
-    .advantages-section {
+    .advantages-section,
+    .products-section,
+    .feedback-section,
+    .faq-section {
         padding: 4rem 0;
     }
 
-    h1 {
+    /* 合并重复的标题样式 */
+    h1, .hero-section h1 {
         font-size: 2.5rem;
     }
 
@@ -548,56 +556,144 @@ section h2 {
     }
 }
 
+/* 移动端样式完全重写 */
 @media (max-width: 768px) {
     .hero-section {
-        padding: 80px 0 40px;
+        min-height: auto; /* 移除最小高度限制 */
+        height: auto; /* 让高度自适应内容 */
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--royal-blue-dark);
     }
 
-    .hero-section::before {
-        width: 100%;
-        opacity: 0.15;
-        clip-path: none;
-    }
-
+    .hero-section::before,
     .hero-section::after {
         display: none;
     }
 
     .hero-section .container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 30px 30px;
+        padding: 0;
     }
 
+    /* 移动端轮播图样式 */
+    .hero-carousel {
+        position: static;
+        width: 100%;
+        height: 35vh;
+        min-height: 250px;
+        clip-path: none;
+        margin: 0;
+    }
+
+    .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    .carousel-track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        will-change: transform;
+        transition: transform 0.3s ease-out;
+        touch-action: pan-x;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-slide {
+        min-width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        touch-action: none;
+    }
+
+    .carousel-slide img {
+        pointer-events: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 内容区域 */
     .hero-content {
-        grid-column: 1 / -1;
-        padding-right: 0;
-        max-width: 100%;
-        margin-left: 0;
-        margin-left: 0;
-        padding: 0 1rem;
+        width: 100%;
+        padding: 1.5rem;
+        text-align: center;
+        margin: 0;
+        position: static;
+        background: var(--royal-blue-dark);
+    }
+
+    .hero-section h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem;
         text-align: center;
     }
 
-    .hero-decoration {
-        display: none;
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
     }
 
     .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        display: flex;
+        gap: 0.8rem;
         justify-content: center;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* 小屏幕额外优化 */
+@media (max-width: 375px) {
+    .hero-section .container {
+        margin-top: 50px;
     }
 
-    .hero-buttons .btn {
-        width: 100%;
-        max-width: 300px;
+    .hero-carousel {
+        height: 30vh;
+        min-height: 200px;
     }
 
-    .hero-section h1,
-    .hero-subtitle {
-        text-align: center;
+    .hero-content {
+        padding: 1.2rem;
+    }
+
+    .hero-buttons {
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* 优化轮播图在中等屏幕设备上的显示 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-carousel {
+        width: 50%;
+    }
+
+    .hero-section::before {
+        width: 50%;
+    }
+
+    .hero-section .container {
+        gap: 2rem;
+    }
+
+    .hero-content {
+        padding-right: 1rem;
     }
 }
 
@@ -646,12 +742,13 @@ section h2 {
     transform: translateX(100%);
 }
 
+/* 移除重复的卡片hover效果 */
 .feature-card:hover,
 .advantage-card:hover,
 .product-card:hover {
-    border-color: var(--gold);
-    box-shadow: 0 20px 40px rgba(13, 22, 66, 0.2);
     transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(13, 22, 66, 0.08);
 }
 
 /* 图标样式 */
@@ -663,9 +760,10 @@ section h2 {
     color: var(--royal-blue-dark);
 }
 
+/* 移除重复的图标hover效果 */
 .feature-card:hover i,
 .advantage-card:hover i {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.1);
 }
 
 /* 响应式调整 */
@@ -2191,42 +2289,16 @@ body {
 }
 
 /* 轮播图样式 */
-.hero-carousel {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 55%;
-    height: 100%;
-    overflow: hidden;
-    clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%); /* 添加斜角裁切 */
-}
-
-.carousel-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.carousel-track {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    height: 100%;
-    cursor: zoom-in;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+@media (min-width: 769px) {
+    .hero-carousel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 55%;
+        height: 100%;
+        overflow: hidden;
+        clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%);
+    }
 }
 
 /* 轮播按钮样式 */
@@ -2403,4 +2475,93 @@ body {
         right: 10px;
     }
 }
+
+/* 轮播图基础样式 */
+.hero-carousel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    overflow: hidden;
+    clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.carousel-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.3s ease-out;
+    touch-action: none;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+    .hero-carousel {
+        position: static;
+        width: 100%;
+        height: 35vh;
+        min-height: 250px;
+        clip-path: none;
+        margin: 0;
+    }
+
+    .carousel-container,
+    .carousel-track,
+    .carousel-slide {
+        touch-action: none;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--royal-blue-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-light);
+}
+
+/* Firefox滚动条样式 */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) var(--royal-blue-dark);
+}
+
 
