@@ -1979,6 +1979,7 @@ body {
     font-size: 16px;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--gold);
+    will-change: transform;
 }
 
 .faq-question h3 {
@@ -1994,6 +1995,7 @@ body {
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
+    will-change: max-height, opacity, padding;
 }
 
 .faq-answer p {
@@ -2019,8 +2021,12 @@ body {
 }
 
 .faq-item.active .faq-answer {
-    max-height: 1000px;
+    max-height: 1000px; /* 调整为适合内容的高度 */
     padding: 20px;
     opacity: 1;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
 }
 

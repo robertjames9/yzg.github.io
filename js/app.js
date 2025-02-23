@@ -99,13 +99,24 @@ document.addEventListener('DOMContentLoaded', function() {
             const faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const icon = question.querySelector('i');
+                
                 question.addEventListener('click', () => {
+                    // 关闭其他打开的FAQ项
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item && otherItem.classList.contains('active')) {
                             otherItem.classList.remove('active');
+                            const otherIcon = otherItem.querySelector('.faq-question i');
+                            otherIcon.style.transform = 'rotate(0deg)';
                         }
                     });
+                    
+                    // 切换当前项的状态
                     item.classList.toggle('active');
+                    
+                    // 旋转加号图标
+                    icon.style.transform = item.classList.contains('active') ? 'rotate(45deg)' : 'rotate(0deg)';
                 });
             });
         }
@@ -216,29 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 为网格容器添加交错动画类
     const grids = document.querySelectorAll('.features-grid, .advantages-grid, .products-grid');
     grids.forEach(grid => grid.classList.add('stagger-animation'));
-});
-
-// FAQ交互功能
-document.addEventListener('DOMContentLoaded', function() {
-    // FAQ交互
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-        
-        question.addEventListener('click', () => {
-            // 关闭其他打开的FAQ项
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
-                }
-            });
-            
-            // 切换当前项的状态
-            item.classList.toggle('active');
-        });
-    });
 });
 
 // 添加错误处理
