@@ -119,6 +119,278 @@ document.addEventListener('DOMContentLoaded', function() {
                     icon.style.transform = item.classList.contains('active') ? 'rotate(45deg)' : 'rotate(0deg)';
                 });
             });
+        },
+
+        carousel: () => {
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            
+            let currentIndex = 0;
+            let autoplayInterval;
+            
+            // 更新轮播图位置
+            const updateCarousel = (index) => {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                indicators.forEach(ind => ind.classList.remove('active'));
+                indicators[index].classList.add('active');
+                currentIndex = index;
+            };
+            
+            // 自动播放
+            const startAutoplay = () => {
+                autoplayInterval = setInterval(() => {
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel(nextIndex);
+                }, 5000);
+            };
+            
+            // 停止自动播放
+            const stopAutoplay = () => {
+                clearInterval(autoplayInterval);
+            };
+            
+            // 事件监听
+            prevButton.addEventListener('click', () => {
+                stopAutoplay();
+                const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel(prevIndex);
+                startAutoplay();
+            });
+            
+            nextButton.addEventListener('click', () => {
+                stopAutoplay();
+                const nextIndex = (currentIndex + 1) % slides.length;
+                updateCarousel(nextIndex);
+                startAutoplay();
+            });
+            
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    stopAutoplay();
+                    updateCarousel(index);
+                    startAutoplay();
+                });
+            });
+            
+            // 图片查看器功能
+            const viewer = document.querySelector('.image-viewer');
+            const viewerImg = viewer.querySelector('img');
+            const viewerClose = viewer.querySelector('.viewer-close');
+            const viewerPrev = viewer.querySelector('.viewer-nav.prev');
+            const viewerNext = viewer.querySelector('.viewer-nav.next');
+            
+            // 修改图片切换函数
+            const switchImage = (newSrc, direction = 'next') => {
+                // 添加淡出效果
+                viewerImg.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    // 添加淡入效果的初始状态
+                    viewerImg.classList.remove('fade-out');
+                    viewerImg.classList.add('fade-in');
+                    
+                    // 更改图片源
+                    viewerImg.src = newSrc;
+                    
+                    // 图片加载完成后执行淡入动画
+                    viewerImg.onload = () => {
+                        requestAnimationFrame(() => {
+                            viewerImg.classList.remove('fade-in');
+                        });
+                    };
+                }, 300);
+            };
+
+            // 打开图片查看器
+            slides.forEach(slide => {
+                slide.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const img = slide.querySelector('img');
+                    viewerImg.src = img.src;
+                    viewer.classList.add('active');
+                    currentIndex = parseInt(slide.dataset.index);
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // 关闭图片查看器
+            const closeViewer = () => {
+                viewer.classList.remove('active');
+                // 恢复背景滚动
+                document.body.style.overflow = '';
+            };
+
+            viewerClose.addEventListener('click', closeViewer);
+            
+            // 点击背景关闭查看器
+            viewer.addEventListener('click', (e) => {
+                if (e.target === viewer) {
+                    closeViewer();
+                }
+            });
+            
+            // 修改导航按钮的点击事件
+            viewerPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                const prevImg = slides[currentIndex].querySelector('img');
+                switchImage(prevImg.src, 'prev');
+            });
+            
+            viewerNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % slides.length;
+                const nextImg = slides[currentIndex].querySelector('img');
+                switchImage(nextImg.src, 'next');
+            });
+            
+            // 键盘导航
+            document.addEventListener('keydown', (e) => {
+                if (!viewer.classList.contains('active')) return;
+                
+                switch(e.key) {
+                    case 'Escape':
+                        closeViewer();
+                        break;
+                    case 'ArrowLeft':
+                        viewerPrev.click();
+                        break;
+                    case 'ArrowRight':
+                        viewerNext.click();
+                        break;
+                }
+            });
+
+            // 阻止图片拖动
+            viewerImg.addEventListener('dragstart', (e) => e.preventDefault());
+            
+            // 启动自动播放
+            startAutoplay();
+        },
+
+        videoCarousel: () => {
+            const wrapper = document.querySelector('.carousel-3d-wrapper');
+            const cards = document.querySelectorAll('.video-card');
+            const prevBtn = document.querySelector('.carousel-3d-prev');
+            const nextBtn = document.querySelector('.carousel-3d-next');
+            const modal = document.querySelector('.video-modal');
+            const modalIframe = modal.querySelector('iframe');
+            const modalClose = modal.querySelector('.modal-close');
+            
+            let currentIndex = 0;
+            const totalCards = cards.length;
+            
+            // 更新卡片状态
+            const updateCards = () => {
+                cards.forEach((card, index) => {
+                    card.className = 'video-card';
+                    
+                    // 计算相对位置
+                    const diff = (index - currentIndex + totalCards) % totalCards;
+                    
+                    if (diff === 0) {
+                        card.classList.add('active');
+                    } else if (diff === 1) {
+                        card.classList.add('next');
+                    } else if (diff === totalCards - 1) {
+                        card.classList.add('prev');
+                    } else if (diff === 2) {
+                        card.classList.add('far-next');
+                    } else if (diff === totalCards - 2) {
+                        card.classList.add('far-prev');
+                    }
+                });
+            };
+            
+            // 初始化显示
+            updateCards();
+            
+            // 切换到上一个视频
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                updateCards();
+            });
+            
+            // 切换到下一个视频
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalCards;
+                updateCards();
+            });
+            
+            // 点击播放视频
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    if (card.classList.contains('active')) {
+                        const videoId = card.dataset.videoId;
+                        modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        // 如果点击的不是当前激活的卡片，将其旋转到中间
+                        const clickedIndex = Array.from(cards).indexOf(card);
+                        const diff = clickedIndex - currentIndex;
+                        if (diff < 0) {
+                            for (let i = 0; i > diff; i--) {
+                                prevBtn.click();
+                            }
+                        } else {
+                            for (let i = 0; i < diff; i++) {
+                                nextBtn.click();
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // 关闭视频
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+                modalIframe.src = '';
+                document.body.style.overflow = '';
+            });
+            
+            // 点击背景关闭视频
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modalClose.click();
+                }
+            });
+            
+            // 键盘控制
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) {
+                    if (e.key === 'ArrowLeft') {
+                        prevBtn.click();
+                    } else if (e.key === 'ArrowRight') {
+                        nextBtn.click();
+                    }
+                } else if (e.key === 'Escape') {
+                    modalClose.click();
+                }
+            });
+            
+            // 自动轮播
+            let autoplayInterval;
+            
+            const startAutoplay = () => {
+                autoplayInterval = setInterval(() => {
+                    nextBtn.click();
+                }, 5000);
+            };
+            
+            const stopAutoplay = () => {
+                clearInterval(autoplayInterval);
+            };
+            
+            // 启动自动轮播
+            startAutoplay();
+            
+            // 鼠标悬停时停止自动轮播
+            wrapper.addEventListener('mouseenter', stopAutoplay);
+            wrapper.addEventListener('mouseleave', startAutoplay);
         }
     };
 

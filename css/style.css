@@ -773,31 +773,230 @@ section h2 {
     margin-bottom: 4rem;
 }
 
-/* 视频网格布局 */
-.video-testimonials {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
+/* 更新视频轮播样式 */
+.video-carousel {
+    position: relative;
+    padding: 80px 0;
+    perspective: 3000px; /* 增加透视距离 */
+    max-width: 1600px; /* 增加容器宽度 */
+    margin: 0 auto;
 }
 
-/* 视频容器样式 */
+.carousel-3d-container {
+    position: relative;
+    height: 700px; /* 增加容器高度 */
+}
+
+.carousel-3d-wrapper {
+    position: relative;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-card {
+    position: absolute;
+    width: 800px; /* 增加卡片宽度 */
+    height: 500px; /* 增加卡片高度 */
+    left: 50%;
+    top: 50%;
+    background: var(--white);
+    border-radius: 20px;
+    transform-origin: center center -800px; /* 调整旋转原点 */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 380px; /* 调整缩略图高度 */
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.play-button i {
+    color: var(--white);
+    font-size: 24px;
+    margin-left: 4px;
+}
+
+.video-card:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--gold-light);
+}
+
+.video-info {
+    padding: 20px;
+    background: var(--white);
+}
+
+.video-info h3 {
+    color: var(--royal-blue-dark);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.video-info p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* 3D轮播定位样式 */
+.video-card.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateZ(400px) scale(1);
+    z-index: 2;
+}
+
+.video-card.prev {
+    opacity: 0.8;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateZ(-200px) translateX(-120%) rotateY(45deg) scale(0.85);
+}
+
+.video-card.next {
+    opacity: 0.8;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateZ(-200px) translateX(120%) rotateY(-45deg) scale(0.85);
+}
+
+.video-card.far-prev {
+    opacity: 0.6;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateZ(-400px) translateX(-180%) rotateY(55deg) scale(0.7);
+}
+
+.video-card.far-next {
+    opacity: 0.6;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateZ(-400px) translateX(180%) rotateY(-55deg) scale(0.7);
+}
+
+/* 控制按钮样式 */
+.carousel-3d-prev,
+.carousel-3d-next {
+    position: absolute;
+    top: auto;
+    bottom: -80px;
+    transform: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-3d-prev {
+    left: 8%;
+}
+
+.carousel-3d-next {
+    right: 8%;
+}
+
+.carousel-3d-prev i,
+.carousel-3d-next i {
+    color: var(--white);
+    font-size: 24px;
+}
+
+.carousel-3d-prev:hover,
+.carousel-3d-next:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .carousel-3d-prev,
+    .carousel-3d-next {
+        width: 40px;
+        height: 40px;
+        bottom: -60px;
+    }
+
+    .carousel-3d-prev {
+        left: 5%;
+    }
+
+    .carousel-3d-next {
+        right: 5%;
+    }
+
+    .carousel-3d-prev i,
+    .carousel-3d-next i {
+        font-size: 18px;
+    }
+}
+
+/* 视频弹窗样式 */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-}
-
-.video-container:hover {
-    border-color: var(--gold);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .video-container iframe {
@@ -809,55 +1008,16 @@ section h2 {
     border: none;
 }
 
-/* 更新滚动指示器颜色 */
-.scroll-indicator i {
-    color: var(--gold);
-}
-
-/* 添加背景虚化遮罩 */
-.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(13, 22, 66, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 90;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.backdrop.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* 自定义滚动条样式 */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--royal-blue-dark);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--gold);
-    border-radius: 5px;
-    border: 2px solid var(--royal-blue-dark);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--gold-light);
-}
-
-/* Firefox滚动条样式 */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: var(--gold) var(--royal-blue-dark);
+.modal-close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
 }
 
 /* 关于元之光部分样式 */
@@ -2028,5 +2188,219 @@ body {
 
 .faq-item.active .faq-question i {
     transform: rotate(45deg);
+}
+
+/* 轮播图样式 */
+.hero-carousel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    overflow: hidden;
+    clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%); /* 添加斜角裁切 */
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    cursor: zoom-in;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 轮播按钮样式 */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-container:hover .carousel-button {
+    opacity: 1;
+}
+
+.carousel-button.prev {
+    left: 20px;
+}
+
+.carousel-button.next {
+    right: 20px;
+}
+
+/* 轮播指示器样式 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--gold);
+}
+
+/* 图片查看器样式优化 */
+.image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000; /* 提高层级确保在最上层 */
+    opacity: 0;
+    visibility: hidden; /* 改用 visibility 代替 display */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-viewer.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.viewer-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewer-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* 图片切换时的过渡效果 */
+.viewer-content img.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.viewer-content img.fade-in {
+    opacity: 0;
+    transform: scale(1.05);
+}
+
+.viewer-close {
+    position: fixed; /* 改为 fixed 定位 */
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2001;
+}
+
+.viewer-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.viewer-nav {
+    position: fixed; /* 改为 fixed 定位 */
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2001;
+}
+
+.viewer-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.viewer-nav.prev {
+    left: 20px;
+}
+
+.viewer-nav.next {
+    right: 20px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .viewer-nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .viewer-nav.prev {
+        left: 10px;
+    }
+
+    .viewer-nav.next {
+        right: 10px;
+    }
 }
 
