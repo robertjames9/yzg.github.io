@@ -247,3 +247,26 @@ window.addEventListener('scroll', () => {
         document.querySelector('.scroll-progress').style.transform = `scaleX(${progress})`;
     });
 });
+
+// FAQ交互功能
+document.addEventListener('DOMContentLoaded', function() {
+    // FAQ交互
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        question.addEventListener('click', () => {
+            // 关闭其他打开的FAQ项
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // 切换当前项的状态
+            item.classList.toggle('active');
+        });
+    });
+});
