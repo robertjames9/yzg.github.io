@@ -101,6 +101,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     gap: 3.5rem;
     margin: 0 auto;
+    pointer-events: none; /* 默认不接收事件 */
 }
 
 .nav-links a {
@@ -278,6 +279,7 @@ h1, h2, h3, h4, h5, h6 {
         border-left: 1px solid rgba(212, 175, 55, 0.3);
         display: flex;
         justify-content: flex-start;
+        pointer-events: none; /* 默认不接收事件 */
     }
 
     .nav-links.active {
@@ -285,6 +287,7 @@ h1, h2, h3, h4, h5, h6 {
         opacity: 1;
         visibility: visible;
         transform: translateX(0);
+        pointer-events: auto; /* 激活时才接收事件 */
     }
 
     .nav-links a {
@@ -346,23 +349,42 @@ h1, h2, h3, h4, h5, h6 {
         height: 100%;
         background: rgba(13, 22, 66, 0.85);
         opacity: 0;
-        transition: opacity 0.3s ease;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
         z-index: 998;
+        pointer-events: none; /* 默认不接收事件 */
     }
 
     .backdrop.active {
-        display: block;
         opacity: 1;
+        visibility: visible;
+        pointer-events: auto; /* 激活时才接收事件 */
     }
 
     /* 禁止背景滚动 */
     body.menu-open {
         overflow: hidden;
+        /* 移除可能影响触摸事件的属性 */
+        position: relative;
+        height: 100%;
+        touch-action: none; /* 仅在菜单打开时禁用触摸 */
     }
 
     /* 移除之前添加的after伪元素 */
     .nav-links::after {
         display: none;
+    }
+
+    .carousel-container,
+    .carousel-track,
+    .carousel-slide {
+        touch-action: pan-y pinch-zoom; /* 允许垂直滚动和缩放 */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-track {
+        will-change: transform;
+        transform: translateZ(0);
     }
 }
 
@@ -2485,6 +2507,7 @@ body {
     height: 100%;
     overflow: hidden;
     clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 1; /* 确保正确的层级 */
 }
 
 .carousel-container {
@@ -2492,7 +2515,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    touch-action: none;
+    touch-action: none; /* 禁用浏览器默认触摸行为 */
 }
 
 .carousel-track {
@@ -2502,28 +2525,20 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    transition: transform 0.3s ease-out;
-    touch-action: none;
+    will-change: transform;
 }
 
 .carousel-slide {
     min-width: 100%;
     height: 100%;
     flex-shrink: 0;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    -webkit-user-drag: none;
-    user-select: none;
+    pointer-events: auto; /* 确保可以接收事件 */
 }
 
 /* 移动端样式 */
 @media (max-width: 768px) {
     .hero-carousel {
-        position: static;
+        position: relative; /* 改为相对定位 */
         width: 100%;
         height: 35vh;
         min-height: 250px;
@@ -2531,11 +2546,27 @@ body {
         margin: 0;
     }
 
-    .carousel-container,
-    .carousel-track,
+    .carousel-container {
+        touch-action: pan-x; /* 只允许水平滑动 */
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .carousel-track {
+        position: relative;
+        touch-action: pan-x;
+        pointer-events: auto;
+    }
+
     .carousel-slide {
-        touch-action: none;
-        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        pointer-events: auto;
+    }
+
+    .carousel-slide img {
+        pointer-events: none; /* 防止图片拖动 */
+        user-select: none;
+        -webkit-user-drag: none;
     }
 }
 
@@ -2562,6 +2593,14 @@ body {
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--gold) var(--royal-blue-dark);
+}
+
+/* 确保主要内容区域在非菜单状态下可以正常触摸 */
+main {
+    position: relative;
+    z-index: 1;
+    touch-action: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 

@@ -22,57 +22,64 @@ document.addEventListener('DOMContentLoaded', function() {
          * 处理导航菜单、汉堡按钮等交互
          */
         navbar: () => {
-            // 获取DOM元素
             const navbar = document.querySelector('.navbar');
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
-            
-            // 创建背景遮罩
-            const backdrop = document.createElement('div');
-            backdrop.className = 'backdrop';
-            document.body.appendChild(backdrop);
+            const backdrop = document.querySelector('.backdrop');
             
             let isMenuOpen = false;
 
-            // 合并菜单相关事件处理
             const toggleMenu = () => {
                 isMenuOpen = !isMenuOpen;
                 hamburger.classList.toggle('active');
                 navLinks.classList.toggle('active');
                 backdrop.classList.toggle('active');
-                document.body.classList.toggle('menu-open');
-            };
-
-            // 事件监听器
-            const eventListeners = {
-                hamburger: () => hamburger.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    toggleMenu();
-                }),
                 
-                backdrop: () => backdrop.addEventListener('click', () => {
-                    if (isMenuOpen) toggleMenu();
-                }),
-                
-                navLinks: () => {
-                    navLinks.querySelectorAll('a').forEach(link => {
-                        link.addEventListener('click', () => {
-                            if (isMenuOpen) toggleMenu();
-                        });
-                    });
-                },
-                
-                document: () => {
-                    document.addEventListener('click', (e) => {
-                        if (isMenuOpen && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-                            toggleMenu();
-                        }
-                    });
+                // 仅在菜单打开时禁用背景滚动
+                if (isMenuOpen) {
+                    document.body.classList.add('menu-open');
+                    // 记住滚动位置
+                    document.body.style.top = `-${window.scrollY}px`;
+                } else {
+                    document.body.classList.remove('menu-open');
+                    // 恢复滚动位置
+                    const scrollY = document.body.style.top;
+                    document.body.style.top = '';
+                    window.scrollTo(0, parseInt(scrollY || '0') * -1);
                 }
             };
 
-            // 初始化所有事件监听器
-            Object.values(eventListeners).forEach(listener => listener());
+            // 事件监听器
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            backdrop.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+
+            // 关闭菜单时确保清理所有状态
+            const closeMenu = () => {
+                if (isMenuOpen) {
+                    isMenuOpen = false;
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    backdrop.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    document.body.style.top = '';
+                }
+            };
+
+            // 添加窗口大小改变时的处理
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+
+            // 确保页面加载时清理任何可能的残留状态
+            document.addEventListener('DOMContentLoaded', closeMenu);
         },
 
         scrollEffects: () => {
@@ -410,43 +417,40 @@ document.addEventListener('DOMContentLoaded', function() {
         let prevTranslate = 0;
         let isDragging = false;
         let currentIndex = 0;
-        let startTime = 0;
-        const slides = carousel.children;
+        const slides = Array.from(carousel.children);
 
         function getSlideWidth() {
             return carousel.clientWidth;
         }
 
+        function setPositionByIndex() {
+            currentTranslate = currentIndex * -getSlideWidth();
+            prevTranslate = currentTranslate;
+            carousel.style.transition = 'transform 0.3s ease-out';
+            carousel.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
         function handleTouchStart(e) {
-            e.preventDefault(); // 阻止默认行为
-            startTime = Date.now();
-            startX = e.touches ? e.touches[0].clientX : e.clientX;
+            console.log('Touch Start'); // 调试日志
+            startX = e.touches[0].clientX;
             isDragging = true;
             
             const transform = window.getComputedStyle(carousel).transform;
-            prevTranslate = transform !== 'none' ? parseInt(transform.split(',')[4]) || 0 : 0;
+            prevTranslate = transform !== 'none' 
+                ? parseInt(transform.split(',')[4]) 
+                : 0;
             
             carousel.style.transition = 'none';
         }
 
         function handleTouchMove(e) {
             if (!isDragging) return;
-            e.preventDefault(); // 阻止默认行为
+            console.log('Touch Move'); // 调试日志
             
-            const currentX = e.touches ? e.touches[0].clientX : e.clientX;
+            const currentX = e.touches[0].clientX;
             const diff = currentX - startX;
-            currentTranslate = prevTranslate + diff;
-
-            // 添加边界限制和阻尼效果
-            const maxTranslate = 0;
-            const minTranslate = -(slides.length - 1) * getSlideWidth();
             
-            if (currentTranslate > maxTranslate) {
-                currentTranslate = maxTranslate + (currentTranslate - maxTranslate) * 0.3;
-            } else if (currentTranslate < minTranslate) {
-                currentTranslate = minTranslate + (currentTranslate - minTranslate) * 0.3;
-            }
-
+            currentTranslate = prevTranslate + diff;
             requestAnimationFrame(() => {
                 carousel.style.transform = `translateX(${currentTranslate}px)`;
             });
@@ -454,49 +458,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function handleTouchEnd() {
             if (!isDragging) return;
+            console.log('Touch End'); // 调试日志
+            
             isDragging = false;
+            const movedBy = currentTranslate - prevTranslate;
             
-            const moveTime = Date.now() - startTime;
-            const moveDistance = currentTranslate - prevTranslate;
-            
-            carousel.style.transition = 'transform 0.3s ease-out';
-            
-            if (Math.abs(moveDistance) > getSlideWidth() * 0.3 || (Math.abs(moveDistance) > 30 && moveTime < 300)) {
-                if (moveDistance > 0 && currentIndex > 0) {
-                    currentIndex--;
-                } else if (moveDistance < 0 && currentIndex < slides.length - 1) {
+            if (Math.abs(movedBy) > getSlideWidth() * 0.2) {
+                if (movedBy < 0 && currentIndex < slides.length - 1) {
                     currentIndex++;
+                } else if (movedBy > 0 && currentIndex > 0) {
+                    currentIndex--;
                 }
             }
             
-            currentTranslate = -currentIndex * getSlideWidth();
-            carousel.style.transform = `translateX(${currentTranslate}px)`;
-            
-            // 更新指示器
-            updateIndicators(currentIndex);
+            setPositionByIndex();
         }
 
-        // 触摸事件监听器
-        carousel.addEventListener('touchstart', handleTouchStart, { passive: false });
-        carousel.addEventListener('touchmove', handleTouchMove, { passive: false });
+        // 移除所有现有的事件监听器
+        carousel.removeEventListener('touchstart', handleTouchStart);
+        carousel.removeEventListener('touchmove', handleTouchMove);
+        carousel.removeEventListener('touchend', handleTouchEnd);
+
+        // 添加新的事件监听器
+        carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
+        carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
         carousel.addEventListener('touchend', handleTouchEnd);
-        carousel.addEventListener('touchcancel', handleTouchEnd);
 
-        // 阻止图片拖拽
-        carousel.querySelectorAll('img').forEach(img => {
-            img.addEventListener('dragstart', e => e.preventDefault());
-        });
+        // 初始化位置
+        setPositionByIndex();
 
-        // 窗口大小改变时重新计算位置
-        window.addEventListener('resize', () => {
-            carousel.style.transition = 'none';
-            currentTranslate = -currentIndex * getSlideWidth();
-            carousel.style.transform = `translateX(${currentTranslate}px)`;
-        });
+        // 添加调试信息
+        console.log('Carousel touch events initialized');
     }
 
-    // 初始化触摸滑动
-    initCarouselTouch();
+    // 确保在 DOM 加载完成后初始化
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM Content Loaded'); // 调试日志
+        initCarouselTouch();
+    });
 });
 
 // 表单验证
@@ -634,4 +633,21 @@ document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', function() {
         this.src = 'path/to/fallback-image.jpg';
     });
+});
+
+// 在文件末尾添加调试代码
+document.addEventListener('DOMContentLoaded', () => {
+    // 添加触摸事件调试
+    const debugTouch = (e) => {
+        console.log('Touch event:', e.type, {
+            target: e.target,
+            touches: e.touches.length,
+            path: e.composedPath().map(el => el.tagName || el.toString())
+        });
+    };
+
+    // 监听整个文档的触摸事件
+    document.addEventListener('touchstart', debugTouch, { passive: true });
+    document.addEventListener('touchmove', debugTouch, { passive: true });
+    document.addEventListener('touchend', debugTouch);
 });
