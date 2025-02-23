@@ -1,134 +1,118 @@
-// 初始化AOS动画库
-AOS.init({
-    duration: 1000,
-    once: true
-});
-
-// 导航栏相关功能
+/**
+ * 主要功能初始化模块
+ * 包含所有页面交互和动画效果的初始化
+ */
 document.addEventListener('DOMContentLoaded', function() {
-    const navbar = document.querySelector('.navbar');
-    
-    // 处理滚动事件 - 只添加/移除滚动样式，不隐藏导航栏
-    function handleScroll() {
-        const currentScroll = window.pageYOffset;
-        
-        // 添加/移除滚动样式
-        if (currentScroll > 50) {
-            navbar.classList.add('navbar-scrolled');
-        } else {
-            navbar.classList.remove('navbar-scrolled');
-        }
-    }
-
-    // 使用 requestAnimationFrame 优化滚动性能
-    let ticking = false;
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                handleScroll();
-                ticking = false;
+    // 功能模块集合
+    const init = {
+        /**
+         * AOS动画初始化
+         * 控制页面滚动时的动画效果
+         */
+        aos: () => {
+            AOS.init({
+                duration: 1000,    // 动画持续时间
+                once: true,        // 动画只执行一次
+                offset: 100        // 触发偏移量
             });
-            ticking = true;
-        }
-    });
+        },
 
-    // 处理移动端菜单
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const backdrop = document.createElement('div');
-    backdrop.className = 'backdrop';
-    document.body.appendChild(backdrop);
-    
-    let isMenuOpen = false;
+        /**
+         * 导航栏功能初始化
+         * 处理导航菜单、汉堡按钮等交互
+         */
+        navbar: () => {
+            // 获取DOM元素
+            const navbar = document.querySelector('.navbar');
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // 创建背景遮罩
+            const backdrop = document.createElement('div');
+            backdrop.className = 'backdrop';
+            document.body.appendChild(backdrop);
+            
+            let isMenuOpen = false;
 
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        backdrop.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-        
-        // 调试日志
-        console.log('Menu toggled:', isMenuOpen);
-        console.log('Hamburger classes:', hamburger.classList);
-        console.log('Nav Links classes:', navLinks.classList);
-    }
+            // 合并菜单相关事件处理
+            const toggleMenu = () => {
+                isMenuOpen = !isMenuOpen;
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                backdrop.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            };
 
-    // 汉堡菜单点击事件
-    hamburger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-    });
+            // 事件监听器
+            const eventListeners = {
+                hamburger: () => hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleMenu();
+                }),
+                
+                backdrop: () => backdrop.addEventListener('click', () => {
+                    if (isMenuOpen) toggleMenu();
+                }),
+                
+                navLinks: () => {
+                    navLinks.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', () => {
+                            if (isMenuOpen) toggleMenu();
+                        });
+                    });
+                },
+                
+                document: () => {
+                    document.addEventListener('click', (e) => {
+                        if (isMenuOpen && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                            toggleMenu();
+                        }
+                    });
+                }
+            };
 
-    // 点击背景遮罩关闭菜单
-    backdrop.addEventListener('click', () => {
-        if (isMenuOpen) {
-            toggleMenu();
-        }
-    });
+            // 初始化所有事件监听器
+            Object.values(eventListeners).forEach(listener => listener());
+        },
 
-    // 点击导航链接关闭菜单
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (isMenuOpen) {
-                toggleMenu();
-            }
-        });
-    });
+        scrollEffects: () => {
+            // 滚动进度条
+            const scrollProgress = document.createElement('div');
+            scrollProgress.className = 'scroll-progress';
+            document.body.appendChild(scrollProgress);
 
-    // 点击页面其他区域关闭菜单
-    document.addEventListener('click', (e) => {
-        if (isMenuOpen && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-            toggleMenu();
-        }
-    });
-
-    // 阻止菜单内部点击事件冒泡
-    navLinks.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
-    // 监听滚动事件，添加导航栏背景
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        lastScroll = currentScroll;
-    });
-
-    // 监听窗口大小变化
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && isMenuOpen) {
-            toggleMenu();
-        }
-    });
-
-    // 添加页面滚动锁定
-    function lockScroll(lock) {
-        document.body.style.overflow = lock ? 'hidden' : '';
-    }
-
-    // 平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition - headerOffset;
-
-                window.scrollBy({
-                    top: offsetPosition,
-                    behavior: 'smooth'
+            // 优化滚动处理
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) {
+                    window.cancelAnimationFrame(scrollTimeout);
+                }
+                scrollTimeout = window.requestAnimationFrame(() => {
+                    const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const progress = window.scrollY / windowHeight;
+                    scrollProgress.style.transform = `scaleX(${progress})`;
                 });
-            }
-        });
-    });
+            });
+        },
+
+        faq: () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    item.classList.toggle('active');
+                });
+            });
+        }
+    };
+
+    // 执行所有初始化函数
+    Object.values(init).forEach(initFn => initFn());
 });
 
 // 表单验证
@@ -232,20 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 为网格容器添加交错动画类
     const grids = document.querySelectorAll('.features-grid, .advantages-grid, .products-grid');
     grids.forEach(grid => grid.classList.add('stagger-animation'));
-});
-
-// 优化滚动进度条动画
-let scrollTimeout;
-window.addEventListener('scroll', () => {
-    if (scrollTimeout) {
-        window.cancelAnimationFrame(scrollTimeout);
-    }
-
-    scrollTimeout = window.requestAnimationFrame(() => {
-        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = window.scrollY / windowHeight;
-        document.querySelector('.scroll-progress').style.transform = `scaleX(${progress})`;
-    });
 });
 
 // FAQ交互功能

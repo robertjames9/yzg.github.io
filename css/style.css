@@ -1,49 +1,54 @@
-/* 导入思源黑体 */
+/* ===== 基础设置 ===== */
+/* 导入字体 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
+/* 全局变量定义 */
 :root {
-    /* 更新配色方案 */
-    --royal-blue-dark: #0d1642;    /* 深皇族蓝 */
-    --royal-blue: #1a237e;         /* 主皇族蓝 */
-    --royal-blue-light: #534bae;   /* 浅皇族蓝 */
+    /* 主题色系 */
+    --royal-blue-dark: #0d1642;    /* 深皇族蓝 - 用于主要背景 */
+    --royal-blue: #1a237e;         /* 主皇族蓝 - 用于强调元素 */
+    --royal-blue-light: #534bae;   /* 浅皇族蓝 - 用于hover状态 */
     
-    --gold-dark: #c8a415;          /* 深金色 */
-    --gold: #d4af37;               /* 优雅金色 */
-    --gold-light: #e6c65c;         /* 浅金色 */
+    /* 辅助色系 */
+    --gold-dark: #c8a415;          /* 深金色 - 用于边框和分割线 */
+    --gold: #d4af37;               /* 优雅金色 - 用于重要按钮和标题 */
+    --gold-light: #e6c65c;         /* 浅金色 - 用于hover效果 */
     
-    --white: #ffffff;
-    --off-white: #f8f9fa;
-    --gray-light: #e9ecef;
-    --gray: #6c757d;
-    --gray-dark: #343a40;
-    --black: #000000;
+    /* 中性色系 */
+    --white: #ffffff;              /* 纯白 - 用于文字和背景 */
+    --off-white: #f8f9fa;          /* 灰白 - 用于背景层次 */
+    --gray-light: #e9ecef;         /* 浅灰 - 用于分割和边框 */
+    --gray: #6c757d;               /* 中灰 - 用于次要文字 */
+    --gray-dark: #343a40;          /* 深灰 - 用于主要文字 */
+    --black: #000000;              /* 纯黑 - 用于特殊强调 */
     
-    /* 更新渐变色 */
+    /* 渐变效果 */
     --primary-gradient: linear-gradient(135deg, var(--royal-blue-dark) 0%, var(--royal-blue) 100%);
     --secondary-gradient: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
     --dark-gradient: linear-gradient(135deg, var(--royal-blue-dark) 0%, var(--gray-dark) 100%);
     --background-gradient: linear-gradient(135deg, var(--off-white) 0%, var(--gray-light) 100%);
     
-    /* 更新其他变量 */
-    --text-dark: var(--royal-blue-dark);
-    --text-light: var(--gray-light);
-    --border-color: var(--gold-dark);
-    --card-shadow: 0 10px 30px -10px rgba(13, 22, 66, 0.15);
+    /* 功能变量 */
+    --text-dark: var(--royal-blue-dark);    /* 主要文字颜色 */
+    --text-light: var(--gray-light);        /* 次要文字颜色 */
+    --border-color: var(--gold-dark);       /* 边框颜色 */
+    --card-shadow: 0 10px 30px -10px rgba(13, 22, 66, 0.15);  /* 卡片阴影 */
 
-    /* 添加响应式断点变量 */
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
+    /* 响应式断点 */
+    --breakpoint-sm: 576px;    /* 小屏幕设备 */
+    --breakpoint-md: 768px;    /* 中等屏幕设备 */
+    --breakpoint-lg: 992px;    /* 大屏幕设备 */
+    --breakpoint-xl: 1200px;   /* 超大屏幕设备 */
 }
 
+/* ===== 全局重置样式 ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;  /* 移除移动端点击高亮 */
+    -webkit-font-smoothing: antialiased;       /* 优化字体渲染 */
+    -moz-osx-font-smoothing: grayscale;        /* Firefox字体渲染优化 */
 }
 
 body {
@@ -199,25 +204,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 移动端适配 */
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 15px;
-        box-sizing: border-box;
+@media (max-width: 768px) {
+    .container,
+    .products-grid,
+    .advantages-grid,
+    .intro-text,
+    .closing-statement {
+        padding: 0 1rem;
     }
-    
-    /* 确保按钮在移动端也能正确显示 */
-    .button-container {
-        width: 100%;
-        margin: 10px 0;
+
+    .hero-section,
+    .about-section,
+    .what-is-section,
+    .advantages-section {
+        padding: 4rem 0;
     }
-    
-    /* 调整文字大小 */
+
     h1 {
-        font-size: 24px;
+        font-size: 2.5rem;
     }
-    
-    p {
-        font-size: 16px;
+
+    .hero-subtitle {
+        font-size: 1.2rem;
     }
 
     .navbar {
@@ -598,7 +606,6 @@ section h2 {
 .advantages-grid,
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -644,6 +651,7 @@ section h2 {
 .product-card:hover {
     border-color: var(--gold);
     box-shadow: 0 20px 40px rgba(13, 22, 66, 0.2);
+    transform: translateY(-5px);
 }
 
 /* 图标样式 */
