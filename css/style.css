@@ -39,6 +39,13 @@
     --breakpoint-md: 768px;    /* 中等屏幕设备 */
     --breakpoint-lg: 992px;    /* 大屏幕设备 */
     --breakpoint-xl: 1200px;   /* 超大屏幕设备 */
+
+    /* Button-specific variables */
+    --button-transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    --button-radius: 10px;
+    --button-shadow-gold: 0 5px 15px rgba(212, 175, 55, 0.2);
+    --button-shadow-white: 0 5px 15px rgba(255, 255, 255, 0.1);
+    --button-shadow-hover: 0 8px 20px rgba(212, 175, 55, 0.25);
 }
 
 /* ===== 全局重置样式 ===== */
@@ -236,40 +243,47 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 按钮基础样式 */
 .btn {
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
+    padding: 0.9rem 2rem;
+    border-radius: var(--button-radius);
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    white-space: nowrap;
-    min-width: 120px;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--button-transition);
+    border: none;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
 /* 按钮变体样式 */
 .nav-buttons .btn.primary {
-    background: var(--gold);
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 65%, var(--gold-dark) 100%);
     color: var(--royal-blue-dark);
+    box-shadow: var(--button-shadow-gold);
     border: none;
 }
 
-.nav-buttons .btn.primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+.nav-buttons .btn.primary:hover, 
+.nav-buttons .btn.primary:focus {
+    transform: translateY(-3px);
+    box-shadow: var(--button-shadow-hover);
 }
 
 .nav-buttons .btn.accent {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     color: var(--white);
-    border: 2px solid var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--button-shadow-white);
 }
 
 .nav-buttons .btn.accent:hover {
-    background: var(--white);
-    color: var(--royal-blue-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
 }
 
 /* 汉堡菜单样式 */
@@ -3013,6 +3027,146 @@ body {
 .image-viewer.active ~ .navbar .hamburger,
 body:has(.image-viewer.active) .hamburger {
     display: none !important;
+}
+
+/* CARD SHINE EFFECTS */
+
+/* Base card shine effect */
+.feature-card,
+.advantage-card,
+.product-card,
+.history-card,
+.modern-card,
+.principle-card,
+.about-card,
+.faq-item {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine effect overlay */
+.feature-card:before,
+.advantage-card:before,
+.product-card:before,
+.history-card:before,
+.modern-card:before,
+.principle-card:before,
+.about-card:before,
+.faq-item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 25%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  transform: translateX(-150%);
+  transition: transform 1.2s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Trigger animation on hover */
+.feature-card:hover:before,
+.advantage-card:hover:before,
+.product-card:hover:before,
+.history-card:hover:before,
+.modern-card:hover:before,
+.principle-card:hover:before,
+.about-card:hover:before,
+.faq-item:hover:before {
+  transform: translateX(100%);
+}
+
+/* Special treatment for dark cards */
+.advantage-card:before {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(255, 255, 255, 0) 50%
+  );
+}
+
+/* Make sure content stays above the shine effect */
+.feature-card *,
+.advantage-card *,
+.product-card *,
+.history-card *,
+.modern-card *,
+.principle-card *,
+.about-card *,
+.faq-item * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Enhancing the advantage-card icon shine */
+.advantage-icon {
+  position: relative;
+  overflow: hidden;
+}
+
+.advantage-icon:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 25%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  transform: translateX(-150%) rotate(45deg);
+  transition: transform 1s ease;
+  z-index: 1;
+}
+
+.advantage-card:hover .advantage-icon:before {
+  transform: translateX(100%) rotate(45deg);
+}
+
+/* Enhanced hover effects for clickable cards */
+.product-card:hover,
+.feature-card:hover,
+.advantage-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ item specific enhancements */
+.faq-item .faq-question {
+  position: relative;
+  z-index: 3;
+}
+
+/* Add shine effect for hero buttons too */
+.btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, 
+              rgba(255,255,255,0) 0%, 
+              rgba(255,255,255,0.2) 50%, 
+              rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.btn:hover:before {
+  transform: translateX(100%);
 }
 
 
