@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
             
-            // 创建backdrop元素
+            // Create backdrop element if it doesn't exist
             let backdrop = document.querySelector('.backdrop');
             if (!backdrop) {
                 backdrop = document.createElement('div');
@@ -65,19 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 backdrop.classList.toggle('active');
                 
                 if (isMenuOpen) {
-                    // 保存当前滚动位置并禁止滚动
+                    // Save current scroll position and prevent scrolling
                     scrollPosition = window.pageYOffset;
                     document.body.classList.add('menu-open');
                     document.body.style.top = `-${scrollPosition}px`;
                 } else {
-                    // 恢复滚动位置
+                    // Restore scroll position
                     document.body.classList.remove('menu-open');
                     document.body.style.top = '';
                     window.scrollTo(0, scrollPosition);
                 }
             };
 
-            // 确保元素存在后再添加事件监听
+            // Add event listeners if elements exist
             if (hamburger) {
                 hamburger.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-            // 监听窗口大小变化，在大屏幕时关闭菜单
+            // Close menu on window resize if screen is large
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768 && isMenuOpen) {
                     isMenuOpen = false;
@@ -311,6 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const closeBtn = imageViewer?.querySelector('.close-btn');
             const prevBtn = imageViewer?.querySelector('.prev-btn');
             const nextBtn = imageViewer?.querySelector('.next-btn');
+            const hamburger = document.querySelector('.hamburger');
 
             // 只收集Hero Section的图片
             const heroImages = document.querySelectorAll('.hero-swiper .swiper-slide img');
@@ -336,6 +337,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const closeViewer = () => {
                 imageViewer?.classList.remove('active');
                 document.body.style.overflow = '';
+                
+                // Show hamburger menu again when viewer is closed
+                if (hamburger && window.innerWidth <= 768) {
+                    hamburger.style.display = '';
+                }
             };
 
             // 只为Hero Section的图片添加点击事件
@@ -348,6 +354,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         showImage(currentIndex);
                         imageViewer.classList.add('active');
                         document.body.style.overflow = 'hidden';
+                        
+                        // Hide hamburger menu when viewer is open on mobile
+                        if (hamburger && window.innerWidth <= 768) {
+                            hamburger.style.display = 'none';
+                        }
                     }
                 });
             });
@@ -358,52 +369,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (e.target === imageViewer) closeViewer();
             });
 
-            // 添加导航事件
-            prevBtn?.addEventListener('click', () => {
-                if (currentIndex > 0) showImage(currentIndex - 1);
-            });
-
-            nextBtn?.addEventListener('click', () => {
-                if (currentIndex < imageUrls.length - 1) showImage(currentIndex + 1);
-            });
-
-            // 添加键盘事件
+            // Also handle hamburger visibility when Escape key is pressed
             document.addEventListener('keydown', (e) => {
                 if (!imageViewer?.classList.contains('active')) return;
 
-                switch (e.key) {
-                    case 'ArrowLeft':
-                        if (currentIndex > 0) showImage(currentIndex - 1);
-                        break;
-                    case 'ArrowRight':
-                        if (currentIndex < imageUrls.length - 1) showImage(currentIndex + 1);
-                        break;
-                    case 'Escape':
-                        closeViewer();
-                        break;
+                if (e.key === 'Escape') {
+                    closeViewer();
                 }
             });
 
-            // 添加触摸滑动支持
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            imageViewer?.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-            }, { passive: true });
-
-            imageViewer?.addEventListener('touchmove', (e) => {
-                touchEndX = e.touches[0].clientX;
-            }, { passive: true });
-
-            imageViewer?.addEventListener('touchend', () => {
-                const swipeDistance = touchEndX - touchStartX;
-                if (Math.abs(swipeDistance) > 50) { // 最小滑动距离
-                    if (swipeDistance > 0 && currentIndex > 0) {
-                        showImage(currentIndex - 1); // 向右滑动，显示上一张
-                    } else if (swipeDistance < 0 && currentIndex < imageUrls.length - 1) {
-                        showImage(currentIndex + 1); // 向左滑动，显示下一张
-                    }
+            // Handle window resize to manage hamburger visibility
+            window.addEventListener('resize', () => {
+                if (imageViewer?.classList.contains('active') && hamburger) {
+                    hamburger.style.display = window.innerWidth <= 768 ? 'none' : '';
                 }
             });
         }
@@ -501,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 添加滚动指示器
     const heroSection = document.querySelector('.hero-section');
-    if (heroSection) {
+    if (heroSection && !heroSection.querySelector('.scroll-indicator')) {
         const scrollIndicator = document.createElement('div');
         scrollIndicator.className = 'scroll-indicator';
         scrollIndicator.innerHTML = '<i class="fas fa-chevron-down"></i>';
@@ -510,7 +488,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 为网格容器添加交错动画类
     const grids = document.querySelectorAll('.features-grid, .advantages-grid, .products-grid');
-    grids.forEach(grid => grid.classList.add('stagger-animation'));
+    grids.forEach(grid => {
+        if (!grid.classList.contains('stagger-animation')) {
+            grid.classList.add('stagger-animation');
+        }
+    });
 
     // 添加触摸事件调试
     const debugTouch = (e) => {
@@ -603,22 +585,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
-
-// 更新HTML元素以支持新动画
-document.addEventListener('DOMContentLoaded', () => {
-    // 添加滚动指示器
-    const heroSection = document.querySelector('.hero-section');
-    if (heroSection) {
-        const scrollIndicator = document.createElement('div');
-        scrollIndicator.className = 'scroll-indicator';
-        scrollIndicator.innerHTML = '<i class="fas fa-chevron-down"></i>';
-        heroSection.appendChild(scrollIndicator);
-    }
-
-    // 为网格容器添加交错动画类
-    const grids = document.querySelectorAll('.features-grid, .advantages-grid, .products-grid');
-    grids.forEach(grid => grid.classList.add('stagger-animation'));
 });
 
 // 添加错误处理

@@ -92,41 +92,146 @@ h1, h2, h3, h4, h5, h6 {
     width: auto;
 }
 
-/* 导航链接样式 */
+/* Hamburger menu - only show on mobile */
+.hamburger {
+    display: none;
+}
+
+/* Base mobile styling for nav-links (mobile first approach) */
 .nav-links {
-    position: relative;
-    z-index: 1001;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    height: 100vh;
+    background: rgba(13, 22, 66, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 80px 0 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3.5rem;
-    margin: 0 auto;
-    pointer-events: auto; /* 修改这里，允许点击事件 */
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    z-index: 999;
+}
+
+.nav-links.active {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
 }
 
 .nav-links a {
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
+    padding: 8px 40px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
     color: var(--white);
-    transition: color 0.3s ease;
-    white-space: nowrap;
-    pointer-events: auto; /* 确保链接可点击 */
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .nav-links a:hover {
-    color: var(--gold);
+    background-color: rgba(255, 255, 255, 0.05);
+    padding-left: 35px;
 }
 
-/* 导航栏按钮组样式 */
+/* Mobile nav button placement */
 .nav-buttons {
-    position: relative;
-    z-index: 1001;
-    width: 300px;
+    width: 100%;
+    padding: 20px 30px;
+    margin-top: auto;
     display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-left: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .navbar {
+        height: 80px;
+        padding: 0 1rem;
+    }
+
+    .navbar .logo {
+        height: 80px;
+    }
+
+    .navbar .logo img {
+        height: 50px;
+    }
+
+    /* Button styles for mobile */
+    .nav-buttons .btn {
+        width: 65%;
+        padding: 8px 0;
+        font-size: 14px;
+    }
+}
+
+/* Desktop nav styles - make sure this is AFTER the mobile styles */
+@media (min-width: 769px) {
+    .nav-links {
+        position: relative;
+        z-index: 1001;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 3.5rem;
+        margin: 0 auto;
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: transparent;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        overflow: visible;
+        right: auto;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        padding: 0;
+        width: auto;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--white);
+        transition: color 0.3s ease;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .nav-links a:hover {
+        background-color: transparent;
+        padding-left: 0;
+        color: var(--gold);
+    }
+    
+    /* Desktop button styles */
+    .nav-buttons {
+        position: relative;
+        z-index: 1001;
+        width: 300px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-left: auto;
+        padding: 0;
+    }
 }
 
 /* 按钮基础样式 */
@@ -440,7 +545,7 @@ section h2 {
     color: var(--text-dark);
 }
 
-/* Hero区块样式更新 */
+/* Hero区块样式更新 - 调整文字区域布局 */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -457,12 +562,12 @@ section h2 {
     position: absolute;
     top: 0;
     right: 0;
-    width: 55%;
+    width: 50%; /* Reduce the width of the image section */
     height: 100%;
     background-image: url('../img/home.jpg');
     background-size: cover;
     background-position: center;
-    clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(80px 0, 100% 0, 100% 100%, 0 100%); /* Adjust clip path */
     opacity: 0.9;
 }
 
@@ -471,7 +576,7 @@ section h2 {
     content: '';
     position: absolute;
     top: 0;
-    right: 55%;
+    right: 50%; /* Adjust decorative element */
     width: 100px;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1));
@@ -481,26 +586,28 @@ section h2 {
 /* 内容布局调整 */
 .hero-section .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10rem;
+    grid-template-columns: 1.2fr 0.8fr; /* Give more space to text column */
+    gap: 4rem; /* Reduce gap */
     max-width: 1400px;
     padding: 0 5%;
+    margin-left: 5%; /* Shift entire container to the right */
 }
 
-/* 左侧文字内容 */
+/* 左侧文字内容调整 */
 .hero-content {
     grid-column: 1 / 2;
     text-align: left;
-    padding-right: 5rem;
-    max-width: 600px;
-    margin-left: 0;
+    padding-right: 0;
+    max-width: 100%; /* Allow content to fill the column */
+    margin-left: 0; /* Don't push to the right side of column */
+    margin-right: 0;
     position: relative;
     z-index: 2;
 }
 
 .hero-section h1 {
     color: var(--white);
-    font-size: 3.5rem;
+    font-size: 3.6rem; /* 适当增大标题字体 */
     margin-bottom: 1.5rem;
     line-height: 1.2;
     text-align: left;
@@ -508,17 +615,19 @@ section h2 {
 
 .hero-subtitle {
     color: var(--gold-light);
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* 保持原来的大小 */
     margin-bottom: 2.5rem;
     opacity: 0.9;
     text-align: left;
+    line-height: 1.5; /* 增加行高 */
+    max-width: 95%; /* 稍微限制宽度，创造更紧凑的感觉 */
 }
 
 /* 按钮样式优化 */
 .hero-buttons {
     display: flex;
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 3.5rem; /* 增加顶部间距 */
     justify-content: flex-start;
 }
 
@@ -598,67 +707,60 @@ section h2 {
     }
 
     .hero-section .container {
-        display: flex;
+        display: flex; /* Change back to flex for mobile */
         flex-direction: column;
         width: 100%;
-        margin: 30px 30px;
-        padding: 0;
+        margin: 30px auto; /* Center container horizontally */
+        padding: 0 20px; /* Add consistent padding */
+        gap: 0; /* Remove grid gap */
     }
-
-    /* 移动端轮播图样式 */
-    .hero-carousel {
-        position: relative; /* 改为相对定位 */
-        width: 100%;
-        height: 35vh;
-        min-height: 250px;
-        clip-path: none;
-        margin: 0;
-    }
-
-    .hero-swiper {
-        width: 100%;
-        height: 100%;
-    }
-
-    .hero-swiper .swiper-slide {
-        width: 100%;
-        height: 100%;
-    }
-
-    .hero-swiper .swiper-slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    /* 内容区域 */
+    
     .hero-content {
         width: 100%;
         padding: 1.5rem;
         text-align: center;
-        margin: 0;
+        margin: 0 auto; /* Center content horizontally */
         position: static;
         background: var(--royal-blue-dark);
+        max-width: 100%;
     }
-
+    
+    /* Keep text centered */
+    .hero-section h1,
+    .hero-subtitle {
+        text-align: center;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
     .hero-section h1 {
         font-size: 2.2rem;
         margin-bottom: 0.8rem;
-        text-align: center;
     }
 
     .hero-subtitle {
         font-size: 1.1rem;
         margin-bottom: 1.5rem;
-        text-align: center;
     }
 
+    /* Center buttons */
     .hero-buttons {
         display: flex;
         gap: 0.8rem;
         justify-content: center;
         margin-top: 1.5rem;
         margin-bottom: 1rem;
+    }
+    
+    /* Fix carousel positioning */
+    .hero-carousel {
+        position: relative;
+        width: 100%;
+        height: 35vh;
+        min-height: 250px;
+        clip-path: none;
+        margin: 0;
     }
 }
 
@@ -689,15 +791,22 @@ section h2 {
     }
 
     .hero-section::before {
-        width: 50%;
+        width: 45%; /* Even smaller image section on tablets */
     }
 
     .hero-section .container {
+        grid-template-columns: 1.3fr 0.7fr;
         gap: 2rem;
+        margin-left: 2%; /* Less shift on tablet */
     }
-
+    
     .hero-content {
         padding-right: 1rem;
+        padding-left: 1.5rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 3.2rem;
     }
 }
 
@@ -2898,6 +3007,12 @@ body {
     ::-webkit-scrollbar {
         width: 6px;
     }
+}
+
+/* Add this to your CSS file */
+.image-viewer.active ~ .navbar .hamburger,
+body:has(.image-viewer.active) .hamburger {
+    display: none !important;
 }
 
 
