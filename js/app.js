@@ -179,28 +179,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // 视频轮播
+            // 视频轮播优化
             const feedbackSwiper = new Swiper('.feedback-swiper', {
                 slidesPerView: 'auto',
                 centeredSlides: true,
                 spaceBetween: 30,
                 loop: true,
                 speed: 800,
+                grabCursor: true,
                 effect: 'coverflow',
                 coverflowEffect: {
                     rotate: 0,
                     stretch: 0,
-                    depth: 300,
+                    depth: 200,
                     modifier: 1,
                     slideShadows: false,
                 },
                 pagination: {
-                    el: '.swiper-pagination',
+                    el: '.feedback-swiper .swiper-pagination',
                     clickable: true
                 },
                 navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev'
+                    nextEl: '.feedback-swiper .swiper-button-next',
+                    prevEl: '.feedback-swiper .swiper-button-prev'
+                },
+                breakpoints: {
+                    // 当窗口宽度大于等于 320px
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    // 当窗口宽度大于等于 480px
+                    480: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    // 当窗口宽度大于等于 768px
+                    768: {
+                        slidesPerView: 'auto',
+                        spaceBetween: 30
+                    }
                 }
             });
 
@@ -344,6 +362,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             };
 
+            // 导航到前一张图片
+            const showPrevImage = () => {
+                if (currentIndex > 0) {
+                    showImage(currentIndex - 1);
+                }
+            };
+
+            // 导航到下一张图片
+            const showNextImage = () => {
+                if (currentIndex < imageUrls.length - 1) {
+                    showImage(currentIndex + 1);
+                }
+            };
+
             // 只为Hero Section的图片添加点击事件
             heroImages.forEach((img, index) => {
                 img.style.cursor = 'zoom-in';
@@ -363,18 +395,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
+            // 添加导航事件
+            prevBtn?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showPrevImage();
+            });
+
+            nextBtn?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showNextImage();
+            });
+
             // 添加关闭事件
             closeBtn?.addEventListener('click', closeViewer);
             imageViewer?.addEventListener('click', (e) => {
                 if (e.target === imageViewer) closeViewer();
             });
 
-            // Also handle hamburger visibility when Escape key is pressed
+            // 键盘导航
             document.addEventListener('keydown', (e) => {
                 if (!imageViewer?.classList.contains('active')) return;
 
                 if (e.key === 'Escape') {
                     closeViewer();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
                 }
             });
 
@@ -382,6 +429,202 @@ document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('resize', () => {
                 if (imageViewer?.classList.contains('active') && hamburger) {
                     hamburger.style.display = window.innerWidth <= 768 ? 'none' : '';
+                }
+            });
+
+            // 增强移动设备触摸支持
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            // 添加触摸滑动支持
+            if (imageViewer) {
+                imageViewer.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                
+                imageViewer.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+            }
+            
+            // 处理滑动手势
+            const handleSwipe = () => {
+                const swipeThreshold = 50; // 滑动阈值
+                if (touchEndX - touchStartX > swipeThreshold) {
+                    // 向右滑动，显示上一张
+                    showPrevImage();
+                } else if (touchStartX - touchEndX > swipeThreshold) {
+                    // 向左滑动，显示下一张
+                    showNextImage();
+                }
+            };
+            
+            // 增强按钮可点击性
+            const enhanceButtonClickability = () => {
+                if (prevBtn && nextBtn && closeBtn) {
+                    // 确保事件也绑定到按钮内的图标
+                    const prevIcon = prevBtn.querySelector('i');
+                    const nextIcon = nextBtn.querySelector('i');
+                    const closeIcon = closeBtn.querySelector('i');
+                    
+                    if (prevIcon) {
+                        prevIcon.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            showPrevImage();
+                        });
+                    }
+                    
+                    if (nextIcon) {
+                        nextIcon.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            showNextImage();
+                        });
+                    }
+                    
+                    if (closeIcon) {
+                        closeIcon.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            closeViewer();
+                        });
+                    }
+                }
+            };
+            
+            // 调用增强函数
+            enhanceButtonClickability();
+        },
+
+        /**
+         * 处理视频相关交互
+         */
+        videoBehavior: () => {
+            // 优化视频加载，当视频进入视口时才加载
+            const videoWrappers = document.querySelectorAll('.video-wrapper');
+            
+            if ('IntersectionObserver' in window) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const iframe = entry.target.querySelector('iframe');
+                            // 将data-src的值移到src上，实现延迟加载
+                            if (iframe.dataset.src) {
+                                iframe.src = iframe.dataset.src;
+                                iframe.removeAttribute('data-src');
+                            }
+                            videoObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                videoWrappers.forEach(wrapper => {
+                    videoObserver.observe(wrapper);
+                });
+            } else {
+                // 回退方案：立即加载所有视频
+                videoWrappers.forEach(wrapper => {
+                    const iframe = wrapper.querySelector('iframe');
+                    if (iframe.dataset.src) {
+                        iframe.src = iframe.dataset.src;
+                        iframe.removeAttribute('data-src');
+                    }
+                });
+            }
+            
+            // ... 可以添加更多视频相关功能 ...
+        },
+
+        /**
+         * 初始化页脚手风琴功能 (适用于移动设备)
+         */
+        initFooterAccordion: () => {
+            // 只在移动设备上启用此功能
+            if (window.innerWidth <= 768) {
+                const footerSections = document.querySelectorAll('.footer-section:not(:first-child)');
+                
+                footerSections.forEach(section => {
+                    const heading = section.querySelector('h4');
+                    const content = section.querySelector('.footer-links, .contact-info, .business-hours');
+                    
+                    if (!heading || !content) return;
+                    
+                    // 设置初始状态
+                    content.style.height = '0px';
+                    content.style.overflow = 'hidden';
+                    content.style.padding = '0';
+                    content.style.transition = 'all 0.3s ease';
+                    
+                    // 为标题添加点击事件
+                    heading.addEventListener('click', () => {
+                        // 如果当前部分已激活，则关闭它
+                        if (section.classList.contains('active')) {
+                            section.classList.remove('active');
+                            content.style.height = '0px';
+                            content.style.paddingBottom = '0';
+                        } else {
+                            // 否则，先关闭所有部分，然后打开当前部分
+                            footerSections.forEach(s => {
+                                s.classList.remove('active');
+                                const c = s.querySelector('.footer-links, .contact-info, .business-hours');
+                                if (c) {
+                                    c.style.height = '0px';
+                                    c.style.paddingBottom = '0';
+                                }
+                            });
+                            
+                            // 打开当前部分
+                            section.classList.add('active');
+                            content.style.height = content.scrollHeight + 'px';
+                            content.style.paddingBottom = '1rem';
+                        }
+                    });
+                });
+                
+                // 默认打开第一个部分（除了Logo区域）
+                if (footerSections.length > 0) {
+                    const firstSection = footerSections[0];
+                    const content = firstSection.querySelector('.footer-links, .contact-info, .business-hours');
+                    if (content) {
+                        firstSection.classList.add('active');
+                        content.style.height = content.scrollHeight + 'px';
+                        content.style.paddingBottom = '1rem';
+                    }
+                }
+            }
+            
+            // 监听窗口调整大小
+            window.addEventListener('resize', () => {
+                const footerSections = document.querySelectorAll('.footer-section');
+                
+                if (window.innerWidth > 768) {
+                    // 如果屏幕宽度大于768px，重置所有样式
+                    footerSections.forEach(section => {
+                        section.classList.remove('active');
+                        const content = section.querySelector('.footer-links, .contact-info, .business-hours');
+                        if (content) {
+                            content.style.height = '';
+                            content.style.overflow = '';
+                            content.style.padding = '';
+                            content.style.transition = '';
+                        }
+                    });
+                } else {
+                    // 如果屏幕宽度小于等于768px，重新初始化
+                    footerSections.forEach(section => {
+                        const content = section.querySelector('.footer-links, .contact-info, .business-hours');
+                        if (content) {
+                            content.style.transition = 'all 0.3s ease';
+                            content.style.overflow = 'hidden';
+                            
+                            if (section.classList.contains('active')) {
+                                content.style.height = content.scrollHeight + 'px';
+                                content.style.paddingBottom = '1rem';
+                            } else {
+                                content.style.height = '0px';
+                                content.style.paddingBottom = '0';
+                            }
+                        }
+                    });
                 }
             });
         }

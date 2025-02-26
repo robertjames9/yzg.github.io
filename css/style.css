@@ -1644,6 +1644,136 @@ section h2 {
     }
 }
 
+/* 页脚移动端优化 - 修复手风琴功能 */
+@media (max-width: 768px) {
+    /* 调整整体布局 */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 0; /* 减少垂直间距 */
+        padding: 2rem 1.5rem;
+    }
+    
+    /* 优化Logo区域 */
+    .footer-section:first-child {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .footer-logo img {
+        height: 50px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .footer-description {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        max-width: 100%;
+    }
+    
+    /* 社交媒体图标居中 */
+    .social-links {
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    
+    /* 优化后续板块 - 使用手风琴设计 */
+    .footer-section:not(:first-child) {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.8rem 0;
+        margin: 0;
+    }
+    
+    .footer-section h4 {
+        font-size: 1.1rem;
+        margin: 0;
+        padding: 0.5rem 0;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    /* 添加切换指示器 */
+    .footer-section h4:after {
+        content: '\f078';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 0.9rem;
+        color: var(--gold);
+        transition: transform 0.3s ease;
+        margin-left: 0.5rem;
+    }
+    
+    .footer-section.active h4:after {
+        transform: rotate(180deg);
+    }
+    
+    /* 内容区域样式 */
+    .footer-links, 
+    .contact-info,
+    .business-hours {
+        /* 这些样式将由JavaScript动态设置 */
+        margin-top: 0.5rem;
+    }
+    
+    /* 链接样式优化 */
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-links li {
+        margin-bottom: 0.6rem;
+    }
+    
+    .footer-links a {
+        font-size: 0.9rem;
+        padding: 0.2rem 0;
+        display: block;
+    }
+    
+    /* 联系方式样式优化 */
+    .info-item {
+        padding: 0.4rem 0;
+        justify-content: flex-start;
+        text-align: left;
+    }
+    
+    .info-item i {
+        width: 20px;
+        margin-right: 0.8rem;
+        text-align: center;
+    }
+    
+    .info-item span {
+        font-size: 0.9rem;
+    }
+    
+    /* 营业时间 */
+    .business-hours p {
+        margin-bottom: 0.6rem;
+        font-size: 0.9rem;
+        text-align: left;
+    }
+    
+    /* 底部版权区域 */
+    .footer-bottom {
+        padding: 1rem 0;
+        margin-top: 1rem;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+}
+
 /* 什么是种生基部分样式 */
 .what-is-section {
     background: var(--royal-blue-dark);
@@ -2607,12 +2737,13 @@ body {
 
 .image-viewer img {
     max-width: 80%; /* 减小图片最大宽度 */
-    max-height: 80vh;
+    max-height: 80vh; /* 减小高度，确保导航按钮不被遮挡 */
     object-fit: contain;
     transform: scale(0.95);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 1; /* 确保图片层级低于按钮 */
 }
 
 .image-viewer.active img {
@@ -2625,28 +2756,31 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background: rgba(212, 175, 55, 0.15); /* 半透明金色背景 */
+    width: 50px;
+    height: 50px;
+    background: rgba(212, 175, 55, 0.15);
     border: 1px solid var(--gold);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
     color: var(--gold);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0.8;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 10; /* 确保按钮在图片上方 */
 }
 
 /* 调整按钮位置 */
 .image-viewer .prev-btn {
-    left: 120px; /* 增加内缩距离 */
+    left: 120px; /* 桌面端左按钮位置 */
 }
 
 .image-viewer .next-btn {
-    right: 120px; /* 增加内缩距离 */
+    right: 120px; /* 桌面端右按钮位置 */
 }
 
 .image-viewer .prev-btn:hover,
@@ -2655,7 +2789,7 @@ body {
     color: var(--royal-blue-dark);
     transform: translateY(-50%) scale(1.1);
     opacity: 1;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
 /* 优化关闭按钮 */
@@ -2663,8 +2797,8 @@ body {
     position: absolute;
     top: 30px;
     right: 30px;
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     background: rgba(212, 175, 55, 0.15);
     border: 1px solid var(--gold);
     border-radius: 50%;
@@ -2672,48 +2806,72 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
     color: var(--gold);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0.8;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 10;
 }
 
 .image-viewer .close-btn:hover {
     background: var(--gold);
     color: var(--royal-blue-dark);
-    transform: scale(1.1);
+    transform: rotate(90deg) scale(1.1);
     opacity: 1;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
-/* 移动端适配 */
+/* 按钮内的图标大小调整 */
+.image-viewer .close-btn i {
+    font-size: 24px;
+}
+
+.image-viewer .prev-btn i,
+.image-viewer .next-btn i {
+    font-size: 22px;
+}
+
+/* 移动端样式优化 */
 @media (max-width: 768px) {
+    .image-viewer img {
+        max-width: 85%;
+        max-height: 60vh; /* 进一步减小高度 */
+    }
+    
     .image-viewer .prev-btn,
     .image-viewer .next-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
+        width: 44px;
+        height: 44px;
+        background: rgba(212, 175, 55, 0.4); /* 更明显的背景 */
     }
-
+    
+    /* 重新定位按钮，确保不被遮挡 */
     .image-viewer .prev-btn {
-        left: 20px;
+        left: 15px; /* 靠近左边缘 */
     }
-
+    
     .image-viewer .next-btn {
-        right: 20px;
+        right: 15px; /* 靠近右边缘 */
     }
-
+    
     .image-viewer .close-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 18px;
-        top: 20px;
-        right: 20px;
+        width: 44px;
+        height: 44px;
+        top: 15px;
+        right: 15px;
+        background: rgba(212, 175, 55, 0.4); /* 更明显的背景 */
     }
-
-    .image-viewer img {
-        max-width: 90%;
-        max-height: 85vh;
+    
+    /* 增大图标尺寸，提高可见性 */
+    .image-viewer .close-btn i {
+        font-size: 22px;
+    }
+    
+    .image-viewer .prev-btn i,
+    .image-viewer .next-btn i {
+        font-size: 20px;
     }
 }
 
@@ -3167,6 +3325,709 @@ body:has(.image-viewer.active) .hamburger {
 
 .btn:hover:before {
   transform: translateX(100%);
+}
+
+/* 视频展示区样式 */
+.video-showcase {
+    margin: 4rem auto;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.video-showcase:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-caption {
+    padding: 1.5rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.video-caption h4 {
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.video-caption p {
+    color: var(--white);
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .video-showcase {
+        margin: 3rem 1rem;
+    }
+    
+    .video-caption {
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .video-caption h4 {
+        font-size: 1.1rem;
+    }
+    
+    .what-is-section .principles-grid {
+        margin-top: 3rem;
+    }
+}
+
+/* 平板设备调整 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .video-showcase {
+        max-width: 700px;
+    }
+}
+
+/* 修改视频与其他元素之间的间距 */
+.what-is-section .intro-text {
+    margin-bottom: 2rem;
+}
+
+.what-is-section .principles-grid {
+    margin-top: 2rem;
+}
+
+/* 关于元之光视频展示区样式调整 */
+.about-video-showcase {
+    background: var(--white);
+    border: 1px solid rgba(13, 22, 66, 0.1);
+    box-shadow: 0 15px 30px rgba(13, 22, 66, 0.08);
+    margin: 3rem auto 4rem;
+}
+
+.about-video-showcase:hover {
+    border-color: var(--royal-blue);
+    box-shadow: 0 20px 40px rgba(13, 22, 66, 0.12);
+}
+
+.about-video-caption {
+    background: linear-gradient(135deg, rgba(26, 35, 126, 0.05) 0%, rgba(26, 35, 126, 0.1) 100%);
+    border-top: 1px solid rgba(13, 22, 66, 0.1);
+    padding: 1.2rem 2rem;
+}
+
+.about-video-caption h4 {
+    color: var(--royal-blue);
+}
+
+.about-video-caption p {
+    color: var(--text-dark);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .about-video-showcase {
+        margin: 2rem 1rem 3rem;
+    }
+    
+    .about-grid {
+        margin-top: 1rem;
+    }
+}
+
+/* 平板设备调整 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .about-video-showcase {
+        max-width: 700px;
+    }
+}
+
+/* 调整视频下方内容距离 */
+.about-section .about-grid {
+    margin-top: 2rem;
+}
+
+/* 用户反馈视频卡片优化 */
+.feedback-swiper .video-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-swiper .video-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-swiper .video-thumbnail {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+    overflow: hidden;
+}
+
+.feedback-swiper .video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.feedback-swiper .video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.feedback-swiper .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 175, 55, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.feedback-swiper .play-button i {
+    color: var(--royal-blue-dark);
+    font-size: 24px;
+    margin-left: 3px;
+}
+
+.feedback-swiper .video-card:hover .play-button {
+    background: var(--gold);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.feedback-swiper .video-info {
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-swiper .video-info h3 {
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.feedback-swiper .video-info p {
+    color: var(--white);
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* 轮播样式调整 */
+.feedback-swiper {
+    padding: 60px 0;
+    margin: 2rem 0;
+}
+
+.feedback-swiper .swiper-slide {
+    height: auto;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .feedback-swiper {
+        padding: 40px 1rem;
+    }
+    
+    .feedback-swiper .swiper-slide {
+        width: 280px;
+    }
+    
+    .feedback-swiper .play-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .feedback-swiper .play-button i {
+        font-size: 20px;
+    }
+    
+    .feedback-swiper .video-info {
+        padding: 1.2rem;
+    }
+    
+    .feedback-swiper .video-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .feedback-swiper .swiper-button-prev,
+    .feedback-swiper .swiper-button-next {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* 平板设备优化 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .feedback-swiper .swiper-slide {
+        width: 500px;
+    }
+    
+    .feedback-swiper {
+        padding: 50px 0;
+    }
+}
+
+/* 视频模态框优化 */
+.video-modal .modal-content {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* 图片查看器主容器调整 */
+.image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    flex-direction: column;
+}
+
+.image-viewer.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 调整查看器中的图片大小和位置 */
+.image-viewer img {
+    max-width: 80%;
+    max-height: 75vh; /* 减小高度，确保导航按钮不被遮挡 */
+    object-fit: contain;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 1; /* 确保图片层级低于按钮 */
+}
+
+/* 将导航按钮移到图片之外 */
+.image-viewer .prev-btn,
+.image-viewer .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(212, 175, 55, 0.3); /* 增加按钮透明度 */
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.9; /* 增加默认透明度 */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 10; /* 确保按钮在图片上方 */
+}
+
+/* 移动端样式优化 */
+@media (max-width: 768px) {
+    .image-viewer img {
+        max-width: 85%;
+        max-height: 60vh; /* 进一步减小高度 */
+    }
+    
+    .image-viewer .prev-btn,
+    .image-viewer .next-btn {
+        width: 44px;
+        height: 44px;
+        background: rgba(212, 175, 55, 0.4); /* 更明显的背景 */
+    }
+    
+    /* 重新定位按钮，确保不被遮挡 */
+    .image-viewer .prev-btn {
+        left: 15px; /* 靠近左边缘 */
+    }
+    
+    .image-viewer .next-btn {
+        right: 15px; /* 靠近右边缘 */
+    }
+    
+    .image-viewer .close-btn {
+        width: 44px;
+        height: 44px;
+        top: 15px;
+        right: 15px;
+        background: rgba(212, 175, 55, 0.4); /* 更明显的背景 */
+    }
+    
+    /* 增大图标尺寸，提高可见性 */
+    .image-viewer .close-btn i {
+        font-size: 22px;
+    }
+    
+    .image-viewer .prev-btn i,
+    .image-viewer .next-btn i {
+        font-size: 20px;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .image-viewer .prev-btn {
+        left: 60px;
+    }
+
+    .image-viewer .next-btn {
+        right: 60px;
+    }
+}
+
+/* Hero Swiper样式 */
+.hero-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-swiper .swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 导航按钮样式 */
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+    color: var(--gold);
+    background: rgba(13, 22, 66, 0.75);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+    transform: translateY(-50%);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* 调整箭头位置 */
+.hero-swiper .swiper-button-prev {
+    left: 80px !important;
+}
+
+.hero-swiper .swiper-button-next {
+    right: 80px !important;
+}
+
+/* 调整箭头图标大小 */
+.hero-swiper .swiper-button-next:after,
+.hero-swiper .swiper-button-prev:after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* hover效果 */
+.hero-swiper .swiper-button-next:hover,
+.hero-swiper .swiper-button-prev:hover {
+    background: var(--gold);
+    color: var(--royal-blue-dark);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* 分页器样式 */
+.hero-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--white);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: var(--gold);
+    transform: scale(1.2);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .hero-swiper .swiper-button-prev {
+        left: 20px !important;
+    }
+
+    .hero-swiper .swiper-button-next {
+        right: 20px !important;
+    }
+
+    .hero-swiper .swiper-button-next,
+    .hero-swiper .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero-swiper .swiper-button-next:after,
+    .hero-swiper .swiper-button-prev:after {
+        font-size: 16px;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-swiper .swiper-button-prev {
+        left: 50px !important;
+    }
+
+    .hero-swiper .swiper-button-next {
+        right: 50px !important;
+    }
+}
+
+/* 滚动指示箭头样式 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator i {
+    color: var(--gold);
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+.scroll-indicator:hover i {
+    color: var(--gold-light);
+    transform: translateY(5px);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .scroll-indicator {
+        bottom: 20px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .scroll-indicator i {
+        font-size: 20px;
+    }
+}
+
+/* 9大优势部分移动端样式优化 */
+@media (max-width: 768px) {
+    .advantages-section {
+        padding: 4rem 0;
+    }
+
+    .advantages-grid {
+        grid-template-columns: 1fr; /* 改为单列布局 */
+        gap: 1.5rem;
+        padding: 0;
+        max-width: 90%; /* 控制整体宽度 */
+        margin: 0 auto;
+    }
+
+    .advantage-card {
+        padding: 2rem;
+        min-height: 180px; /* 调整最小高度 */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 1.5rem; /* 统一内部元素间距 */
+    }
+
+    /* 图标和标题容器 */
+    .advantage-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        margin: 0; /* 移除margin，使用gap控制间距 */
+    }
+
+    .advantage-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .advantage-icon i {
+        font-size: 1.2rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 1.2rem;
+        margin: 0;
+        flex: 1;
+        line-height: 1.4;
+    }
+
+    /* 内容区域 */
+    .advantage-content {
+        width: 100%;
+        margin: 0; /* 移除margin，使用gap控制间距 */
+    }
+
+    .advantage-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* 小屏幕额外优化 */
+@media (max-width: 375px) {
+    .advantages-grid {
+        max-width: 95%; /* 在更小的屏幕上稍微增加宽度 */
+    }
+
+    .advantage-card {
+        padding: 1.5rem;
+        min-height: 160px;
+        gap: 1.2rem; /* 稍微减小间距 */
+    }
+
+    .advantage-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .advantage-icon i {
+        font-size: 1.1rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .advantage-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* 中等屏幕优化 */
+@media (min-width: 376px) and (max-width: 768px) {
+    .advantages-grid {
+        max-width: 85%; /* 中等屏幕上可以更窄一些 */
+    }
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--royal-blue-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-light);
+}
+
+/* Firefox滚动条样式 */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) var(--royal-blue-dark);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+}
+
+/* Add this to your CSS file */
+.image-viewer.active ~ .navbar .hamburger,
+body:has(.image-viewer.active) .hamburger {
+    display: none !important;
 }
 
 
