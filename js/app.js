@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const navbar = document.querySelector('.navbar');
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
+            const navItems = document.querySelectorAll('.nav-links a:not(.btn)');
             
             // Create backdrop element if it doesn't exist
             let backdrop = document.querySelector('.backdrop');
@@ -58,11 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
             let isMenuOpen = false;
             let scrollPosition = 0;
 
-            const toggleMenu = () => {
-                isMenuOpen = !isMenuOpen;
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                backdrop.classList.toggle('active');
+            const toggleMenu = (closeOnly = false) => {
+                if (closeOnly && !isMenuOpen) return;
+                
+                isMenuOpen = closeOnly ? false : !isMenuOpen;
+                hamburger.classList.toggle('active', isMenuOpen);
+                navLinks.classList.toggle('active', isMenuOpen);
+                backdrop.classList.toggle('active', isMenuOpen);
                 
                 if (isMenuOpen) {
                     // Save current scroll position and prevent scrolling
@@ -87,20 +90,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (backdrop) {
                 backdrop.addEventListener('click', () => {
-                    if (isMenuOpen) toggleMenu();
+                    if (isMenuOpen) toggleMenu(true);
                 });
             }
+            
+            // 为导航链接添加点击事件，点击后关闭菜单并滚动到目标位置
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault(); // 阻止默认锚点跳转行为
+                        
+                        // 先关闭菜单
+                        if (isMenuOpen) {
+                            toggleMenu(true);
+                            
+                            // 等待菜单关闭动画完成后再滚动
+                            setTimeout(() => {
+                                // 获取目标位置并滚动
+                                const targetId = item.getAttribute('href');
+                                const targetElement = document.querySelector(targetId);
+                                
+                                if (targetElement) {
+                                    const headerOffset = 80;
+                                    const elementPosition = targetElement.getBoundingClientRect().top;
+                                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                    
+                                    window.scrollTo({
+                                        top: offsetPosition,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            }, 300); // 300ms等待菜单关闭动画完成
+                        }
+                    }
+                });
+            });
 
             // Close menu on window resize if screen is large
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768 && isMenuOpen) {
-                    isMenuOpen = false;
-                    hamburger?.classList.remove('active');
-                    navLinks?.classList.remove('active');
-                    backdrop?.classList.remove('active');
-                    document.body.classList.remove('menu-open');
-                    document.body.style.top = '';
-                    window.scrollTo(0, scrollPosition);
+                    toggleMenu(true);
                 }
             });
         },
@@ -548,7 +577,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (!heading || !content) return;
                     
-                    // 设置初始状态
+                    // 设置初始状态 - 所有项均为关闭状态
+                    section.classList.remove('active'); // 确保没有active类
                     content.style.height = '0px';
                     content.style.overflow = 'hidden';
                     content.style.padding = '0';
@@ -580,16 +610,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 });
                 
-                // 默认打开第一个部分（除了Logo区域）
-                if (footerSections.length > 0) {
-                    const firstSection = footerSections[0];
-                    const content = firstSection.querySelector('.footer-links, .contact-info, .business-hours');
-                    if (content) {
-                        firstSection.classList.add('active');
-                        content.style.height = content.scrollHeight + 'px';
-                        content.style.paddingBottom = '1rem';
-                    }
-                }
+                // 移除默认打开第一项的逻辑
+                // 确保所有项目都是关闭状态
             }
             
             // 监听窗口调整大小
@@ -609,17 +631,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     });
                 } else {
-                    // 如果屏幕宽度小于等于768px，重新初始化
+                    // 如果屏幕宽度小于等于768px，确保所有内容仍然是关闭状态
                     footerSections.forEach(section => {
-                        const content = section.querySelector('.footer-links, .contact-info, .business-hours');
-                        if (content) {
-                            content.style.transition = 'all 0.3s ease';
-                            content.style.overflow = 'hidden';
-                            
-                            if (section.classList.contains('active')) {
-                                content.style.height = content.scrollHeight + 'px';
-                                content.style.paddingBottom = '1rem';
-                            } else {
+                        if (!section.classList.contains('active')) {
+                            const content = section.querySelector('.footer-links, .contact-info, .business-hours');
+                            if (content) {
+                                content.style.transition = 'all 0.3s ease';
+                                content.style.overflow = 'hidden';
                                 content.style.height = '0px';
                                 content.style.paddingBottom = '0';
                             }

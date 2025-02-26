@@ -4030,5 +4030,48 @@ body:has(.image-viewer.active) .hamburger {
     display: none !important;
 }
 
+/* 修复移动端导航按钮位置 */
+@media (max-width: 768px) {
+    /* 调整导航按钮容器位置 */
+    .nav-buttons {
+        width: 100%;
+        padding: 20px 30px 50px; /* 增加底部内边距，确保按钮不会太靠近底部 */
+        margin-top: 20px; /* 减少顶部外边距，让按钮整体上移 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        position: relative; /* 确保定位正确 */
+        bottom: auto; /* 防止可能的底部固定定位 */
+    }
+    
+    /* 确保导航菜单有足够的高度和滚动能力 */
+    .nav-links {
+        padding: 80px 0 30px; /* 减少底部内边距 */
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+    
+    /* 确保整个菜单可滚动且不会被按钮阻挡 */
+    .nav-links:after {
+        content: "";
+        display: block;
+        height: 30px; /* 在底部添加额外空间 */
+    }
+    
+    /* 优化按钮样式，使其更紧凑 */
+    .nav-buttons .btn {
+        width: 65%;
+        padding: 10px 0;
+        font-size: 14px;
+        margin-bottom: 0; /* 移除可能的外边距 */
+    }
+    
+    /* 确保最后一个按钮没有额外的底部间距 */
+    .nav-buttons .btn:last-child {
+        margin-bottom: 0;
+    }
+}
+
 
 
