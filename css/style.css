@@ -1404,12 +1404,12 @@ section h2 {
     color: var(--royal-blue-dark);
 }
 
+/* 修改网格布局以支持2-1-2结构 */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin-top: 3rem;
 }
 
 .about-card {
@@ -4070,6 +4070,358 @@ body:has(.image-viewer.active) .hamburger {
     /* 确保最后一个按钮没有额外的底部间距 */
     .nav-buttons .btn:last-child {
         margin-bottom: 0;
+    }
+}
+
+/* 时间线图表样式 */
+.timeline-chart {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background: rgba(13, 22, 66, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.timeline-chart h4 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--royal-blue);
+    font-size: 1.2rem;
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem; /* 增加底部间距 */
+    position: relative;
+    padding: 2rem 0; /* 增加上下内边距 */
+}
+
+/* 时间线连接线 */
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 50px; /* 调整线的垂直位置，与年份对齐 */
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--royal-blue) 0%, var(--gold) 50%, var(--royal-blue-light) 100%);
+    z-index: 1;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 33.33%;
+}
+
+.timeline-year {
+    background: var(--royal-blue-dark);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 2rem; /* 增加与运势类型的距离 */
+    font-weight: bold;
+    text-align: center;
+    min-width: 80px;
+    box-shadow: 0 4px 10px rgba(13, 22, 66, 0.15);
+    position: relative;
+    z-index: 3;
+}
+
+.timeline-focus {
+    background: white;
+    color: var(--royal-blue-dark);
+    padding: 0.6rem 1.2rem; /* 增加水平内边距 */
+    border-radius: 8px; /* 稍微增加圆角 */
+    border: 2px solid var(--gold);
+    font-weight: bold;
+    text-align: center;
+    min-width: 100px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(13, 22, 66, 0.1);
+    margin-top: 1rem; /* 调整间距 */
+}
+
+.timeline-arrow {
+    color: var(--gold);
+    font-size: 1.5rem;
+    position: absolute;
+    right: -15px;
+    top: 50px; /* 与时间线保持一致 */
+    transform: translateY(-50%);
+    z-index: 3;
+}
+
+/* 案例说明 */
+.timeline-case {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.timeline-case-item {
+    width: 31%;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(13, 22, 66, 0.08);
+    border-left: 3px solid;
+    transition: all 0.3s ease;
+}
+
+.timeline-case-item:nth-child(1) {
+    border-left-color: var(--royal-blue-dark);
+}
+
+.timeline-case-item:nth-child(2) {
+    border-left-color: var(--gold);
+}
+
+.timeline-case-item:nth-child(3) {
+    border-left-color: var(--royal-blue-light);
+}
+
+.timeline-case-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(13, 22, 66, 0.12);
+}
+
+.case-year {
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.timeline-case-item:nth-child(1) .case-year {
+    background: var(--royal-blue-dark);
+}
+
+.timeline-case-item:nth-child(2) .case-year {
+    background: var(--gold);
+    color: var(--royal-blue-dark);
+}
+
+.timeline-case-item:nth-child(3) .case-year {
+    background: var(--royal-blue-light);
+}
+
+.timeline-case-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .timeline {
+        flex-direction: column;
+        gap: 3rem; /* 增加垂直间距 */
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    .timeline:before {
+        top: 15%;
+        bottom: 15%;
+        left: 50%;
+        right: auto;
+        width: 3px;
+        height: 70%;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem; /* 增加横向间距 */
+    }
+    
+    .timeline-year {
+        margin-bottom: 0;
+    }
+    
+    .timeline-focus {
+        margin-top: 0;
+    }
+    
+    .timeline-arrow {
+        transform: rotate(90deg);
+        right: auto;
+        top: auto;
+        bottom: -30px; /* 调整距离 */
+        left: 50%;
+        margin-left: -5px;
+    }
+}
+
+/* 让时间线卡片占据整行 */
+.about-card.timeline-card {
+    grid-column: 1 / -1;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(13, 22, 66, 0.02) 0%, rgba(13, 22, 66, 0.05) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px -10px rgba(13, 22, 66, 0.08);
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.about-card.timeline-card:hover {
+    box-shadow: 0 15px 40px -10px rgba(13, 22, 66, 0.15);
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* 时间线卡片内部样式优化 */
+.about-card.timeline-card .timeline-chart {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.about-card.timeline-card h3 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--royal-blue-dark);
+    font-size: 1.8rem;
+}
+
+.about-card.timeline-card h3:after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 3px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .about-card.timeline-card {
+        padding: 1.5rem;
+    }
+    
+    .about-card.timeline-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* 移动端适配 - 保持水平布局 */
+@media (max-width: 768px) {
+    /* 保持时间线水平布局 */
+    .timeline {
+        padding: 1.5rem 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* 保持水平线 */
+    .timeline:before {
+        top: 50px;
+        left: 5%;
+        right: 5%;
+    }
+    
+    /* 调整项目大小但保持水平排列 */
+    .timeline-item {
+        width: 33.33%;
+    }
+    
+    /* 调整年份显示 */
+    .timeline-year {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        min-width: 70px;
+    }
+    
+    /* 调整运势类型显示 */
+    .timeline-focus {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+        min-width: 80px;
+    }
+    
+    /* 保持箭头水平 */
+    .timeline-arrow {
+        right: -10px;
+        font-size: 1.2rem;
+    }
+    
+    /* 调整案例卡片 */
+    .timeline-case {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    
+    .timeline-case-item {
+        width: 31%;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .timeline-case-item p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .case-year {
+        font-size: 0.8rem;
+        padding: 0.15rem 0.6rem;
+    }
+    
+    /* 时间线卡片整体调整 */
+    .about-card.timeline-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .about-card.timeline-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    /* 标题调整 */
+    .timeline-chart h4 {
+        font-size: 1.1rem;
+    }
+}
+
+/* 超小屏幕额外调整 */
+@media (max-width: 480px) {
+    .timeline-year {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+        min-width: 60px;
+    }
+    
+    .timeline-focus {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+        min-width: 70px;
+    }
+    
+    .timeline-case-item p {
+        font-size: 0.8rem;
     }
 }
 
