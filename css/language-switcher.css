@@ -1,0 +1,122 @@
+/* 语言切换器样式 */
+.language-switcher {
+    position: relative;
+    z-index: 1002;
+}
+
+.current-language {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: var(--white);
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.current-language:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.current-language i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 120px;
+    background: var(--royal-blue-dark);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 8px 0;
+    margin-top: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    list-style-type: none;
+}
+
+.language-switcher.active .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.language-switcher.active .current-language i {
+    transform: rotate(180deg);
+}
+
+.language-option {
+    display: block;
+    padding: 8px 15px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.language-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gold);
+}
+
+.language-option.active {
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+/* 确保列表项没有点 */
+.language-dropdown li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .language-switcher {
+        display: none;
+    }
+    
+    .current-language {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    /* 确保移动端菜单中的语言选项也没有点 */
+    .mobile-language-container .language-dropdown {
+        list-style-type: none;
+    }
+    
+    .mobile-language-container .language-dropdown li {
+        list-style: none;
+    }
+}
+
+/* 桌面端语言切换器位置调整 */
+@media (min-width: 769px) {
+    .navbar {
+        position: relative; /* 确保navbar可以作为定位上下文 */
+    }
+    
+    .language-switcher {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    /* 调整导航按钮组位置，确保不与语言切换器重叠 */
+    .nav-buttons {
+        margin-right: 120px; /* 为语言切换器留出足够空间 */
+    }
+} 

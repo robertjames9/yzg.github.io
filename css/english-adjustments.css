@@ -1,0 +1,269 @@
+/* 英文版特定样式调整 - 不影响中文版 */
+
+/* 导航菜单项文字大小调整 */
+html[lang="en"] .nav-links a {
+    font-size: 15px; /* 减小英文导航字体 */
+    letter-spacing: -0.3px; /* 减小字母间距 */
+    font-weight: 600; /* 增加字重以提高可读性 */
+}
+
+/* 导航栏布局优化 */
+html[lang="en"] .nav-links {
+    justify-content: space-evenly; /* 均匀分布导航项 */
+}
+
+/* 调整导航按钮组 */
+html[lang="en"] .nav-buttons {
+    gap: 0.8rem; /* 减小按钮间距 */
+}
+
+/* 调整紫微斗数按钮 */
+html[lang="en"] .nav-buttons .btn.primary {
+    min-width: 130px; /* 调整最小宽度 */
+    padding: 0.75rem 1rem; /* 调整内边距 */
+    font-size: 13px; /* 保持字体大小 */
+    letter-spacing: -0.3px; /* 减小字母间距 */
+    font-weight: 600; /* 增加字重 */
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); /* 优化渐变背景 */
+    box-shadow: 0 4px 8px rgba(212, 175, 55, 0.25); /* 增强阴影效果 */
+    border: 1px solid rgba(212, 175, 55, 0.8); /* 添加边框 */
+}
+
+/* 悬停效果优化 */
+html[lang="en"] .nav-buttons .btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.3);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+}
+
+/* 调整登录按钮 */
+html[lang="en"] .nav-buttons .btn.accent {
+    min-width: 80px; /* 设置最小宽度 */
+    padding: 0.8rem 1rem; /* 减小内边距 */
+    font-size: 13px; /* 减小字体大小 */
+}
+
+/* 标题行高调整 */
+html[lang="en"] h1, 
+html[lang="en"] h2, 
+html[lang="en"] h3 {
+    line-height: 1.3; /* 增加英文标题行高 */
+}
+
+/* 标题字体大小调整 */
+html[lang="en"] h2 {
+    font-size: 2rem;
+}
+
+/* 卡片内容调整 */
+html[lang="en"] .advantage-card p,
+html[lang="en"] .principle-card p,
+html[lang="en"] .product-content p {
+    font-size: 0.9rem; /* 减小英文说明文字 */
+    line-height: 1.5; /* 调整行高 */
+    letter-spacing: -0.2px; /* 减小字母间距 */
+}
+
+/* 9大优势部分统一优化 - 确保文字大小一致 */
+html[lang="en"] .advantages-grid {
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* 卡片整体布局统一 */
+html[lang="en"] .advantage-card {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    justify-content: flex-start;
+}
+
+/* 标题完全统一 */
+html[lang="en"] .advantage-card h3 {
+    font-size: 0.95rem; /* 统一标题字体大小 */
+    margin: 1rem 0 0.7rem;
+    line-height: 1.3;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    min-height: 2.6rem; /* 保持标题区域高度一致 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 内容文本完全统一 */
+html[lang="en"] .advantage-card p {
+    font-size: 0.8rem; /* 统一所有卡片文本大小 */
+    line-height: 1.4;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+/* 图标容器统一 */
+html[lang="en"] .advantage-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+/* 图标统一 */
+html[lang="en"] .advantage-icon i {
+    font-size: 1.1rem;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    html[lang="en"] .advantages-grid {
+        grid-template-columns: 1fr;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    html[lang="en"] .advantage-card {
+        padding: 1.5rem;
+        min-height: auto;
+        margin-bottom: 1rem;
+    }
+    
+    html[lang="en"] .advantage-card h3 {
+        font-size: 1rem; /* 移动端统一标题大小 */
+        min-height: auto;
+        margin-top: 0.8rem;
+    }
+    
+    html[lang="en"] .advantage-card p {
+        font-size: 0.85rem; /* 移动端统一文本大小 */
+    }
+}
+
+/* 特定长文本元素调整 */
+html[lang="en"] .timeline-focus {
+    min-width: 110px; /* 增加英文版时间线焦点宽度 */
+}
+
+/* FAQ问题调整 */
+html[lang="en"] .faq-question h3 {
+    font-size: 16px; /* 减小FAQ问题字体大小 */
+    line-height: 1.4;
+}
+
+/* 英文版导航菜单特殊调整 */
+html[lang="en"] .en-nav-item {
+    white-space: normal; /* 允许文本换行 */
+    text-align: center;
+}
+
+/* 修复英文版中的重叠问题 */
+html[lang="en"] .hero-content h1 {
+    font-size: 2.4rem; /* 调整英文版标题大小 */
+}
+
+/* 调整英文版按钮文本 */
+html[lang="en"] .btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 优化英文版卡片标题 */
+html[lang="en"] .advantage-card h3,
+html[lang="en"] .feature-card h4,
+html[lang="en"] .principle-card h4,
+html[lang="en"] .about-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+}
+
+/* 优化英文版时间线 */
+@media (max-width: 768px) {
+    html[lang="en"] .timeline-case-item p {
+        font-size: 0.8rem;
+    }
+    
+    html[lang="en"] .timeline-year,
+    html[lang="en"] .timeline-focus {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.5rem;
+    }
+}
+
+/* 优化标题长度 */
+html[lang="en"] .principle-card h4,
+html[lang="en"] .about-card h3 {
+    font-size: 1.2rem; /* 减小标题字体 */
+    line-height: 1.3; /* 调整行高 */
+    margin-bottom: 0.8rem; /* 减小底部边距 */
+}
+
+/* 优化时间线文本 */
+html[lang="en"] .timeline-case-item p {
+    font-size: 0.85rem; /* 减小字体大小 */
+    line-height: 1.4; /* 调整行高 */
+}
+
+/* 优化视频标题 */
+html[lang="en"] .video-caption h4 {
+    font-size: 1.1rem; /* 减小标题字体 */
+}
+
+/* 优化视频描述 */
+html[lang="en"] .video-caption p {
+    font-size: 0.9rem; /* 减小描述字体 */
+}
+
+/* 移动端菜单英文版特定调整 */
+@media (max-width: 768px) {
+    /* 英文版导航链接样式 - 完全匹配中文版 */
+    html[lang="en"] .nav-links a {
+        font-size: 15px; /* 调整英文字体大小 */
+        white-space: normal; /* 允许文本换行 */
+        text-align: left; /* 确保左对齐 */
+        line-height: 1.3; /* 调整行高 */
+        padding: 8px 40px; /* 与中文版保持一致 */
+        margin: 0; /* 与中文版保持一致 */
+        display: block; /* 确保块级显示 */
+        width: 100%; /* 确保宽度一致 */
+    }
+    
+    /* 英文版按钮样式 - 匹配中文版 */
+    html[lang="en"] .nav-buttons .btn.primary {
+        font-size: 14px;
+        width: 100%; /* 确保宽度一致 */
+        margin: 5px 0; /* 确保间距一致 */
+    }
+    
+    html[lang="en"] .nav-buttons .btn.accent {
+        font-size: 14px;
+        width: 100%; /* 确保宽度一致 */
+        margin: 5px 0; /* 确保间距一致 */
+    }
+    
+    /* 英文版语言切换器样式 - 文字居中 */
+    html[lang="en"] .mobile-language-container {
+        text-align: center; /* 容器文字居中 */
+    }
+    
+    html[lang="en"] .mobile-language-container .current-language {
+        font-size: 14px;
+        text-align: center; /* 文字居中 */
+        justify-content: center; /* 内容居中 */
+        width: 100%; /* 确保宽度一致 */
+    }
+    
+    /* 删除特殊处理 */
+    html[lang="en"] .nav-links a[href="#what-is"] {
+        padding: 8px 40px; /* 与其他导航项保持一致 */
+        margin: 0; /* 与其他导航项保持一致 */
+        text-align: left; /* 确保左对齐 */
+    }
+}

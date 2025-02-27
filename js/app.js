@@ -883,3 +883,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// 优化事件监听器，使用事件委托减少监听器数量
+document.addEventListener('click', function(e) {
+    // 处理所有点击事件
+    if (e.target.closest('.faq-question')) {
+        // FAQ点击处理
+    } else if (e.target.closest('.video-card')) {
+        // 视频卡片点击处理
+    }
+});

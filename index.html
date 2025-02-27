@@ -12,6 +12,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/language-switcher.css">
     
     <!-- 添加SEO优化 -->
     <meta name="description" content="元之光 - 运势的维他命，专业的现代化种生基服务">
@@ -34,6 +35,18 @@
         <!-- Logo -->
         <div class="logo">
             <img src="./img/logo.png" alt="元之光Logo">
+        </div>
+
+        <!-- 语言切换器 -->
+        <div class="language-switcher">
+            <div class="current-language">
+                <span>中文</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="language-dropdown">
+                <li><a href="index.html" class="language-option active">中文</a></li>
+                <li><a href="index-en.html" class="language-option">English</a></li>
+            </ul>
         </div>
         
         <!-- 导航链接 -->
@@ -698,6 +711,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/language-switcher.js"></script>
     <script>
         // 确保页脚手风琴功能在页面加载后立即初始化
         document.addEventListener('DOMContentLoaded', function() {

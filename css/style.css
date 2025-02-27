@@ -131,6 +131,9 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
+    border-left: 1px solid var(--gold-dark);
+    box-shadow: -5px 0 15px rgba(212, 175, 55, 0.3), /* 外部金色光晕 */
+                -1px 0 5px rgba(212, 175, 55, 0.5); /* 边缘更强的光晕 */
 }
 
 .nav-links a {
@@ -401,6 +404,9 @@ h1, h2, h3, h4, h5, h6 {
         opacity: 1;
         visibility: visible;
         transform: translateX(0);
+        border-left: 1px solid var(--gold-dark);
+        box-shadow: -5px 0 15px rgba(212, 175, 55, 0.3), /* 外部金色光晕 */
+                    -1px 0 5px rgba(212, 175, 55, 0.5); /* 边缘更强的光晕 */
     }
 
     .nav-links a {
@@ -4425,5 +4431,50 @@ body:has(.image-viewer.active) .hamburger {
     }
 }
 
+/* 移动端语言切换器容器 */
+.mobile-language-container {
+    display: none; /* 默认隐藏 */
+}
+
+/* 移动端菜单样式 */
+@media (max-width: 768px) {
+    /* 显示语言切换器容器 */
+    .mobile-language-container {
+        display: block;
+        width: 100%;
+        padding: 5px 30px;
+        margin-top: 30px;
+        text-align: center; /* 确保容器文字居中 */
+    }
+    
+    /* 语言切换器样式 */
+    .mobile-language-container .current-language {
+        text-align: center; /* 确保文字居中 */
+        justify-content: center; /* 确保内容居中 */
+        width: 100%; /* 确保宽度一致 */
+    }
+    
+    /* 导航链接样式 */
+    .nav-links a {
+        padding: 8px 40px;
+        margin: 0;
+        text-align: left;
+        display: block; /* 确保块级显示 */
+        width: 100%; /* 确保宽度一致 */
+    }
+    
+    /* 导航按钮组样式 */
+    .nav-buttons {
+        padding: 10px 30px;
+        margin-top: 10px;
+        width: 100%; /* 确保宽度一致 */
+    }
+    
+    /* 按钮样式 */
+    .nav-buttons .btn {
+        margin: 5px 0;
+        width: 100%; /* 确保宽度一致 */
+    }
+}
 
 
