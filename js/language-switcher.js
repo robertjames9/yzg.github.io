@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 switcherContainer.style.display = 'block';
                 switcherContainer.style.width = '100%';
                 switcherContainer.style.padding = '5px 30px';
-                switcherContainer.style.marginTop = '20px';
+                switcherContainer.style.marginTop = '70px';
                 switcherContainer.style.marginBottom = '20px';
                 switcherContainer.style.textAlign = 'center';
                 

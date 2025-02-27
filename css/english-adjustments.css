@@ -14,7 +14,7 @@ html[lang="en"] .nav-links {
 
 /* 调整导航按钮组 */
 html[lang="en"] .nav-buttons {
-    gap: 0.8rem; /* 减小按钮间距 */
+    gap: 0.5rem; /* 减小按钮间距 */
 }
 
 /* 调整紫微斗数按钮 */

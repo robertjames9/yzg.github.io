@@ -114,7 +114,6 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(13, 22, 66, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 80px 0 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -388,7 +387,6 @@ h1, h2, h3, h4, h5, h6 {
         background: rgba(13, 22, 66, 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        padding: 80px 0 20px;
         flex-direction: column;
         gap: 10px;
         opacity: 0;
@@ -410,7 +408,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-links a {
-        padding: 8px 40px;
+        padding: 4px 40px;
         width: 100%;
         text-align: left;
         font-size: 16px;
@@ -4053,7 +4051,6 @@ body:has(.image-viewer.active) .hamburger {
     
     /* 确保导航菜单有足够的高度和滚动能力 */
     .nav-links {
-        padding: 80px 0 30px; /* 减少底部内边距 */
         max-height: 100vh;
         overflow-y: auto;
     }
@@ -4456,7 +4453,7 @@ body:has(.image-viewer.active) .hamburger {
     
     /* 导航链接样式 */
     .nav-links a {
-        padding: 8px 40px;
+        padding: 4px 40px;
         margin: 0;
         text-align: left;
         display: block; /* 确保块级显示 */
