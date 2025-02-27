@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 switcherContainer.style.width = '100%';
                 switcherContainer.style.padding = '5px 30px';
                 switcherContainer.style.marginTop = '70px';
-                switcherContainer.style.marginBottom = '20px';
+                switcherContainer.style.marginBottom = '10px';
                 switcherContainer.style.textAlign = 'center';
                 
                 // 设置语言切换器样式
