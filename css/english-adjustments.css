@@ -8,7 +8,7 @@ html[lang="en"] .nav-links a {
 
 /* 导航栏布局优化 */
 html[lang="en"] .nav-links {
-    justify-content: space-evenly; /* 均匀分布导航项 */
+    gap: 15px; /* 均匀分布导航项 */
 }
 
 /* 调整导航按钮组 */
@@ -163,7 +163,7 @@ html[lang="en"] .en-nav-item {
 
 /* 修复英文版中的重叠问题 */
 html[lang="en"] .hero-content h1 {
-    font-size: 2.4rem; /* 调整英文版标题大小 */
+    font-size: 2rem; /* 调整英文版标题大小 */
 }
 
 /* 调整英文版按钮文本 */
