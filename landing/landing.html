@@ -6,6 +6,7 @@
     <title>光元生基 - 你的专属运气维他命</title>
     
     <!-- 外部资源引入 -->
+    <link rel="stylesheet" href="../css/optimized-landing.css">
     <link rel="stylesheet" href="../css/landing.css">
     <link rel="stylesheet" href="../css/language-switcher.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,6 +29,23 @@
     
     <!-- 网站图标 -->
     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "种生基服务",
+        "description": "传承千年的风水智慧，为您和家族带来持久的好运和繁荣。",
+        "provider": {
+            "@type": "Organization",
+            "name": "阳宅风水",
+            "url": "https://www.example.com"
+        },
+        "areaServed": "全球",
+        "serviceType": "风水服务"
+    }
+    </script>
 </head>
 <body>
     <!-- 头部区域 -->
@@ -48,13 +66,12 @@
                 </button>
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link">首页</a></li>
-                    <li><a href="#intro" class="nav-link">什么是种生基</a></li>
-                    <li><a href="#innovation" class="nav-link">光元生基</a></li>
-                    <li><a href="#advantages" class="nav-link">九大优势</a></li>
-                    <li><a href="#categories" class="nav-link">生基类别</a></li>
-                    <li><a href="#products" class="nav-link">产品展示</a></li>
+                    <li><a href="#problems" class="nav-link">常见烦恼</a></li>
+                    <li><a href="#story" class="nav-link">种生基原理</a></li>
+                    <li><a href="#doubts" class="nav-link">常见疑虑</a></li>
+                    <li><a href="#why-choose" class="nav-link">为什么选择我们</a></li>
+                    <li><a href="#choose-plan" class="nav-link">运势方案</a></li>
                     <li><a href="#pricing" class="nav-link">产品价格</a></li>
-                    <li><a href="#feedback" class="nav-link">用户反馈</a></li>
                     <li><a href="#contact" class="nav-link">联系我们</a></li>
                 </ul>
             </nav>
@@ -63,403 +80,850 @@
 
     <!-- 主要内容区域 -->
     <main>
-        <!-- 1. 英雄区域 - 问题式引导 -->
+        <!-- 1. 英雄区域 - 调整粒子层级 -->
         <section id="home" class="hero-section">
             <div class="hero-overlay"></div>
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">光元生基 <span>你的专属运气维他命</span></h1>
+                    <div class="hero-badge">全球首创</div>
+                    <h1 class="hero-title">阳塔生基 <span class="highlight">光元生基</span></h1>
+                    <p class="hero-subtitle">让种生基像吃维他命一样简单，人人都能拥有好运！</p>
                     
-                    <div class="hero-questions">
-                        <h2>你是否曾经遇到这些问题？</h2>
-                        <ul class="problem-list">
-                            <li><i class="fas fa-times-circle"></i> 事业停滞不前，努力却看不到成果？</li>
-                            <li><i class="fas fa-times-circle"></i> 财运不佳，投资屡屡失利？</li>
-                            <li><i class="fas fa-times-circle"></i> 感情生活不顺，难以遇到合适的伴侣？</li>
-                            <li><i class="fas fa-times-circle"></i> 健康状况反复，精力不足？</li>
-                            <li><i class="fas fa-times-circle"></i> 人际关系复杂，贵人难寻？</li>
-                        </ul>
-                        
-                        <div class="hero-solution">
-                            <h3>光元生基，为您开启全新运势之门</h3>
-                            <p>源自皇室秘传，结合现代科技，精准定制您的专属运势提升方案</p>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-crown"></i>
+                            <span>皇室秘传</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>快速见效</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>年度可调整</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>安全可靠</span>
                         </div>
                     </div>
                     
                     <div class="hero-cta">
-                        <a href="#intro-video" class="cta-button primary">了解更多</a>
+                        <a href="#problems" class="cta-button primary">了解更多</a>
                         <a href="#contact" class="cta-button secondary">立即咨询</a>
                     </div>
                 </div>
             </div>
+            <div class="hero-particles" id="particles-js"></div>
             <div class="scroll-down">
-                <a href="#intro-video">
+                <a href="#problems">
                     <i class="fas fa-chevron-down"></i>
                     <span>向下滚动</span>
                 </a>
             </div>
         </section>
 
-        <!-- 2. 介绍视频区 -->
-        <section id="intro-video" class="video-section">
+        <!-- 2. 你是不是也有这些烦恼 - 全新设计 -->
+        <section id="problems" class="problems-section">
             <div class="container">
-                <h2 class="section-title">传承千年的皇室秘术，现代科技的创新演绎</h2>
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <iframe data-src="https://www.youtube.com/embed/YOUR_INTRO_VIDEO_ID?rel=0" 
-                                title="皇帝的故事视频" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
-                    </div>
-                </div>
-                <p class="video-description">了解皇室秘传的种生基历史与现代演变，看看黄嘉政小师傅怎么说。</p>
-            </div>
-        </section>
-
-        <!-- 3. 什么是种生基 -->
-        <section id="intro" class="intro-section">
-            <div class="container">
-                <h2 class="section-title">种生基：源自皇室的运势提升之术</h2>
-                <div class="intro-content">
-                    <div class="intro-text">
-                        <p>皇室秘传的风水布局，最早由皇族与贵族施行，被视为"帝王之术"，用于积累福报、助力事业家业兴旺。</p>
-                        <p>这一过程精细且复杂，需结合个人生辰八字进行专属布局，包括选风水宝穴、精准择日、生基安放等环节。</p>
-                        <p>长久以来，种生基一直受到富豪与明星的青睐，如何鸿燊、李嘉诚、谢霆锋、佘诗曼等，皆曾施行种生基，以强化运势、稳固事业根基。</p>
-                        <p>传统种生基价格高昂，门槛极高。专属福地稀缺，费用动辄几十万，并涉及大量人力、时间和繁琐仪式，非一般人能轻易负担。</p>
-                    </div>
-                    <div class="intro-image">
-                        <img src="../img/traditional-fengshui.jpg" alt="传统风水布局图">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. 光元生基 -->
-        <section id="innovation" class="innovation-section">
-            <div class="container">
-                <h2 class="section-title">元之光的突破性创新</h2>
+                <h2 class="section-title">你是不是也有这些烦恼？</h2>
                 
-                <div class="innovation-intro">
-                    <p class="highlight-text">光元生基为运势"维他命"的现代气运激活模式，<br>将古代皇室堪舆秘术中的"种生基"理念与现代科技管理模式完美结合。</p>
-                </div>
-                
-                <div class="innovation-content">
-                    <div class="innovation-video">
+                <div class="problems-content">
+                    <!-- 左侧视频部分 -->
+                    <div class="problems-video-container">
                         <div class="video-wrapper">
-                            <iframe data-src="https://www.youtube.com/embed/YOUR_INNOVATION_VIDEO_ID?rel=0" 
-                                    title="光元生基创新介绍" 
+                            <iframe data-src="https://www.youtube.com/embed/YOUR_SHAUN_YOUNG_VIDEO_ID?rel=0" 
+                                    title="Shaun Young 讲解常见运势问题" 
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen></iframe>
                         </div>
                         <div class="video-caption">
-                            <h4>Shaun Young 创办人</h4>
-                            <p>了解我们如何将古老的皇族秘术转化为现代人人可及的运势管理工具</p>
+                            <div class="founder-info">
+                                <div class="founder-avatar">
+                                    <img src="../img/shaun-young.jpg" alt="Shaun Young" />
+                                </div>
+                                <p>看看元之光创办人·Shaun Young怎么说</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="innovation-details">
-                        <div class="history-compare">
-                            <div class="history-card">
-                                <h3>古代种生基</h3>
-                                <p>古代种生基仅限皇室一脉而已，以一次性、神秘的密法仪式，将经过激活的个人气运"种入"陵中，达到运势重启的效果。</p>
-                                <p>即便现今社会，种生基依止步于皇族高官富商能启动"气运"而已。其过程复杂而且属于无法个性化态调整气运针对的方向。</p>
+                    <!-- 右侧问题部分 -->
+                    <div class="problems-cards">
+                        <h3 class="problems-subtitle">这些问题是否困扰着你？</h3>
+                        
+                        <div class="problem-cards-container">
+                            <!-- 问题卡片1 -->
+                            <div class="problem-card">
+                                <div class="problem-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <p class="problem-text">运势总是起起落落，好不容易顺了又开始不顺？</p>
                             </div>
-                            <div class="modern-card">
-                                <h3>现代光元生基</h3>
-                                <p>光元生基为<span class="highlight">全球首创"阳塔生基"</span>。融合九紫离火运与天星能量，采用年度生基计划，将经过秘法激活的个人元素"植入"生基格内，启动气运和精准调控。</p>
-                                <p>正如每天服用维他命为身体补充健康营养一样，光元生基为福主在<span class="highlight">事业、健康、感情和财富</span>等方面提供长效、稳定的气运提升。</p>
+                            
+                            <!-- 问题卡片2 -->
+                            <div class="problem-card">
+                                <div class="problem-icon">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <p class="problem-text">赚钱存不住，刚赚一笔又遇到突发开销？</p>
+                            </div>
+                            
+                            <!-- 问题卡片3 -->
+                            <div class="problem-card">
+                                <div class="problem-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <p class="problem-text">事业拼命努力，但是总差一步，升职轮不到你？</p>
+                            </div>
+                            
+                            <!-- 问题卡片4 -->
+                            <div class="problem-card">
+                                <div class="problem-icon">
+                                    <i class="fas fa-heart-broken"></i>
+                                </div>
+                                <p class="problem-text">跟另一半相处不和，甚至找不到另一半？</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 解决方案部分 -->
+                <div class="solutions-section">
+                    <h3 class="solutions-title">如果有，那你一定想过要改变——</h3>
+                    
+                    <div class="solutions-container">
+                        <!-- 不推荐的解决方案 -->
+                        <div class="solution-card not-recommended">
+                            <div class="solution-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h4>求神拜佛？</h4>
+                                <p>只是在外求，无法真正突破</p>
                             </div>
                         </div>
                         
-                        <div class="innovation-features">
-                            <div class="feature-item">
-                                <div class="feature-icon">
+                        <div class="solution-card not-recommended">
+                            <div class="solution-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h4>看风水？</h4>
+                                <p>只是属于环境优化，没办法提升自己</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 推荐的解决方案 -->
+                        <div class="solution-card recommended">
+                            <div class="solution-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h4>唯一的解决方案</h4>
+                                <p class="highlight">种生基！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 什么是种生基 - 全新设计 -->
+        <section id="story" class="royal-origin-section">
+            <div class="royal-bg-effect"></div>
+            <div class="container">
+                <h2 class="section-title gold-title">种生基：源自皇室的运势提升之术</h2>
+                
+                <div class="royal-intro">
+                    <div class="royal-badge">
+                        <span>皇室秘传</span>
+                        <div class="royal-badge-decoration"></div>
+                    </div>
+                    <p class="royal-intro-text">皇室秘传的风水布局，最早由皇族与贵族施行，被视为"帝王之术"，用于积累福报、助力事业家业兴旺。</p>
+                </div>
+                
+                <div class="royal-content">
+                    <!-- 左侧视频部分 -->
+                    <div class="royal-video-column">
+                        <div class="royal-video-container">
+                            <div class="royal-video-frame">
+                                <div class="video-wrapper">
+                                    <iframe data-src="https://www.youtube.com/embed/YOUR_INTRO_VIDEO_ID?rel=0" 
+                                            title="什么是种生基视频" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="royal-video-caption">
+                                <div class="founder-info">
+                                    <div class="founder-avatar">
+                                        <img src="../img/master-huang-jr.jpg" alt="黄嘉政小师傅" />
+                                    </div>
+                                    <p>看看黄嘉政小师傅怎么说</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 右侧内容部分 -->
+                    <div class="royal-text-column">
+                        <div class="royal-scroll">
+                            <div class="royal-scroll-content">
+                                <p>这一过程精细且复杂，需结合个人生辰八字进行专属布局，包括选风水宝穴、精准择日、生基安放等环节。</p>
+                                
+                                <div class="celebrity-section">
+                                    <h3 class="royal-subtitle">名人选择 <span class="gold-text">种生基</span></h3>
+                                    <p>长久以来，种生基一直受到富豪与明星的青睐，以强化运势、稳固事业根基。</p>
+                                    
+                                    <div class="celebrity-list">
+                                        <div class="celebrity-item">
+                                            <div class="celebrity-avatar">
+                                                <i class="fas fa-user-tie"></i>
+                                            </div>
+                                            <span>何鸿燊</span>
+                                        </div>
+                                        <div class="celebrity-item">
+                                            <div class="celebrity-avatar">
+                                                <i class="fas fa-user-tie"></i>
+                                            </div>
+                                            <span>李嘉诚</span>
+                                        </div>
+                                        <div class="celebrity-item">
+                                            <div class="celebrity-avatar">
+                                                <i class="fas fa-film"></i>
+                                            </div>
+                                            <span>谢霆锋</span>
+                                        </div>
+                                        <div class="celebrity-item">
+                                            <div class="celebrity-avatar">
+                                                <i class="fas fa-film"></i>
+                                            </div>
+                                            <span>佘诗曼</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="traditional-warning">
+                                    <div class="warning-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="warning-text">
+                                        <h4>传统种生基的局限</h4>
+                                        <p>传统种生基价格高昂，门槛极高。专属福地稀缺，费用动辄几十万，并涉及大量人力、时间和繁琐仪式，非一般人能轻易负担。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 传统种生基流程 -->
+                <div class="traditional-process">
+                    <h3 class="process-title">传统种生基流程</h3>
+                    
+                    <div class="process-timeline">
+                        <div class="timeline-track"></div>
+                        
+                        <div class="timeline-step">
+                            <div class="step-marker">1</div>
+                            <div class="step-content">
+                                <div class="step-icon">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <div class="step-details">
+                                    <h4>选风水宝穴</h4>
+                                    <p>寻找稀缺的风水宝地，价格昂贵</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="step-marker">2</div>
+                            <div class="step-content">
+                                <div class="step-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="step-details">
+                                    <h4>精准择日</h4>
+                                    <p>根据生辰八字选择最佳日期</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="step-marker">3</div>
+                            <div class="step-content">
+                                <div class="step-icon">
+                                    <i class="fas fa-hands"></i>
+                                </div>
+                                <div class="step-details">
+                                    <h4>生基安放</h4>
+                                    <p>繁琐仪式，需大量人力和时间</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="step-marker">4</div>
+                            <div class="step-content">
+                                <div class="step-icon">
                                     <i class="fas fa-sync-alt"></i>
                                 </div>
-                                <div class="feature-text">
-                                    <h3>年度生基计划</h3>
-                                    <p>每年可调整目标方向，更灵活贴合人生需求</p>
+                                <div class="step-details">
+                                    <h4>定期维护</h4>
+                                    <p>需要长期维护和祭拜</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cost-banner">
+                        <div class="cost-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="cost-text">
+                            <h4>传统种生基费用</h4>
+                            <p>费用动辄<span class="gold-text">几十万</span>，非一般人能轻易负担</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 为什么种生基会有用 - 水瓶故事 -->
+        <section id="water-bottle" class="water-bottle-section">
+            <div class="container">
+                <h2 class="section-title">为什么种生基会有用！</h2>
+                <div class="water-bottle-content">
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <iframe data-src="https://www.youtube.com/embed/YOUR_WATER_BOTTLE_VIDEO_ID?rel=0" 
+                                    title="水瓶的故事" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>
+                        </div>
+                        <div class="video-badge">
+                            <span>必看视频</span>
+                        </div>
+                        <div class="video-caption">
+                            <div class="founder-info">
+                                <div class="founder-avatar">
+                                    <img src="../img/master-huang.jpg" alt="拿督斯里黄子健大师" />
+                                </div>
+                                <p>看看拿督斯里黄子健大师怎么说</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="water-bottle-explanation">
+                        <div class="explanation-header">
+                            <div class="explanation-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>水瓶的故事</h3>
+                        </div>
+                        
+                        <div class="explanation-content">
+                            <p class="highlight-text">修补福报，让福报不再随意流失，让你享受原本属于你的福气！</p>
+                            
+                            <div class="explanation-points">
+                                <div class="explanation-point">
+                                    <div class="point-icon"><i class="fas fa-check-circle"></i></div>
+                                    <p>你的福报就像一个水瓶，但瓶身有裂缝，福气不断流失</p>
+                                </div>
+                                <div class="explanation-point">
+                                    <div class="point-icon"><i class="fas fa-check-circle"></i></div>
+                                    <p>种生基就像修补这些裂缝，让你的福报得以保存</p>
+                                </div>
+                                <div class="explanation-point">
+                                    <div class="point-icon"><i class="fas fa-check-circle"></i></div>
+                                    <p>无论你多努力，如果福报持续流失，成功将难以持续</p>
                                 </div>
                             </div>
                             
-                            <div class="feature-item highlight">
-                                <div class="feature-icon">
-                                    <i class="fas fa-star"></i>
+                            <div class="metaphor-box">
+                                <div class="metaphor-icon">
+                                    <i class="fas fa-tint"></i>
                                 </div>
-                                <div class="feature-text">
-                                    <h3>全球首创「阳塔生基」</h3>
-                                    <p>无需购地，利用天星能量场，助力运势提升</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <div class="feature-text">
-                                    <h3>先进保护</h3>
-                                    <p>阳塔生基设计采用先进的保护措施，杜绝了蛇虫蚁兽等外部干扰，磁场环境安全稳定</p>
+                                <div class="metaphor-text">
+                                    <h4>水瓶比喻</h4>
+                                    <p>想象你的福报是一个水瓶，而种生基就是修补瓶身的裂缝，让你的福气不再流失。无论你往瓶中倒入多少水（努力），如果瓶身有裂缝，水（福报）都会流失。</p>
                                 </div>
                             </div>
-                            
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-sliders-h"></i>
+                        </div>
+                        
+                        <div class="cta-container">
+                            <a href="#why-choose" class="cta-button primary">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 但是你犹豫了 - 疑虑区域 -->
+        <section id="doubts" class="doubts-section">
+            <div class="container">
+                <h2 class="section-title">但是！你可能有这些顾虑...</h2>
+                
+                <div class="doubts-intro">
+                    <p>传统种生基虽然有效，但确实存在一些让人望而却步的问题</p>
+                </div>
+                
+                <div class="doubts-container">
+                    <div class="doubts-image">
+                        <img src="../img/confused-person.jpg" alt="对传统种生基的顾虑" />
+                        <div class="image-overlay">
+                            <div class="overlay-text">我们理解您的担忧</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doubts-list">
+                        <div class="doubt-item">
+                            <div class="doubt-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="doubt-content">
+                                <h3>费用问题</h3>
+                                <div class="doubt-text">要买地？十几万起步？对普通人来说太昂贵了</div>
+                            </div>
+                        </div>
+                        
+                        <div class="doubt-item">
+                            <div class="doubt-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="doubt-content">
+                                <h3>选择困难</h3>
+                                <div class="doubt-text">市场上有太多师傅，难以辨别谁更专业可靠</div>
+                            </div>
+                        </div>
+                        
+                        <div class="doubt-item">
+                            <div class="doubt-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="doubt-content">
+                                <h3>维护麻烦</h3>
+                                <div class="doubt-text">每年都要去拜拜自己的生基位？感觉既麻烦又有点尴尬...</div>
+                            </div>
+                        </div>
+                        
+                        <div class="doubt-item">
+                            <div class="doubt-icon">
+                                <i class="fas fa-ban"></i>
+                            </div>
+                            <div class="doubt-content">
+                                <h3>终止困难</h3>
+                                <div class="doubt-text">如果不想继续了，怎么办？谁能帮我终止这个过程？</div>
+                            </div>
+                        </div>
+                        
+                        <div class="doubt-item">
+                            <div class="doubt-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="doubt-content">
+                                <h3>维护风险</h3>
+                                <div class="doubt-text">听说生基位不可以淹水、杂草丛生、有裂痕...如何确保这些不会发生？</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doubts-conclusion">
+                    <div class="conclusion-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="conclusion-text">
+                        <p>这些都是传统种生基的真实问题，但现在，<span class="highlight">元之光创新的光元生基</span>为您提供了完美解决方案！</p>
+                    </div>
+                    <div class="conclusion-arrow">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 为什么选择光元生基 - 创新Q&A设计 -->
+        <section id="why-choose" class="why-choose-section">
+            <div class="why-choose-bg"></div>
+            <div class="container">
+                <h2 class="section-title innovation-title">为什么选择光元生基？</h2>
+                
+                <div class="why-choose-intro">
+                    <div class="intro-badge">
+                        <span>常见问题解答</span>
+                        <div class="intro-badge-decoration"></div>
+                    </div>
+                    <p>元之光专门为了解决以上问题！你想问的问题我先帮你问！</p>
+                </div>
+                
+                <div class="qa-container">
+                    <div class="qa-item">
+                        <div class="qa-question">
+                            <div class="question-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h3>不懂哪一个师傅更有料？</h3>
+                        </div>
+                        <div class="qa-answer">
+                            <div class="answer-content">
+                                <p>元之光的合作师傅，是唯一被写进「马来西亚皇室族谱」的华人风水师！</p>
+                                <p class="highlight-text">这个头衔，你还担心什么？</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="qa-item">
+                        <div class="qa-question">
+                            <div class="question-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h3>要买地？要花很多钱？</h3>
+                        </div>
+                        <div class="qa-answer">
+                            <div class="answer-content">
+                                <p>市场首创 "阳塔生基" ——— 不需要买地，也不需要买塔位</p>
+                                <p class="highlight-text">"年度生基计划"，让人人都负担得起！</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="qa-item">
+                        <div class="qa-question">
+                            <div class="question-icon">
+                                <i class="fas fa-hands"></i>
+                            </div>
+                            <h3>每年都要去拜拜生基位？</h3>
+                        </div>
+                        <div class="qa-answer">
+                            <div class="answer-content">
+                                <p>当然不用！师傅全程代办，仪式你想参与就参与，不想来也行，甚至可以录影给你！</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="qa-item">
+                        <div class="qa-question">
+                            <div class="question-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>担心会淹水、杂草丛生、日晒雨淋导致有裂痕？</h3>
+                        </div>
+                        <div class="qa-answer">
+                            <div class="answer-content">
+                                <p>元之光生基基地，全程室内空调环境，远离风吹雨打，恒温恒湿，不受自然侵害！</p>
+                                <p class="highlight-text">你还担心什么？</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="qa-item featured">
+                        <div class="qa-question">
+                            <div class="question-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3>生基运势能不能调整？</h3>
+                        </div>
+                        <div class="qa-answer">
+                            <div class="answer-content">
+                                <p>市场首创 "年度生基计划" ： 一个让刚入职场的小白都负担得起的 种生基模式！</p>
+                                <p>只需一年费用，先过好这一年，未来再调整！</p>
+                                
+                                <div class="fortune-options">
+                                    <div class="fortune-option">
+                                        <div class="option-icon"><i class="fas fa-briefcase"></i></div>
+                                        <div class="option-text">
+                                            <h4>事业运</h4>
+                                            <p>今年想创业，想提升事业运？没问题，帮你种事业运生基</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="fortune-option">
+                                        <div class="option-icon"><i class="fas fa-dollar-sign"></i></div>
+                                        <div class="option-text">
+                                            <h4>财富运</h4>
+                                            <p>明年想money money home？没问题，明年改种财运生基！</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="fortune-option">
+                                        <div class="option-icon"><i class="fas fa-heart"></i></div>
+                                        <div class="option-text">
+                                            <h4>感情运</h4>
+                                            <p>后年想提升感情运？没问题，我们后年再帮你改成感情运生基！</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="feature-text">
-                                    <h3>灵活调整</h3>
-                                    <p>系统具有高度灵活性，可根据福主想要的方向优化和调整，实现个性化、精准的气运补给</p>
+                                
+                                <p class="conclusion-text">随时调整，真正人性化！</p>
+                                <div class="cta-wrapper">
+                                    <a href="#choose-plan" class="cta-button primary">查看运势方案</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 立即选择你的好运方案 -->
+        <section id="choose-plan" class="fortune-plan-section">
+            <div class="fortune-bg-effect"></div>
+            <div class="container">
+                <div class="fortune-intro">
+                    <div class="fortune-badge">
+                        <span>运势提升</span>
+                        <div class="badge-decoration"></div>
+                    </div>
+                    <h2 class="section-title">立即选择 <span class="highlight-text">你的好运方案！</span></h2>
+                    <p class="intro-text">根据您的需求，选择最适合的运势提升方案，开启幸福人生</p>
+                </div>
+                
+                <!-- 重新设计的计划展示区域 -->
+                <div class="plan-showcase">
+                    <div class="plan-card featured">
+                        <div class="plan-header">
+                            <div class="plan-badge">
+                                <span>推荐方案</span>
+                            </div>
+                            <h3>时来运转</h3>
+                            <p class="plan-subtitle">适合想要短期内就见到效果的人</p>
+                        </div>
+                        <div class="plan-image">
+                            <img src="../img/product-1.jpg" alt="时来运转产品图片">
+                            <div class="plan-overlay">
+                                <div class="plan-overlay-content">
+                                    <i class="fas fa-search-plus"></i>
+                                    <span>查看详情</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="plan-content">
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check-circle"></i> 适合面对着突破难关，想要马上突破的人</li>
+                                <li><i class="fas fa-check-circle"></i> 快速激活运势</li>
+                                <li><i class="fas fa-check-circle"></i> 针对性解决单一领域问题</li>
+                                <li><i class="fas fa-check-circle"></i> 见效周期短</li>
+                            </ul>
+                            <div class="plan-price">
+                                <span class="price-label">起价</span>
+                                <span class="price-value">RM 888</span>
+                            </div>
+                            <a href="#contact" class="cta-button primary">了解详情</a>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <div class="plan-badge">
+                                <span>长期稳定</span>
+                            </div>
+                            <h3>元壁</h3>
+                            <p class="plan-subtitle">适合想要稳步提升运势的人</p>
+                        </div>
+                        <div class="plan-image">
+                            <img src="../img/product-2.jpg" alt="元壁产品图片">
+                            <div class="plan-overlay">
+                                <div class="plan-overlay-content">
+                                    <i class="fas fa-search-plus"></i>
+                                    <span>查看详情</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="plan-content">
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check-circle"></i> 适合想要赢在起跑线上的人</li>
+                                <li><i class="fas fa-check-circle"></i> 全方位运势提升</li>
+                                <li><i class="fas fa-check-circle"></i> 多领域平衡发展</li>
+                                <li><i class="fas fa-check-circle"></i> 长期稳定效果</li>
+                            </ul>
+                            <div class="plan-price">
+                                <span class="price-label">起价</span>
+                                <span class="price-value">RM 1288</span>
+                            </div>
+                            <a href="#contact" class="cta-button secondary">了解详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 重新设计的运势类型区域 -->
+                <div class="fortune-types-section">
+                    <h3 class="fortune-title">四大生基运势：<span class="highlight-text">你想提升什么运势，就提升什么运势！</span></h3>
+                    <p class="fortune-subtitle">跟吃维他命一样简单！选择你最需要的运势提升方案</p>
+                    
+                    <div class="fortune-grid">
+                        <div class="fortune-card">
+                            <div class="fortune-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="fortune-content">
+                                <h4>财富运</h4>
+                                <p>赚钱更顺，财源滚滚！</p>
+                                <div class="fortune-benefits">
+                                    <span>提升收入</span>
+                                    <span>财务自由</span>
+                                    <span>投资顺利</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="fortune-card">
+                            <div class="fortune-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="fortune-content">
+                                <h4>事业运</h4>
+                                <p>升职加薪，突破瓶颈！</p>
+                                <div class="fortune-benefits">
+                                    <span>职场顺利</span>
+                                    <span>事业发展</span>
+                                    <span>领导力提升</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="fortune-card">
+                            <div class="fortune-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="fortune-content">
+                                <h4>感情运</h4>
+                                <p>遇见良缘，关系更和谐！</p>
+                                <div class="fortune-benefits">
+                                    <span>桃花运旺</span>
+                                    <span>关系和谐</span>
+                                    <span>家庭幸福</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="fortune-card">
+                            <div class="fortune-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="fortune-content">
+                                <h4>健康运</h4>
+                                <p>精力充沛，身心无忧！</p>
+                                <div class="fortune-benefits">
+                                    <span>身体健康</span>
+                                    <span>精力充沛</span>
+                                    <span>心情愉悦</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <p class="innovation-summary">光元生基突破了传统秘法综合性生基，创造出一个亲民的年度生基计划，让每个人都能轻松掌控运势！</p>
-            </div>
-        </section>
-
-        <!-- 5. 光元生基优势 -->
-        <section id="advantages" class="advantages-section">
-            <div class="container">
-                <h2 class="section-title">九大核心优势，远超传统生基</h2>
-                <div class="feature-highlight">
-                    <h3>年度生基计划</h3>
-                    <p>采用年度调整机制，让您可根据每年不同需求，灵活调整生基方向。例如，今年专注财运，明年可切换至事业运或健康运，使运势规划更精准、高效，不受传统生基一次性决定的限制。</p>
-                </div>
-                <div class="advantages-grid">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-crown"></i>
+                <!-- 重新设计的测试区域 -->
+                <div class="fortune-test">
+                    <div class="test-header">
+                        <div class="test-icon">
+                            <i class="fas fa-search"></i>
                         </div>
-                        <h3>皇室认证</h3>
-                        <p>唯一载入《马来西亚皇室宗亲族谱》的华人风水师规划</p>
+                        <h3>不会选？快速测一测！</h3>
                     </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-shield-alt"></i>
+                    
+                    <p class="test-question">「如果现在有一笔意外之财，您最希望如何使用？」</p>
+                    
+                    <div class="test-options">
+                        <div class="test-option" data-result="wealth">
+                            <div class="option-letter">A</div>
+                            <div class="option-content">
+                                <p>用来投资或创业，创造更大回报</p>
+                            </div>
                         </div>
-                        <h3>环境稳定</h3>
-                        <p>不受外在环境影响，无风吹雨打、浸水、气候变化干扰</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-sync-alt"></i>
+                        
+                        <div class="test-option" data-result="career">
+                            <div class="option-letter">B</div>
+                            <div class="option-content">
+                                <p>提升自己，比如进修、换工作或拓展人脉</p>
+                            </div>
                         </div>
-                        <h3>现代便捷</h3>
-                        <p>更符合现代需求，无需扫墓、无宗教因素</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-feather-alt"></i>
+                        
+                        <div class="test-option" data-result="love">
+                            <div class="option-letter">C</div>
+                            <div class="option-content">
+                                <p>用来享受生活，比如旅行、和喜欢的人共度时光</p>
+                            </div>
                         </div>
-                        <h3>轻松灵活</h3>
-                        <p>灵活、亲民、高效，无需购地</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-coins"></i>
+                        
+                        <div class="test-option" data-result="health">
+                            <div class="option-letter">D</div>
+                            <div class="option-content">
+                                <p>购买健康相关的产品或疗程，让自己更有活力</p>
+                            </div>
                         </div>
-                        <h3>经济实惠</h3>
-                        <p>无高额投入，让现代人也能轻松享受生基带来的福报加持</p>
                     </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-tachometer-alt"></i>
+                    
+                    <div class="test-results">
+                        <div class="test-result" id="wealth-result">
+                            <h4>您最适合：<span class="highlight-text">财富运</span></h4>
+                            <p>您渴望财务自由，适合选择财富运生基，帮助您吸引更多财富机会！</p>
+                            <a href="#contact" class="cta-button secondary">了解财富运方案</a>
                         </div>
-                        <h3>见效迅速</h3>
-                        <p>传统需等待数月，光元生基可快速感受变化</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-globe-asia"></i>
+                        
+                        <div class="test-result" id="career-result">
+                            <h4>您最适合：<span class="highlight-text">事业运</span></h4>
+                            <p>您重视个人发展，适合选择事业运生基，助您职场顺利，事业腾飞！</p>
+                            <a href="#contact" class="cta-button secondary">了解事业运方案</a>
                         </div>
-                        <h3>全球适用</h3>
-                        <p>无地域限制，世界各地皆可享受光元生基服务</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-user-lock"></i>
+                        
+                        <div class="test-result" id="love-result">
+                            <h4>您最适合：<span class="highlight-text">感情运</span></h4>
+                            <p>您注重情感生活，适合选择感情运生基，帮助您改善人际关系，提升桃花运！</p>
+                            <a href="#contact" class="cta-button secondary">了解感情运方案</a>
                         </div>
-                        <h3>隐私保障</h3>
-                        <p>全程保密操作，保护个人信息与生基细节</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-hands-helping"></i>
+                        
+                        <div class="test-result" id="health-result">
+                            <h4>您最适合：<span class="highlight-text">健康运</span></h4>
+                            <p>您关注身心健康，适合选择健康运生基，增强体魄，提升精力！</p>
+                            <a href="#contact" class="cta-button secondary">了解健康运方案</a>
                         </div>
-                        <h3>专业服务</h3>
-                        <p>一对一专业顾问全程指导，确保生基效果最大化</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. 四大种生基类别 - 增强版 -->
-        <section id="categories" class="categories-section">
-            <div class="container">
-                <h2 class="section-title">定制提升，精准施策</h2>
-                
-                <div class="categories-intro">
-                    <p>光元生基根据不同人生需求，提供四大类别的运势提升方案，精准解决您的人生难题</p>
+                    
+                    <p class="test-hint"><i class="fas fa-lightbulb"></i> 小声提醒你：我们的人性化不单只是4选1 那么简单。。。你可以4选2。。。 4选3。。。甚至，你还可以4选4！</p>
                 </div>
                 
-                <div class="categories-grid">
-                    <!-- 财富运 -->
-                    <div class="category-card">
-                        <div class="category-icon">
-                            <i class="fas fa-coins"></i>
+                <!-- 重新设计的限时优惠区域 -->
+                <div class="limited-offer">
+                    <div class="offer-shine"></div>
+                    <div class="offer-content">
+                        <div class="offer-icon">
+                            <i class="fas fa-tag"></i>
                         </div>
-                        <h3>财富运</h3>
-                        <div class="category-pain">
-                            <h4>常见困扰</h4>
-                            <ul>
-                                <li>投资频频失利，财运不佳</li>
-                                <li>收入增长缓慢，难有积蓄</li>
-                                <li>意外支出频繁，财务压力大</li>
-                            </ul>
+                        <div class="offer-text">
+                            <h3>限时优惠！ <span class="highlight-text">首100位顾客享受高达 RM2000 折扣！</span></h3>
+                            <p>🎯 快来为自己的运势补充 "维他命" 吧！</p>
                         </div>
-                        <div class="category-solution">
-                            <h4>光元解决方案</h4>
-                            <p>引财聚宝，扭转财运，增加财富积累机会，提升投资眼光，减少无谓损失</p>
-                            <div class="case-study">
-                                <span class="case-label">成功案例</span>
-                                <p>李先生投资连续亏损，启用财富运生基后，三个月内发现新商机，年收入提升40%</p>
+                        <div class="offer-timer">
+                            <div class="timer-item">
+                                <span class="timer-value" id="days">00</span>
+                                <span class="timer-label">天</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" id="hours">00</span>
+                                <span class="timer-label">时</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" id="minutes">00</span>
+                                <span class="timer-label">分</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" id="seconds">00</span>
+                                <span class="timer-label">秒</span>
                             </div>
                         </div>
-                        <a href="#contact" class="category-link">了解详情 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <!-- 事业运 -->
-                    <div class="category-card">
-                        <div class="category-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3>事业运</h3>
-                        <div class="category-pain">
-                            <h4>常见困扰</h4>
-                            <ul>
-                                <li>职场晋升受阻，发展遇瓶颈</li>
-                                <li>创业道路坎坷，困难重重</li>
-                                <li>人际关系复杂，小人频现</li>
-                            </ul>
-                        </div>
-                        <div class="category-solution">
-                            <h4>光元解决方案</h4>
-                            <p>助力职场晋升，创业顺利，突破事业瓶颈，增强贵人缘分，化解小人阻碍</p>
-                            <div class="case-study">
-                                <span class="case-label">成功案例</span>
-                                <p>张女士创业两年不见起色，启用事业运生基后，一个月内获得重要合作机会，业务规模扩大三倍</p>
-                            </div>
-                        </div>
-                        <a href="#contact" class="category-link">了解详情 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <!-- 感情运 -->
-                    <div class="category-card">
-                        <div class="category-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3>感情运</h3>
-                        <div class="category-pain">
-                            <h4>常见困扰</h4>
-                            <ul>
-                                <li>单身多年，难觅良缘</li>
-                                <li>婚姻关系紧张，沟通不畅</li>
-                                <li>家庭矛盾频发，缺乏和谐</li>
-                            </ul>
-                        </div>
-                        <div class="category-solution">
-                            <h4>光元解决方案</h4>
-                            <p>增进人际缘分，提升桃花运，改善家庭关系，促进感情和谐，增强沟通效果</p>
-                            <div class="case-study">
-                                <span class="case-label">成功案例</span>
-                                <p>王先生婚姻濒临破裂，启用感情运生基后，夫妻关系明显改善，重拾家庭和谐</p>
-                            </div>
-                        </div>
-                        <a href="#contact" class="category-link">了解详情 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <!-- 健康运 -->
-                    <div class="category-card">
-                        <div class="category-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h3>健康运</h3>
-                        <div class="category-pain">
-                            <h4>常见困扰</h4>
-                            <ul>
-                                <li>身体亚健康，易疲劳乏力</li>
-                                <li>睡眠质量差，精神不佳</li>
-                                <li>免疫力低下，易受外邪侵扰</li>
-                            </ul>
-                        </div>
-                        <div class="category-solution">
-                            <h4>光元解决方案</h4>
-                            <p>增强体魄，提升精力，预防健康隐患，改善睡眠质量，增强身体抵抗力</p>
-                            <div class="case-study">
-                                <span class="case-label">成功案例</span>
-                                <p>陈女士长期失眠，精神状态差，启用健康运生基后，睡眠质量明显改善，精力充沛</p>
-                            </div>
-                        </div>
-                        <a href="#contact" class="category-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                        <a href="#pricing" class="cta-button primary">查看产品价格</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 8. 产品展示 -->
-        <section id="products" class="products-section">
-            <div class="container">
-                <h2 class="section-title">专属解决方案，运势全面提升</h2>
-                <div class="products-display">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="../img/product-1.jpg" alt="时来运转产品图">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">时来运转</h3>
-                            <p class="product-description">适合需要短期内见效的客户，快速助力，突破瓶颈</p>
-                            <ul class="product-features">
-                                <li>快速激活运势</li>
-                                <li>针对性解决单一领域问题</li>
-                                <li>见效周期短</li>
-                                <li>适合特定时期运势提升</li>
-                            </ul>
-                            <div class="product-suitable">
-                                <h4>适合人群</h4>
-                                <p>面临重要转折点的人士，如求职、升职、考试、投资等关键时刻</p>
-                            </div>
-                            <a href="#contact" class="cta-button secondary">了解更多</a>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="../img/product-2.jpg" alt="元壁产品图">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">元壁</h3>
-                            <p class="product-description">适合寻求稳定提升运程的客户，长期积累，持久稳定</p>
-                            <ul class="product-features">
-                                <li>全方位运势提升</li>
-                                <li>多领域平衡发展</li>
-                                <li>长期稳定效果</li>
-                                <li>年度可调整方向</li>
-                            </ul>
-                            <div class="product-suitable">
-                                <h4>适合人群</h4>
-                                <p>追求生活全面提升的人士，希望在事业、财富、健康、人际关系等多方面获得平衡发展</p>
-                            </div>
-                            <a href="#contact" class="cta-button secondary">了解更多</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 9. 价格表 -->
+        <!-- 8. 价格表 -->
         <section id="pricing" class="pricing-section">
             <div class="container">
                 <h2 class="section-title">产品价格</h2>
@@ -568,7 +1032,7 @@
             </div>
         </section>
 
-        <!-- 10. 用户反馈轮播 - 3D重叠设计 -->
+        <!-- 9. 用户反馈轮播 -->
         <section id="feedback" class="feedback-section">
             <div class="container">
                 <h2 class="section-title">用户真实反馈</h2>
@@ -606,7 +1070,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="feedback-date">2023年10月15日</div>
                             </div>
                         </div>
                         
@@ -640,7 +1103,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="feedback-date">2023年10月15日</div>
                             </div>
                         </div>
                         
@@ -674,7 +1136,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="feedback-date">2023年10月15日</div>
                             </div>
                         </div>
                         
@@ -708,7 +1169,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="feedback-date">2023年10月15日</div>
                             </div>
                         </div>
                     </div>
@@ -753,12 +1213,12 @@
                     <h3>快速链接</h3>
                     <ul>
                         <li><a href="#home">首页</a></li>
-                        <li><a href="#intro">什么是种生基</a></li>
-                        <li><a href="#innovation">光元创新</a></li>
-                        <li><a href="#categories">生基类别</a></li>
-                        <li><a href="#products">产品展示</a></li>
+                        <li><a href="#problems">常见烦恼</a></li>
+                        <li><a href="#story">种生基原理</a></li>
+                        <li><a href="#doubts">常见疑虑</a></li>
+                        <li><a href="#why-choose">为什么选择我们</a></li>
+                        <li><a href="#choose-plan">运势方案</a></li>
                         <li><a href="#pricing">产品价格</a></li>
-                        <li><a href="#feedback">用户反馈</a></li>
                         <li><a href="#contact">联系我们</a></li>
                     </ul>
                 </div>
@@ -768,7 +1228,7 @@
                         <a href="https://www.facebook.com/celestialYZG/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.youtube.com/@CelestialYuan" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/60186666227" class="social-icon"><i class="fab fa-weixin"></i></a>
+                        <a href="https://wa.me/60186666227" class="social-icon"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -783,7 +1243,8 @@
     </footer>
 
     <!-- JavaScript引入 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="../js/landing.js"></script>
     <script src="../js/language-switcher.js"></script>
 </body>
-</html> 
+</html>
