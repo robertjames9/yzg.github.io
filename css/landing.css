@@ -8280,7 +8280,7 @@ h1, h2, h3, h4, h5, h6 {
     .highlight-text {
         font-size: 1.8rem;
         padding: 2rem;
-        margin: 0 1.5rem;
+        margin: 1rem 1.5rem;
     }
     
     .innovation-content {
@@ -9997,7 +9997,7 @@ body.no-scroll {
     }
     
     .doubt-content h3 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
     
     .doubt-text {
@@ -10546,7 +10546,7 @@ body.no-scroll {
     }
     
     .doubt-text {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
     
     .why-choose-intro p {
@@ -10935,7 +10935,7 @@ body.no-scroll {
     }
     
     .problem-text {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
     
     .solutions-section {
@@ -10949,11 +10949,11 @@ body.no-scroll {
     }
     
     .solution-content h4 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
     
     .solution-content p {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
     
     .solution-content p.highlight {
@@ -11541,7 +11541,7 @@ body.no-scroll {
     font-size: 1.7rem;
     color: var(--text-light);
     line-height: 1.7;
-    margin-bottom: 2.5rem;
+    margin: 2.5rem 0;
 }
 
 .royal-subtitle {
@@ -11910,7 +11910,7 @@ body.no-scroll {
     }
     
     .royal-scroll-content p {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
     
     .celebrity-section {
@@ -11930,7 +11930,7 @@ body.no-scroll {
     }
     
     .warning-text p {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
     
     .process-title {
@@ -11948,11 +11948,11 @@ body.no-scroll {
     }
     
     .step-details h4 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
     
     .step-details p {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
     
     .cost-icon {
@@ -12473,7 +12473,7 @@ body.no-scroll {
 
 .qa-question h3 {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 2rem;
     color: #333;
     flex-grow: 1;
 }
@@ -12591,11 +12591,11 @@ body.no-scroll {
 
 @media (max-width: 768px) {
     .why-choose-intro p {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
     
     .qa-question h3 {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
     
     .question-icon {
@@ -13375,7 +13375,7 @@ body.no-scroll {
     }
     
     .test-option p {
-        font-size: 1.4rem;
+        font-size: 1.7rem;
     }
     
     .test-result {
