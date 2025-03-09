@@ -384,4 +384,74 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-}); 
+
+    // 初始化倒计时
+    startCountdown();
+    
+    // 初始化测试选项
+    initTestOptions();
+});
+
+// 倒计时功能
+function startCountdown() {
+    // 设置倒计时结束日期（当前日期加7天）
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 100);
+    
+    function updateCountdown() {
+        const now = new Date();
+        const diff = endDate - now;
+        
+        if (diff <= 0) {
+            // 倒计时结束
+            document.getElementById('days').textContent = '00';
+            document.getElementById('hours').textContent = '00';
+            document.getElementById('minutes').textContent = '00';
+            document.getElementById('seconds').textContent = '00';
+            return;
+        }
+        
+        // 计算剩余时间
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        // 更新显示
+        document.getElementById('days').textContent = days < 10 ? '0' + days : days;
+        document.getElementById('hours').textContent = hours < 10 ? '0' + hours : hours;
+        document.getElementById('minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById('seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+    }
+    
+    // 立即更新一次
+    updateCountdown();
+    
+    // 每秒更新一次
+    setInterval(updateCountdown, 1000);
+}
+
+// 测试选项功能
+function initTestOptions() {
+    const testOptions = document.querySelectorAll('.test-option');
+    const testResults = document.querySelectorAll('.test-result');
+    
+    testOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // 移除所有选项的active类
+            testOptions.forEach(opt => opt.classList.remove('active'));
+            
+            // 为当前选项添加active类
+            this.classList.add('active');
+            
+            // 获取对应的结果ID
+            const resultId = this.getAttribute('data-result') + '-result';
+            
+            // 隐藏所有结果
+            testResults.forEach(result => result.classList.remove('active'));
+            
+            // 显示对应的结果
+            document.getElementById(resultId).classList.add('active');
+        });
+    });
+} 

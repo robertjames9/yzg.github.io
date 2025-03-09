@@ -465,45 +465,168 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 4rem;
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 3.2rem;
+        margin-bottom: 3rem;
     }
-    
-    .hero-subtitle {
+
+    .section-subtitle {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 3rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .service-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 3rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 3rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.4rem;
+    }
+
+    .team-member p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 3rem;
+    }
+
+    .testimonial-text {
         font-size: 2rem;
+        line-height: 1.6;
     }
-    
-    .hero-features {
-        flex-wrap: wrap;
-        gap: 2rem;
+
+    .testimonial-author {
+        font-size: 1.8rem;
     }
-    
-    .feature-item {
-        flex: 0 0 calc(50% - 1rem);
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 3rem;
+    }
+
+    .faq-question h3 {
+        font-size: 2.2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.8rem;
+        line-height: 1.6;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 3.2rem;
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 2.8rem;
+        margin-bottom: 2.5rem;
     }
-    
-    .hero-subtitle {
+
+    .section-subtitle {
+        font-size: 2.2rem;
+        margin-bottom: 1.8rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.2rem;
+    }
+
+    .service-card p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.2rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.2rem;
+    }
+
+    .team-member p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .testimonial-text {
         font-size: 1.8rem;
+        line-height: 1.5;
     }
-    
-    .hero-badge {
-        font-size: 1.4rem;
-        padding: 0.6rem 1.2rem;
+
+    .testimonial-author {
+        font-size: 1.6rem;
     }
-    
-    .hero-cta {
-        flex-direction: column;
-        gap: 1.5rem;
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 2.6rem;
     }
-    
-    .hero-cta .cta-button {
-        width: 100%;
+
+    .faq-question h3 {
+        font-size: 2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.7rem;
+        line-height: 1.5;
     }
 }
 
@@ -1283,21 +1406,85 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 4rem;
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 3.2rem;
+        margin-bottom: 3rem;
     }
-    
-    .hero-subtitle {
+
+    .section-subtitle {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 3rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .service-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 3rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 3rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.4rem;
+    }
+
+    .team-member p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 3rem;
+    }
+
+    .testimonial-text {
         font-size: 2rem;
+        line-height: 1.6;
     }
-    
-    .hero-features {
-        flex-wrap: wrap;
-        gap: 2rem;
+
+    .testimonial-author {
+        font-size: 1.8rem;
     }
-    
-    .feature-item {
-        flex: 0 0 calc(50% - 1rem);
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 3rem;
+    }
+
+    .faq-question h3 {
+        font-size: 2.2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.8rem;
+        line-height: 1.6;
     }
     
     .hero-questions {
@@ -1305,7 +1492,9 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hero-questions h2,
-    .fortune-types h3 {
+    .fortune-types h3,
+    .quick-test h3,
+    .limited-offer h3 {
         font-size: 2.2rem;
     }
     
@@ -1313,7 +1502,8 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 2rem;
     }
     
-    .hero-solution p {
+    .hero-solution p,
+    .doubt-text {
         font-size: 1.5rem;
     }
     
@@ -1322,11 +1512,12 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .story-explanation,
-    .why-choose-intro p {
+    .why-choose-intro p,
+    .limited-offer p {
         font-size: 1.8rem;
-        padding: 1.5rem;
     }
     
+    .story-explanation,
     .doubt-item {
         padding: 1.5rem;
     }
@@ -1335,15 +1526,12 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.8rem;
     }
     
-    .doubt-text {
-        font-size: 1.5rem;
-    }
-    
-    .faq-question {
+    .faq-question,
+    .test-hint {
         font-size: 1.6rem;
-        padding: 1.5rem;
     }
     
+    .faq-question,
     .faq-item.active .faq-answer {
         padding: 1.5rem;
     }
@@ -1353,20 +1541,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 2rem;
     }
     
-    .quick-test h3,
-    .limited-offer h3 {
-        font-size: 2.2rem;
-    }
-    
     .test-question {
-        font-size: 1.8rem;
-    }
-    
-    .test-hint {
-        font-size: 1.6rem;
-    }
-    
-    .limited-offer p {
         font-size: 1.8rem;
     }
 }
@@ -1376,62 +1551,40 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 3.2rem;
     }
     
-    .hero-subtitle {
-        font-size: 1.8rem;
-    }
-    
-    .problems-list h3 {
-        font-size: 2.2rem;
-    }
-    
-    .problem-item {
-        font-size: 1.5rem;
-    }
-    
-    .solution-option {
-        font-size: 1.6rem;
-    }
-    
+    .hero-subtitle,
     .solution-highlight {
         font-size: 1.8rem;
     }
     
-    .story-explanation {
+    .problems-list h3,
+    .limited-offer h3 {
+        font-size: 2.2rem;
+    }
+    
+    .problem-item,
+    .doubt-text,
+    .faq-answer p {
+        font-size: 1.5rem;
+    }
+    
+    .solution-option,
+    .story-explanation,
+    .limited-offer p,
+    .limited-offer .cta-button {
         font-size: 1.6rem;
-        padding: 1.5rem;
     }
     
     .doubt-item i {
         font-size: 1.8rem;
     }
     
-    .doubt-text {
-        font-size: 1.5rem;
-    }
-    
-    .faq-question {
-        font-size: 1.6rem;
-        padding: 1.5rem;
-    }
-    
-    .faq-answer p {
-        font-size: 1.5rem;
-    }
-    
+    .story-explanation,
+    .faq-question,
     .limited-offer {
-        padding: 2rem;
-    }
-    
-    .limited-offer h3 {
-        font-size: 2.2rem;
-    }
-    
-    .limited-offer p {
-        font-size: 1.6rem;
+        padding: 1.5rem 2rem;
     }
     
     .limited-offer .cta-button {
-        font-size: 1.6rem;
         padding: 1.2rem 2.5rem;
     }
 }
@@ -1652,20 +1805,13 @@ h1, h2, h3, h4, h5, h6 {
     transition: var(--transition);
 }
 
-.feature-item:hover {
-    transform: translateY(-5px);
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.feature-item:nth-child(4) {
-    background-color: rgba(212, 175, 55, 0.1);
-    border-left: 3px solid var(--primary-color);
-}
-
+.feature-item:hover,
+.feature-item:nth-child(4),
 .feature-item.highlight {
+    transform: translateY(-5px);
     background-color: rgba(212, 175, 55, 0.1);
     border-left: 3px solid var(--primary-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .feature-icon {
@@ -2600,7 +2746,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 价格表样式 - 更新版 */
 .pricing-section {
     padding: var(--section-spacing) 0;
-    background: linear-gradient(135deg, var(--bg-light) 0%, #f0f0f0 100%);
+    background: linear-gradient(135deg, rgb(245, 249, 255) 0%, rgb(230, 240, 255) 100%)
 }
 
 .pricing-intro {
@@ -2767,45 +2913,168 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 4rem;
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 3.2rem;
+        margin-bottom: 3rem;
     }
-    
-    .hero-subtitle {
+
+    .section-subtitle {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 3rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .service-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 3rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 3rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.4rem;
+    }
+
+    .team-member p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 3rem;
+    }
+
+    .testimonial-text {
         font-size: 2rem;
+        line-height: 1.6;
     }
-    
-    .hero-features {
-        flex-wrap: wrap;
-        gap: 2rem;
+
+    .testimonial-author {
+        font-size: 1.8rem;
     }
-    
-    .feature-item {
-        flex: 0 0 calc(50% - 1rem);
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 3rem;
+    }
+
+    .faq-question h3 {
+        font-size: 2.2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.8rem;
+        line-height: 1.6;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 3.2rem;
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 2.8rem;
+        margin-bottom: 2.5rem;
     }
-    
-    .hero-subtitle {
+
+    .section-subtitle {
+        font-size: 2.2rem;
+        margin-bottom: 1.8rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.2rem;
+    }
+
+    .service-card p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.2rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.2rem;
+    }
+
+    .team-member p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .testimonial-text {
         font-size: 1.8rem;
+        line-height: 1.5;
     }
-    
-    .hero-badge {
-        font-size: 1.4rem;
-        padding: 0.6rem 1.2rem;
+
+    .testimonial-author {
+        font-size: 1.6rem;
     }
-    
-    .hero-cta {
-        flex-direction: column;
-        gap: 1.5rem;
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 2.6rem;
     }
-    
-    .hero-cta .cta-button {
-        width: 100%;
+
+    .faq-question h3 {
+        font-size: 2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.7rem;
+        line-height: 1.5;
     }
 }
 
@@ -3585,21 +3854,85 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 4rem;
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 3.2rem;
+        margin-bottom: 3rem;
     }
-    
-    .hero-subtitle {
+
+    .section-subtitle {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 3rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .service-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 3rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 3rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.4rem;
+    }
+
+    .team-member p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 3rem;
+    }
+
+    .testimonial-text {
         font-size: 2rem;
+        line-height: 1.6;
     }
-    
-    .hero-features {
-        flex-wrap: wrap;
-        gap: 2rem;
+
+    .testimonial-author {
+        font-size: 1.8rem;
     }
-    
-    .feature-item {
-        flex: 0 0 calc(50% - 1rem);
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 3rem;
+    }
+
+    .faq-question h3 {
+        font-size: 2.2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.8rem;
+        line-height: 1.6;
     }
     
     .hero-questions {
@@ -3607,7 +3940,9 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hero-questions h2,
-    .fortune-types h3 {
+    .fortune-types h3,
+    .quick-test h3,
+    .limited-offer h3 {
         font-size: 2.2rem;
     }
     
@@ -3615,7 +3950,8 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 2rem;
     }
     
-    .hero-solution p {
+    .hero-solution p,
+    .doubt-text {
         font-size: 1.5rem;
     }
     
@@ -3624,11 +3960,12 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .story-explanation,
-    .why-choose-intro p {
+    .why-choose-intro p,
+    .limited-offer p {
         font-size: 1.8rem;
-        padding: 1.5rem;
     }
     
+    .story-explanation,
     .doubt-item {
         padding: 1.5rem;
     }
@@ -3637,15 +3974,12 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.8rem;
     }
     
-    .doubt-text {
-        font-size: 1.5rem;
-    }
-    
-    .faq-question {
+    .faq-question,
+    .test-hint {
         font-size: 1.6rem;
-        padding: 1.5rem;
     }
     
+    .faq-question,
     .faq-item.active .faq-answer {
         padding: 1.5rem;
     }
@@ -3655,20 +3989,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 2rem;
     }
     
-    .quick-test h3,
-    .limited-offer h3 {
-        font-size: 2.2rem;
-    }
-    
     .test-question {
-        font-size: 1.8rem;
-    }
-    
-    .test-hint {
-        font-size: 1.6rem;
-    }
-    
-    .limited-offer p {
         font-size: 1.8rem;
     }
 }
@@ -3678,62 +3999,40 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 3.2rem;
     }
     
-    .hero-subtitle {
-        font-size: 1.8rem;
-    }
-    
-    .problems-list h3 {
-        font-size: 2.2rem;
-    }
-    
-    .problem-item {
-        font-size: 1.5rem;
-    }
-    
-    .solution-option {
-        font-size: 1.6rem;
-    }
-    
+    .hero-subtitle,
     .solution-highlight {
         font-size: 1.8rem;
     }
     
-    .story-explanation {
+    .problems-list h3,
+    .limited-offer h3 {
+        font-size: 2.2rem;
+    }
+    
+    .problem-item,
+    .doubt-text,
+    .faq-answer p {
+        font-size: 1.5rem;
+    }
+    
+    .solution-option,
+    .story-explanation,
+    .limited-offer p,
+    .limited-offer .cta-button {
         font-size: 1.6rem;
-        padding: 1.5rem;
     }
     
     .doubt-item i {
         font-size: 1.8rem;
     }
     
-    .doubt-text {
-        font-size: 1.5rem;
-    }
-    
-    .faq-question {
-        font-size: 1.6rem;
-        padding: 1.5rem;
-    }
-    
-    .faq-answer p {
-        font-size: 1.5rem;
-    }
-    
+    .story-explanation,
+    .faq-question,
     .limited-offer {
-        padding: 2rem;
-    }
-    
-    .limited-offer h3 {
-        font-size: 2.2rem;
-    }
-    
-    .limited-offer p {
-        font-size: 1.6rem;
+        padding: 1.5rem 2rem;
     }
     
     .limited-offer .cta-button {
-        font-size: 1.6rem;
         padding: 1.2rem 2.5rem;
     }
 }
@@ -3954,20 +4253,2565 @@ h1, h2, h3, h4, h5, h6 {
     transition: var(--transition);
 }
 
-.feature-item:hover {
+.feature-item:hover,
+.feature-item:nth-child(4),
+.feature-item.highlight {
     transform: translateY(-5px);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(212, 175, 55, 0.1);
+    border-left: 3px solid var(--primary-color);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.feature-item:nth-child(4) {
+.feature-icon {
+    flex: 0 0 80px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.feature-icon i {
+    font-size: 3.2rem;
+    color: var(--primary-color);
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-text h3 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.feature-text p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+.innovation-summary {
+    text-align: center;
+    font-size: 2.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 500;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .history-compare {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .feature-icon {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .highlight-text {
+        font-size: 1.8rem;
+        padding: 2rem;
+    }
+    
+    .history-card, .modern-card {
+        padding: 2.5rem;
+    }
+    
+    .history-card h3, .modern-card h3 {
+        font-size: 2.2rem;
+    }
+    
+    .feature-text h3 {
+        font-size: 2rem;
+    }
+    
+    .innovation-summary {
+        font-size: 1.8rem;
+    }
+    
+    .feature-item {
+        flex-direction: row;
+        text-align: left;
+        padding: 2rem;
+        gap: 2rem;
+    }
+    
+    .feature-icon {
+        flex: 0 0 60px;
+        width: 60px;
+        height: 60px;
+        margin: 0;
+    }
+    
+    .feature-icon i {
+        font-size: 2.4rem;
+    }
+    
+    .feature-text {
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-item {
+        padding: 1.8rem;
+        gap: 1.5rem;
+    }
+    
+    .feature-icon {
+        flex: 0 0 50px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .feature-icon i {
+        font-size: 2.2rem;
+    }
+}
+
+/* 大师介绍区域样式 */
+.master-section {
+    display: none; /* 先隐藏，之后可以完全移除 */
+}
+
+/* 其他 master 相关样式也应该被移除 */
+.master-content,
+.master-video,
+.master-info,
+.master-image,
+.master-bio,
+.master-quote {
+    display: none;
+}
+
+/* 优势区域样式 */
+.advantages-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
+}
+
+.advantages-section .section-title {
+    color: var(--text-light);
+}
+
+.feature-highlight {
+    max-width: 800px;
+    margin: 0 auto 5rem;
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    border-left: 5px solid var(--primary-color);
+}
+
+.feature-highlight h3 {
+    color: var(--primary-color);
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-highlight p {
+    font-size: 1.8rem;
+    line-height: 1.6;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.advantage-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.advantage-card:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.advantage-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.advantage-card:hover .advantage-icon {
+    background-color: rgba(212, 175, 55, 0.2);
+    transform: scale(1.1);
+}
+
+.advantage-card h3 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.advantage-card p {
+    font-size: 1.6rem;
+    opacity: 0.9;
+}
+
+/* 类别区域样式 */
+.categories-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--bg-light);
+}
+
+.categories-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.categories-intro p {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 1300px; /* 增加内容区域的最大宽度 */
+    margin: 0 auto;
+}
+
+.category-card {
+    background-color: var(--text-light);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.category-card:hover::before {
+    height: 10px;
+}
+
+.category-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 2rem;
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.category-card:hover .category-icon {
+    background-color: rgba(212, 175, 55, 0.2);
+    transform: scale(1.1);
+}
+
+.category-card h3 {
+    color: var(--secondary-dark);
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* 痛点区域样式 */
+.category-pain {
+    background-color: rgba(26, 35, 126, 0.05);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.category-pain h4, .category-solution h4 {
+    font-size: 1.6rem;
+    color: var(--secondary-dark);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.category-pain h4::before {
+    content: '\f06a';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+}
+
+.category-pain ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-pain li {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 0.8rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.category-pain li::before {
+    content: '\f00d';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+    font-size: 1.2rem;
+}
+
+/* 解决方案区域样式 */
+.category-solution {
+    background-color: rgba(212, 175, 55, 0.05);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.category-solution h4::before {
+    content: '\f0eb';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.category-solution p {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+/* 案例研究样式 */
+.case-study {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-left: 3px solid var(--primary-color);
+    padding: 1.2rem;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.case-label {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--bg-dark);
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    margin-bottom: 0.8rem;
+}
+
+.case-study p {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.category-link {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.6rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    align-self: center;
+    margin-top: auto;
+    transition: var(--transition);
+}
+
+.category-link i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.category-link:hover i {
+    transform: translateX(5px);
+}
+
+.category-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.category-link:hover::after {
+    width: 100%;
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .categories-intro p {
+        font-size: 1.6rem;
+        padding: 0 1.5rem;
+    }
+    
+    .categories-grid {
+        padding: 0 1.5rem;
+    }
+    
+    .category-card {
+        padding: 2.5rem 2rem;
+    }
+    
+    .category-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .category-card h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .category-pain, .category-solution {
+        padding: 1.2rem;
+    }
+    
+    .category-pain h4, .category-solution h4 {
+        font-size: 1.5rem;
+    }
+    
+    .category-pain li {
+        font-size: 1.3rem;
+    }
+    
+    .category-solution p {
+        font-size: 1.4rem;
+    }
+    
+    .case-study {
+        padding: 1rem;
+    }
+    
+    .case-study p {
+        font-size: 1.2rem;
+    }
+}
+
+/* 联系区域样式 */
+.contact-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
+    text-align: center;
+}
+
+.contact-section .section-title {
+    color: var(--text-light);
+}
+
+.contact-description {
+    font-size: 2rem;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    line-height: 1.6;
+}
+
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 3rem;
+    background-color: #25D366;
+    color: var(--text-light);
+    border-radius: var(--border-radius);
+    font-size: 2rem;
+    font-weight: 700;
+    transition: var(--transition);
+    margin-bottom: 2rem;
+}
+
+.whatsapp-button i {
+    font-size: 2.4rem;
+    margin-right: 1rem;
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.response-time {
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+}
+
+/* 页脚样式 */
+.site-footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 6rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo .logo {
+    height: 60px;
+    margin-bottom: 2rem;
+}
+
+.company-intro {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 400px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--text-light);
+    font-size: 1.8rem;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-dark);
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.legal-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.legal-links a {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: var(--transition);
+}
+
+.legal-links a:hover {
+    color: var(--primary-color);
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .logo-container {
+        flex: 0 0 150px;
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .language-switcher {
+        flex: 0 0 100px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-logo {
+        grid-column: span 2;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .company-intro {
+        max-width: 600px;
+    }
+}
+.footer-links h3,
+.footer-social h3 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--text-light);
+    font-size: 1.8rem;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-dark);
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.legal-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.legal-links a {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: var(--transition);
+}
+
+.legal-links a:hover {
+    color: var(--primary-color);
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .logo-container {
+        flex: 0 0 150px;
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .language-switcher {
+        flex: 0 0 100px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-logo {
+        grid-column: span 2;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .company-intro {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-header .container {
+        padding: 0 1.5rem;
+    }
+    
+    .logo-container {
+        flex: 1;
+    }
+    
+    .main-nav {
+        justify-content: flex-end;
+    }
+    
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        margin-left: 1.5rem;
+        z-index: 1002;
+    }
+    
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 3px 0;
+        transition: all 0.3s ease;
+    }
+    
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px; /* 与头部高度一致 */
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: rgba(28, 28, 28, 0.95);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: all 0.3s ease;
+        z-index: 1001;
+        padding: 2rem 0;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.8rem;
+        padding: 1rem 2rem;
+        width: 80%;
+        text-align: center;
+    }
+    
+    .nav-link::after {
+        bottom: -5px;
+    }
+    
+    .language-switcher {
+        flex: 0 0 auto;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .footer-logo {
+        grid-column: span 1;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    /* 联系区域优化 */
+    .contact-section {
+        padding: 5rem 0 4rem;
+    }
+    
+    .contact-description {
+        margin: 0 1.5rem 2.5rem;
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+    
+    .whatsapp-button {
+        margin: 0 1.5rem;
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .response-time {
+        margin-top: 1.5rem;
+        font-size: 1.4rem;
+    }
+    
+    /* 页脚优化 */
+    .site-footer {
+        padding: 4rem 0 2rem;
+    }
+    
+    .footer-content {
+        margin: 0 1.5rem;
+        gap: 2.5rem;
+    }
+    
+    .footer-logo .logo {
+        height: 45px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .company-intro {
+        font-size: 1.4rem;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+    
+    .footer-links h3,
+    .footer-social h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-links ul {
+        gap: 0.8rem;
+    }
+    
+    .footer-links a {
+        font-size: 1.4rem;
+    }
+    
+    .social-icons {
+        gap: 1rem;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1.6rem;
+    }
+    
+    .footer-bottom {
+        margin: 0 1.5rem;
+        padding-top: 1.5rem;
+        gap: 1rem;
+    }
+    
+    .copyright {
+        font-size: 1.3rem;
+    }
+    
+    .legal-links {
+        gap: 1.5rem;
+    }
+    
+    .legal-links a {
+        font-size: 1.3rem;
+    }
+}
+
+/* 小屏幕手机进一步优化 */
+@media (max-width: 480px) {
+    .site-footer {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .footer-content {
+        gap: 2rem;
+    }
+    
+    .footer-logo .logo {
+        height: 40px;
+    }
+    
+    .company-intro {
+        font-size: 1.3rem;
+        max-width: 100%;
+    }
+    
+    .footer-links h3,
+    .footer-social h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .footer-links ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem 1rem;
+    }
+    
+    .social-icons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* 添加动画效果 */
+.hero-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.hero-content.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-subtitle {
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.hero-subtitle.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 价格表样式 - 更新版 */
+.pricing-section {
+    padding: var(--section-spacing) 0;
+    background: linear-gradient(135deg, rgb(245, 249, 255) 0%, rgb(230, 240, 255) 100%)
+}
+
+.pricing-intro {
+    text-align: center;
+    font-size: 1.8rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: var(--text-dark);
+}
+
+/* 选项卡样式 */
+.pricing-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.pricing-tab {
+    padding: 1.2rem 3rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pricing-tab.active, .pricing-tab:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 价格表容器 */
+.pricing-table-container {
+    display: none;
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.pricing-table-container.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pricing-subtitle {
+    text-align: center;
+    font-size: 2.4rem;
+    color: var(--secondary-dark);
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.pricing-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* 价格表样式 */
+.pricing-table {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.pricing-header {
+    display: flex;
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
+}
+
+.header-cell {
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 2rem 1.5rem;
+}
+
+.pricing-row {
+    display: flex;
+    background-color: var(--text-light);
+    transition: var(--transition);
+}
+
+.pricing-row:nth-child(odd) {
+    background-color: rgba(240, 240, 240, 0.5);
+}
+
+.pricing-row:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.pricing-cell {
+    flex: 1;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    font-size: 1.6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pricing-cell.price {
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 2rem;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 3.2rem;
+        margin-bottom: 3rem;
+    }
+
+    .section-subtitle {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 3rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .service-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 3rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 3rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.4rem;
+    }
+
+    .team-member p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 3rem;
+    }
+
+    .testimonial-text {
+        font-size: 2rem;
+        line-height: 1.6;
+    }
+
+    .testimonial-author {
+        font-size: 1.8rem;
+    }
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 3rem;
+    }
+
+    .faq-question h3 {
+        font-size: 2.2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 2.8rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 2.2rem;
+        margin-bottom: 1.8rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.2rem;
+    }
+
+    .service-card p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.2rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.2rem;
+    }
+
+    .team-member p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .testimonial-text {
+        font-size: 1.8rem;
+        line-height: 1.5;
+    }
+
+    .testimonial-author {
+        font-size: 1.6rem;
+    }
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .faq-question h3 {
+        font-size: 2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.7rem;
+        line-height: 1.5;
+    }
+}
+
+/* 问题引导区域样式优化 */
+.problems-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.problems-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.problems-video {
+    margin-bottom: 4rem;
+}
+
+.problems-list {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.problems-list h3 {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.problem-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.problem-item i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.solutions-block {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+}
+
+.solutions-block h3 {
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.solutions-options {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+}
+
+.solution-option {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.solution-option i.fa-times {
+    color: #e74c3c;
+    margin-right: 1rem;
+}
+
+.solution-option i.fa-check {
+    color: #2ecc71;
+    margin-right: 1rem;
+}
+
+.solution-highlight {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+/* 水瓶故事视频区域样式 */
+.story-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--bg-light);
+}
+
+.story-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.story-video {
+    margin-bottom: 3rem;
+}
+
+.story-explanation {
+    font-size: 2rem;
+    color: var(--text-dark);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.story-explanation i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+}
+
+/* 犹豫区域样式 */
+.doubts-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.doubts-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 20%),
+                      radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 20%);
+    pointer-events: none;
+}
+
+.doubts-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.doubts-intro p {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.doubts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+}
+
+.doubts-image {
+    flex: 1 1 300px;
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.doubts-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.doubts-image:hover img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 3rem 2rem 2rem;
+}
+
+.overlay-text {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.doubts-list {
+    flex: 1 1 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.doubt-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.doubt-item:hover {
+    transform: translateX(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.doubt-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(231, 76, 60, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    flex-shrink: 0;
+}
+
+.doubt-icon i {
+    color: #e74c3c;
+    font-size: 2rem;
+}
+
+.doubt-content h3 {
+    font-size: 1.8rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+}
+
+.doubt-text {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.doubts-conclusion {
+    max-width: 800px;
+    margin: 4rem auto 0;
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.conclusion-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    flex-shrink: 0;
+}
+
+.conclusion-icon i {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+}
+
+.conclusion-text {
+    flex: 1;
+}
+
+.conclusion-text p {
+    margin: 0;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.conclusion-text .highlight {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.conclusion-arrow {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 2s infinite;
+}
+
+.conclusion-arrow i {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+@media (max-width: 992px) {
+    .doubts-container {
+        flex-direction: column;
+    }
+    
+    .doubts-image {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .doubts-section {
+        padding: 5rem 0;
+    }
+    
+    .doubts-intro p {
+        font-size: 1.6rem;
+    }
+    
+    .doubt-item {
+        padding: 1.5rem;
+    }
+    
+    .doubt-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 1.5rem;
+    }
+    
+    .doubt-icon i {
+        font-size: 1.6rem;
+    }
+    
+    .doubt-content h3 {
+        font-size: 1.6rem;
+    }
+    
+    .doubt-text {
+        font-size: 1.4rem;
+    }
+    
+    .doubts-conclusion {
+        padding: 2rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .conclusion-icon {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    .conclusion-text p {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .doubts-intro p {
+        font-size: 1.5rem;
+    }
+    
+    .doubt-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .doubt-icon {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    .doubt-content h3 {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* 为什么选择光元生基区域样式 */
+.why-choose-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--bg-light);
+}
+
+.why-choose-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.why-choose-intro {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.why-choose-intro p {
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.faq-item {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 2.5rem;
+    background-color: rgba(212, 175, 55, 0.1);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-dark);
+    border-left: 4px solid var(--primary-color);
+}
+
+.faq-answer {
+    padding: 2.5rem;
+}
+
+.faq-answer p {
+    font-size: 1.7rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.faq-answer ul {
+    padding-left: 2rem;
+}
+
+.faq-answer li {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.faq-answer li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.highlight-box {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 3px solid var(--primary-color);
+}
+
+.highlight-box h4 {
+    font-size: 1.8rem;
+    color: var(--secondary-dark);
+    margin-bottom: 1rem;
+}
+
+.highlight-box ul {
+    padding-left: 1.5rem;
+}
+
+/* 产品选择区域样式优化 */
+.choose-plan-section {
+    padding: var(--section-spacing) 0;
+    background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--secondary-color) 100%);
+    color: var(--text-light);
+}
+
+.choose-plan-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.choose-plan-intro {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.choose-plan-intro p {
+    font-size: 2rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.plan-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-bottom: 6rem;
+}
+
+.plan-type {
+    flex: 1;
+    min-width: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.plan-type:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.plan-type h3 {
+    font-size: 2.6rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.plan-type p {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+
+.plan-type ul {
+    text-align: left;
+    margin-bottom: 2.5rem;
+}
+
+.plan-type li {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.plan-type li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.fortune-types {
+    margin-bottom: 5rem;
+}
+
+.fortune-types h3 {
+    font-size: 2.8rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+.fortune-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+}
+
+.fortune-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.fortune-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.fortune-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.fortune-card h4 {
+    font-size: 2.2rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.fortune-card p {
+    font-size: 1.6rem;
+}
+
+/* 快速测试区域样式 */
+.quick-test {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    margin-bottom: 5rem;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.quick-test h3 {
+    font-size: 2.4rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+}
+
+.test-question {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+.test-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.test-option {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.test-option:hover {
+    background-color: rgba(212, 175, 55, 0.2);
+    transform: translateY(-5px);
+}
+
+.test-option.active {
+    background-color: rgba(212, 175, 55, 0.3);
+    border-color: var(--primary-color);
+}
+
+.test-option span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.test-option p {
+    font-size: 1.5rem;
+}
+
+.test-result {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    text-align: center;
+    display: none;
+}
+
+.test-result.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.test-result h4 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.test-result p {
+    font-size: 1.7rem;
+}
+
+.test-hint {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 限时优惠区域样式 */
+.limited-offer {
+    background-color: rgba(212, 175, 55, 0.15);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.limited-offer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
+    animation: shine 2s infinite;
+}
+
+.limited-offer h3 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.limited-offer p {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.limited-offer .cta-button {
+    font-size: 2rem;
+    padding: 1.5rem 4rem;
+}
+
+@keyframes shine {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 2.2rem;
+    }
+    
+    .plan-types {
+        flex-direction: column;
+    }
+    
+    .plan-type {
+        width: 100%;
+    }
+    
+    .faq-question {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 所有section标题统一调整 */
+    .section-title {
+        font-size: 3.2rem;
+        margin-bottom: 3rem;
+    }
+
+    .section-subtitle {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    /* 服务section */
+    .service-section h2 {
+        font-size: 3rem;
+    }
+
+    .service-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .service-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 优势section */
+    .advantage-section h2 {
+        font-size: 3rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 2.4rem;
+    }
+
+    .advantage-card p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 团队section */
+    .team-section h2 {
+        font-size: 3rem;
+    }
+
+    .team-member h3 {
+        font-size: 2.4rem;
+    }
+
+    .team-member p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+
+    /* 评价section */
+    .testimonial-section h2 {
+        font-size: 3rem;
+    }
+
+    .testimonial-text {
+        font-size: 2rem;
+        line-height: 1.6;
+    }
+
+    .testimonial-author {
+        font-size: 1.8rem;
+    }
+
+    /* FAQ section */
+    .faq-section h2 {
+        font-size: 3rem;
+    }
+
+    .faq-question h3 {
+        font-size: 2.2rem;
+    }
+
+    .faq-answer p {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+    
+    .hero-questions {
+        padding: 2rem;
+    }
+    
+    .hero-questions h2,
+    .fortune-types h3,
+    .quick-test h3,
+    .limited-offer h3 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-solution h3 {
+        font-size: 2rem;
+    }
+    
+    .hero-solution p,
+    .doubt-text {
+        font-size: 1.5rem;
+    }
+    
+    .solution-highlight {
+        font-size: 1.8rem !important;
+    }
+    
+    .story-explanation,
+    .why-choose-intro p,
+    .limited-offer p {
+        font-size: 1.8rem;
+    }
+    
+    .story-explanation,
+    .doubt-item {
+        padding: 1.5rem;
+    }
+    
+    .doubt-item i {
+        font-size: 1.8rem;
+    }
+    
+    .faq-question,
+    .test-hint {
+        font-size: 1.6rem;
+    }
+    
+    .faq-question,
+    .faq-item.active .faq-answer {
+        padding: 1.5rem;
+    }
+    
+    .quick-test,
+    .limited-offer {
+        padding: 2rem;
+    }
+    
+    .test-question {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 3.2rem;
+    }
+    
+    .hero-subtitle,
+    .solution-highlight {
+        font-size: 1.8rem;
+    }
+    
+    .problems-list h3,
+    .limited-offer h3 {
+        font-size: 2.2rem;
+    }
+    
+    .problem-item,
+    .doubt-text,
+    .faq-answer p {
+        font-size: 1.5rem;
+    }
+    
+    .solution-option,
+    .story-explanation,
+    .limited-offer p,
+    .limited-offer .cta-button {
+        font-size: 1.6rem;
+    }
+    
+    .doubt-item i {
+        font-size: 1.8rem;
+    }
+    
+    .story-explanation,
+    .faq-question,
+    .limited-offer {
+        padding: 1.5rem 2rem;
+    }
+    
+    .limited-offer .cta-button {
+        padding: 1.2rem 2.5rem;
+    }
+}
+
+/* 视频区域样式 */
+.video-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--bg-light);
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-description {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .video-description {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-description {
+        font-size: 1.5rem;
+    }
+}
+
+/* 介绍区域样式 */
+.intro-section {
+    padding: var(--section-spacing) 0;
+    background-color: #f0f0f0;
+}
+
+.intro-content {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+}
+
+.intro-text {
+    flex: 1;
+}
+
+.intro-text p {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.intro-image {
+    flex: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+/* 光元创新区域重新设计 */
+.innovation-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.innovation-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.innovation-section .section-title {
+    color: var(--text-light);
+    margin-bottom: 4rem;
+}
+
+.innovation-intro {
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    text-align: center;
+}
+
+.highlight-text {
+    font-size: 2.2rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 1.8rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 创新内容布局 */
+.innovation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin-bottom: 4rem;
+}
+
+/* 视频部分 */
+.innovation-video {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.video-caption {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.video-caption h4 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.video-caption p {
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 创新详情部分 */
+.innovation-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+/* 历史对比部分 */
+.history-compare {
+    display: flex;
+    gap: 4rem;
+}
+
+.history-card, .modern-card {
+    flex: 1;
+    padding: 3.5rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.history-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.modern-card {
     background-color: rgba(212, 175, 55, 0.1);
     border-left: 3px solid var(--primary-color);
 }
 
+.history-card:hover, .modern-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.history-card h3, .modern-card h3 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.history-card p, .modern-card p {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* 特性列表 */
+.innovation-features {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.feature-item:hover,
+.feature-item:nth-child(4),
 .feature-item.highlight {
+    transform: translateY(-5px);
     background-color: rgba(212, 175, 55, 0.1);
     border-left: 3px solid var(--primary-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .feature-icon {
@@ -4902,7 +7746,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 价格表样式 - 更新版 */
 .pricing-section {
     padding: var(--section-spacing) 0;
-    background: linear-gradient(135deg, var(--bg-light) 0%, #f0f0f0 100%);
+    background: linear-gradient(135deg, rgb(245, 249, 255) 0%, rgb(230, 240, 255) 100%)
 }
 
 .pricing-intro {
@@ -6727,22 +9571,22 @@ body.no-scroll {
 @media (max-width: 768px) {
     /* 增大标题和副标题字体 */
     .hero-title {
-        font-size: 4.2rem; /* 增大标题字体 */
+        font-size: 4.8rem; /* 增大标题字体 */
     }
     
     .hero-title span {
-        font-size: 3rem; /* 增大副标题字体 */
+        font-size: 3.6rem; /* 增大副标题字体 */
     }
     
     /* 增大问题卡片标题字体 */
     .hero-questions h2 {
-        font-size: 2.6rem; /* 增大问题卡片标题字体 */
+        font-size: 3rem; /* 增大问题卡片标题字体 */
     }
     
     /* 增大问题列表字体和图标 */
     .problem-list li {
-        font-size: 2.2rem; /* 增大问题列表字体 */
-        padding-left: 3.2rem; /* 增加左侧内边距，为更大的图标留出空间 */
+        font-size: 2.6rem; /* 增大问题列表字体 */
+        padding-left: 3.6rem; /* 增加左侧内边距，为更大的图标留出空间 */
     }
     
     .problem-list li i {
@@ -6770,20 +9614,20 @@ body.no-scroll {
 @media (max-width: 480px) {
     /* 调整字体大小，但保持比默认值大 */
     .hero-title {
-        font-size: 3.8rem;
+        font-size: 4.2rem;
     }
     
     .hero-title span {
-        font-size: 2.8rem;
+        font-size: 3.2rem;
     }
     
     .hero-questions h2 {
-        font-size: 2.4rem;
+        font-size: 2.8rem;
     }
     
     .problem-list li {
-        font-size: 2rem;
-        padding-left: 3rem;
+        font-size: 2.4rem;
+        padding-left: 3.4rem;
     }
     
     .problem-list li i {
@@ -6807,19 +9651,19 @@ body.no-scroll {
 @media (max-width: 360px) {
     /* 进一步调整字体大小，但仍保持比默认值大 */
     .hero-title {
-        font-size: 3.5rem;
+        font-size: 3.8rem;
     }
     
     .hero-title span {
-        font-size: 2.6rem;
+        font-size: 2.8rem;
     }
     
     .hero-questions h2 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
     
     .problem-list li {
-        font-size: 1.9rem;
+        font-size: 2.2rem;
     }
     
     .problem-list li i {
@@ -10129,7 +12973,7 @@ body.no-scroll {
 
 .test-header h3 {
     font-size: 2.6rem;
-    color: var(--secondary-light);
+    color: var(--primary-color);
     font-weight: 600;
 }
 
@@ -10571,4 +13415,250 @@ body.no-scroll {
     }
 }
 
+/* 新增的计划头部样式 */
+.plan-header {
+    padding: 2.5rem 2.5rem 1rem;
+    text-align: center;
+    position: relative;
+}
 
+.plan-header h3 {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+/* 新增的图片悬停效果 */
+.plan-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.plan-card:hover .plan-overlay {
+    opacity: 1;
+}
+
+.plan-overlay-content {
+    text-align: center;
+    color: var(--text-light);
+}
+
+.plan-overlay-content i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.plan-overlay-content span {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+/* 新增的价格样式 */
+.plan-price {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.price-label {
+    display: block;
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.price-value {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* 新增的运势好处标签样式 */
+.fortune-subtitle {
+    font-size: 1.8rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 4rem;
+}
+
+.fortune-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.fortune-benefits span {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* 测试结果按钮样式 */
+.test-result .cta-button {
+    margin-top: 2rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+}
+
+/* 新增的倒计时样式 */
+.offer-text {
+    margin-bottom: 2.5rem;
+}
+
+.offer-content {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.offer-timer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.timer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-value {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(184, 148, 31, 0.2) 100%);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.timer-label {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .plan-header {
+        padding: 2rem 2rem 1rem;
+    }
+    
+    .plan-header h3 {
+        font-size: 2.4rem;
+    }
+    
+    .plan-price {
+        padding: 1.2rem;
+    }
+    
+    .price-value {
+        font-size: 2.2rem;
+    }
+    
+    .fortune-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+    }
+    
+    .fortune-benefits span {
+        font-size: 1.2rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .offer-timer {
+        gap: 1rem;
+    }
+    
+    .timer-value {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+    }
+    
+    .timer-label {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .plan-header {
+        padding: 1.8rem 1.8rem 0.8rem;
+    }
+    
+    .plan-header h3 {
+        font-size: 2.2rem;
+    }
+    
+    .plan-price {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .price-label {
+        font-size: 1.2rem;
+    }
+    
+    .price-value {
+        font-size: 2rem;
+    }
+    
+    .fortune-subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .fortune-benefits {
+        gap: 0.6rem;
+    }
+    
+    .fortune-benefits span {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.7rem;
+    }
+    
+    .offer-timer {
+        gap: 0.8rem;
+    }
+    
+    .timer-value {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+    }
+    
+    .timer-label {
+        font-size: 1.1rem;
+    }
+}
