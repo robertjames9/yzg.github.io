@@ -2889,7 +2889,6 @@ h6 {
 
     .cta-button {
         text-align: center;
-        width: 100%
     }
 
     .product-title {
@@ -3113,7 +3112,8 @@ body.no-scroll {
     color: var(--text-light);
     overflow: hidden;
     padding: var(--section-spacing) 0;
-    position: relative
+    position: relative;
+    padding: 6rem 0
 }
 
 .feedback-section:before {
@@ -3533,7 +3533,7 @@ body.no-scroll {
 
     .hero-cta {
         gap: 1.8rem;
-        margin-top: 2.5rem
+        margin: 2.5rem
     }
 
     .hero-cta .cta-button {
@@ -3601,12 +3601,25 @@ body.no-scroll {
     }
 
     .hero-cta {
-        gap: 1.5rem
+        gap: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
 
     .hero-cta .cta-button {
         font-size: 1.6rem;
-        padding: 1.2rem 2.5rem
+        padding: 1.2rem 2.5rem;
+        width: 80%;
+        text-align: center;
+    }
+}
+
+@media (max-width:320px) {
+    .hero-cta .cta-button {
+        font-size: 1.5rem;
+        padding: 1.1rem 2rem;
+        width: 90%;
     }
 }
 
@@ -3981,7 +3994,7 @@ body.no-scroll {
     }
     
     .problems-subtitle {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
     .solutions-title {
@@ -3991,7 +4004,7 @@ body.no-scroll {
 
 @media (max-width:480px) {
     .problems-section {
-        padding: 2rem 0;
+        padding: 6rem 0;
     }
     
     .problem-card {
@@ -3999,7 +4012,7 @@ body.no-scroll {
     }
     
     .problem-text {
-        font-size: 1.3rem;
+        font-size: 1.7rem;
     }
     
     .solutions-section {
@@ -4013,11 +4026,11 @@ body.no-scroll {
     }
     
     .solution-content h4 {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
     
     .solution-content p {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
     }
     
     .solution-content p.highlight {
@@ -4882,7 +4895,7 @@ body.no-scroll {
     
     .process-title {
         font-size: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
     
     .timeline-step {
@@ -4923,11 +4936,12 @@ body.no-scroll {
     }
     
     .step-content h4 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        margin-right: 1rem;
     }
     
     .step-content p {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -5032,7 +5046,7 @@ body.no-scroll {
 
 @media (max-width:480px) {
     .royal-origin-section {
-        padding: 4rem 0
+        padding: 6rem 0
     }
 
     .gold-title {
@@ -5040,7 +5054,7 @@ body.no-scroll {
     }
 
     .royal-intro-text {
-        font-size: 1.6rem
+        font-size: 1.8rem
     }
 
     .royal-scroll-content p {
@@ -5422,8 +5436,9 @@ body.no-scroll {
     }
 
     .explanation-point {
-        flex-direction: column;
-        text-align: center
+        flex-direction: row;
+        text-align: center;
+        gap: 1rem;
     }
 
     .point-icon {
@@ -6070,7 +6085,7 @@ body.no-scroll {
 
 @media (max-width: 480px) {
     .fortune-plan-section {
-        padding: 4rem 0;
+        padding: 6rem 0;
     }
 
     .fortune-badge span {
@@ -6095,7 +6110,7 @@ body.no-scroll {
     }
 
     .plan-features li {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
 }
 
@@ -6255,7 +6270,7 @@ body.no-scroll {
 
 @media (max-width: 480px) {
     .doubts-section {
-        padding: 4rem 0;
+        padding: 6rem 0;
     }
     
     .doubts-intro p {
@@ -6264,6 +6279,7 @@ body.no-scroll {
     
     .doubt-item {
         padding: 1rem;
+        align-items: center;
     }
     
     .doubt-icon {
@@ -6273,11 +6289,11 @@ body.no-scroll {
     }
     
     .doubt-content h3 {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
     
     .doubt-text {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
     }
     
     .image-overlay {
@@ -6484,11 +6500,11 @@ body.no-scroll {
     }
     
     .faq-question h4 {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
     
     .faq-answer p, .faq-answer li {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
     
     .faq-answer .highlight-text {
@@ -6655,9 +6671,16 @@ body.no-scroll {
 }
 
 .test-option:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(212, 175, 55, 0.05);
     transform: translateY(-3px);
     border-color: #d4af37;
+}
+
+.test-option.active {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-color: #d4af37;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
 }
 
 .option-letter {
@@ -6687,6 +6710,8 @@ body.no-scroll {
 
 .test-results {
     display: none; /* 默认隐藏结果 */
+    margin-top: 30px;
+    transition: all 0.3s ease;
 }
 
 .test-result {
@@ -6695,6 +6720,16 @@ body.no-scroll {
     padding: 20px;
     margin-bottom: 20px;
     display: none; /* 默认隐藏所有结果 */
+}
+
+.test-result.active {
+    display: block; /* 显示激活的结果 */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .test-result h4 {
@@ -6944,11 +6979,11 @@ body.no-scroll {
     }
     
     .fortune-content h4 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     
     .fortune-content p {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
     }
     
     .fortune-benefits span {
@@ -6956,20 +6991,20 @@ body.no-scroll {
     }
     
     .test-header h3 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
     
     .test-question {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         padding: 10px;
     }
     
     .option-content p {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
     
     .test-hint {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -7018,7 +7053,7 @@ body.no-scroll {
     }
     
     .feedback-quote p {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
 }
 
