@@ -1,0 +1,76 @@
+/* 引入YouSheBiaoTiHei字体 */
+@font-face {
+    font-family: 'YouSheBiaoTiHei';
+    src: url('../fonts/YouSheBiaoTiHei.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 特定元素的字体设置 */
+h1, h2, h3,
+.hero-title, .hero-subtitle, .main-title, .main-subtitle, .section-title, .section-subtitle,
+.nav-link, .btn, .footer-title, 
+.royal-content-title, .royal-section-title, 
+.royal-conclusion, .royal-subtitle, p.highlight, .solution-card.recommended h4 {
+    font-family: 'YouSheBiaoTiHei' !important;
+    font-weight: 400 !important;
+}
+
+h4, h5, h6, p, a, span, li, button, input, textarea, select, option,
+.footer-links a, .royal-list li {
+    font-family: 'Noto Sans SC' , serif !important;
+    font-weight: 600 !important;
+}
+
+/* 调整特定元素的字体大小和行高，以适应新字体 */
+.hero-title {
+    line-height: 1.3;
+}
+
+.hero-subtitle {
+    line-height: 1.5;
+}
+
+.section-title {
+    line-height: 1.4;
+}
+
+.royal-content-title {
+    line-height: 1.4;
+}
+
+.royal-section-title {
+    line-height: 1.4;
+}
+
+.royal-list li {
+    line-height: 1.8;
+}
+
+/* 移动设备适配 */
+@media (max-width: 768px) {
+    .hero-title {
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        line-height: 1.4;
+    }
+    
+    .section-title {
+        line-height: 1.3;
+    }
+    
+    .royal-content-title {
+        line-height: 1.3;
+    }
+    
+    .royal-section-title {
+        line-height: 1.3;
+    }
+    
+    .royal-list li {
+        line-height: 1.7;
+    }
+} 
