@@ -570,7 +570,7 @@ h6 {
     }
 
     .hero-subtitle {
-        font-size: 5.3rem
+        font-size: 3rem
     }
 }
 
@@ -585,7 +585,7 @@ h6 {
     }
 
     .hero-subtitle {
-        font-size: 2.5rem
+        font-size: 2rem
     }
 }
 
@@ -2801,7 +2801,7 @@ h6 {
     }
 
     .main-title {
-        font-size: 8rem;
+        font-size: 11rem;
         margin-bottom: 0;
     }
 
@@ -3068,7 +3068,7 @@ h6 {
     }
 
     .section-title {
-        font-size: 4rem;
+        font-size: 6rem;
         margin-bottom: 2.5rem;
     }
 
@@ -4974,7 +4974,7 @@ body.no-scroll {
     }
 
     .gold-title {
-        font-size: 2.6rem
+        font-size: 6rem
     }
 
     .royal-intro-text {
@@ -7184,7 +7184,7 @@ body.no-scroll {
 
 @media (max-width:480px) {
     .royal-content-title {
-        font-size: 2.4rem;
+        font-size: 4rem;
     }
     
     .royal-content-section {
