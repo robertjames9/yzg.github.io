@@ -16,14 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
     particlesJS("particles-js", {
       particles: {
         number: {
-          value: 80,
+          value: 60,
           density: {
             enable: true,
-            value_area: 800,
+            value_area: 900,
           },
         },
         color: {
-          value: "#d4af37",
+          value: "#FFD700",
         },
         shape: {
           type: "circle",
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         },
         opacity: {
-          value: 0.5,
-          random: false,
+          value: 0.3,
+          random: true,
           anim: {
             enable: false,
             speed: 1,
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         },
         size: {
-          value: 3,
+          value: 2.5,
           random: true,
           anim: {
             enable: false,
@@ -352,24 +352,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
-  // 添加打字机效果到Hero标题
-  const heroSubtitle = document.querySelector(".hero-subtitle");
-  if (heroSubtitle) {
-    const text = heroSubtitle.textContent;
-    heroSubtitle.textContent = "";
-
-    let i = 0;
-    const typeWriter = function () {
-      if (i < text.length) {
-        heroSubtitle.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
-      }
-    };
-
-    setTimeout(typeWriter, 1000);
-  }
 
   // 添加闪烁效果到限时优惠区域
   const limitedOffer = document.querySelector(".limited-offer");
