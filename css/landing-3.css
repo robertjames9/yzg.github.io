@@ -3919,7 +3919,8 @@ body.no-scroll {
 
 .solution-card.not-recommended .solution-icon {
     background-color: rgba(231, 76, 60, .1);
-    color: #e74c3c
+    color: #e74c3c;
+    font-size: 3rem;
 }
 
 .solution-card.recommended .solution-icon {
