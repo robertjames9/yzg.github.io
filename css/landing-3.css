@@ -5427,6 +5427,13 @@ body.no-scroll {
     position: relative
 }
 
+.why-choose-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}
+
 .why-choose-intro {
     margin: 0 auto 3rem;
     max-width: 800px;
@@ -6432,7 +6439,7 @@ body.no-scroll {
 
 @media (max-width:480px) {
     .faq-title {
-        font-size: 1.7rem
+        font-size: 3rem
     }
 
     .faq-question h4 {
@@ -7111,7 +7118,7 @@ body.no-scroll {
     position: relative;
 }
 
-.royal-list, .problems-list, .doubts-list-ul {
+.royal-list, .problems-list, .doubts-list-ul, .faq-list-2 {
     list-style: none;
     padding: 0;
     margin: 1.5rem 0;
@@ -7143,6 +7150,34 @@ body.no-scroll {
     position: relative;
 }
 
+.faq-list-2 li {
+    color: var(--text-dark);
+    font-size: 2rem;
+    line-height: 1.7;
+    padding-left: 3.5rem;
+    position: relative;
+    margin-bottom: .5rem;
+    font-weight: 400 !important;
+}
+
+.faq-list-2 p {
+    font-size: 2.2rem;
+}
+
+.faq-list-2 ol {
+    list-style: none;
+    padding-left: 2rem;
+}
+
+.faq-list-2 ol li:before {
+    content: "-";
+    color: var(--text-dark);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.8rem;
+}
+
 .royal-list li:before {
     content: "✧";
     color: var(--primary-color);
@@ -7163,6 +7198,14 @@ body.no-scroll {
 .doubts-list-ul li:before {
     content: "×";
     color: red;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.faq-list-2 li:before {
+    content: "✧";
+    color: var(--text-dark);
     position: absolute;
     left: 0;
     top: 0;
