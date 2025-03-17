@@ -3900,11 +3900,11 @@ body.no-scroll {
 }
 
 .solution-card.recommended h4 {
-    font-size: 3.5rem;
+    font-size: 4rem;
 }
 
 .solution-card.recommended p.highlight {
-    font-size: 4rem;
+    font-size: 5rem;
 }
 
 .solution-icon {
@@ -3987,7 +3987,8 @@ body.no-scroll {
 
     .solution-card,
     .solution-content {
-        text-align: left
+        text-align: left;
+        line-height: .8;
     }
 
     .problems-subtitle {
