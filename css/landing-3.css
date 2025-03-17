@@ -2829,7 +2829,7 @@ h6 {
 
     .highlight-text {
         font-size: 3rem;
-        margin: 2rem 1.5rem 0 1.5rem;
+        margin: 2rem 1.5rem 2rem 1.5rem;
         padding: 2rem;
         text-align: center;
     }
@@ -5576,6 +5576,12 @@ body.no-scroll {
     margin-bottom: 2.5rem
 }
 
+.fortune-types-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}   
+
 .fortune-type {
     align-items: center;
     background-color: hsla(0, 0%, 100%, .1);
@@ -5741,6 +5747,13 @@ body.no-scroll {
     text-align: center
 }
 
+.fortune-intro-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}
+
 .fortune-badge {
     margin-bottom: 2rem
 }
@@ -5870,13 +5883,13 @@ body.no-scroll {
     color: #d4af37;
     font-size: 2.8rem;
     font-weight: 700;
-    margin-bottom: 1.5rem
+    margin-bottom: 0
 }
 
 .plan-subtitle {
     color: hsla(0, 0%, 100%, .9);
     font-size: 1.7rem;
-    margin-bottom: 2.5rem
+    margin-bottom: 0
 }
 
 .plan-features {
@@ -5997,7 +6010,7 @@ body.no-scroll {
     }
 
     .plan-image {
-        height: 180px
+        height: 220px
     }
 
     .plan-badge {
@@ -6043,7 +6056,7 @@ body.no-scroll {
     }
 
     .plan-card h3 {
-        font-size: 3rem
+        font-size: 5rem
     }
 
     .plan-features li {
@@ -6522,7 +6535,8 @@ body.no-scroll {
 
 .fortune-content {
     flex: 1;
-    align-items: center;
+    padding-top: 1.5rem;
+    text-align: center;
 }
 
 .fortune-content h4 {
@@ -6862,7 +6876,7 @@ body.no-scroll {
     }
 
     .fortune-content p {
-        font-size: 1.6rem
+        font-size: 2.2rem
     }
 
     .fortune-benefits span {
