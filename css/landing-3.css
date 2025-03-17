@@ -4496,7 +4496,6 @@ body.no-scroll {
     display: flex;
     flex-wrap: wrap;
     gap: 4rem;
-    margin-bottom: 5rem
 }
 
 .royal-video-column {
@@ -5349,7 +5348,7 @@ body.no-scroll {
     .water-bottle-content .video-container,
     .water-bottle-explanation {
         flex: 1 1 100%;
-        max-width: 100%
+        width: 100%
     }
 }
 
