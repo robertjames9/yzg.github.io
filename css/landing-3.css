@@ -3792,7 +3792,7 @@ body.no-scroll {
 
 .founder-info p {
     color: var(--text-light);
-    font-size: 1.2rem;
+    font-size: 2rem;
     margin: 0
 }
 
@@ -5130,7 +5130,7 @@ body.no-scroll {
 
 .water-bottle-content .founder-info p {
     color: #0078d7;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 300;
     text-shadow: 0 1px 2px hsla(0, 0%, 100%, .8)
 }
@@ -5414,7 +5414,7 @@ body.no-scroll {
 
 .royal-video-caption .founder-info p {
     color: #d4af37;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, .1)
 }
