@@ -804,21 +804,6 @@ h6 {
     margin-bottom: 4rem
 }
 
-.problems-list {
-    background-color: hsla(0, 0%, 100%, .05);
-    border-left: 4px solid var(--primary-color);
-    border-radius: var(--border-radius);
-    margin-bottom: 3rem;
-    padding: 3rem
-}
-
-.problems-list h3 {
-    color: var(--primary-color);
-    font-size: 2.8rem;
-    margin-bottom: 2.5rem;
-    text-align: center
-}
-
 .problem-item {
     align-items: flex-start;
     display: flex;
@@ -7123,7 +7108,7 @@ body.no-scroll {
     position: relative;
 }
 
-.royal-list {
+.royal-list, .problems-list {
     list-style: none;
     padding: 0;
     margin: 1.5rem 0;
@@ -7138,6 +7123,15 @@ body.no-scroll {
     position: relative;
 }
 
+.problems-list li {
+    color: var(--text-dark);
+    font-size: 2.5rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    padding-left: 2.5rem;
+    position: relative;
+}
+
 .royal-list li:before {
     content: "✧";
     color: var(--primary-color);
@@ -7145,6 +7139,14 @@ body.no-scroll {
     left: 0;
     top: 0;
     font-size: 1.8rem;
+}
+
+.problems-list li:before {
+    content: "✧";
+    color: var(--text-dark);
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .royal-list-inline {
