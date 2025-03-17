@@ -3714,11 +3714,18 @@ body.no-scroll {
 }
 
 .problems-section {
-    background-color: #0a0a0a;
+    background-color: #fff;
     overflow: hidden;
     padding: 3rem 0;
     position: relative
 }
+
+.problems-section img {
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 3rem;
+}
+
 
 .problems-section:before {
     background: radial-gradient(circle at center, rgba(212, 175, 55, .1) 0, transparent 70%);
@@ -3828,7 +3835,6 @@ body.no-scroll {
     background-color: rgba(0, 0, 0, .5);
     border: 1px solid rgba(212, 175, 55, .2);
     border-radius: var(--border-radius);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -3845,7 +3851,7 @@ body.no-scroll {
 }
 
 .problem-text {
-    color: var(--text-light);
+    color: var(--bg-dark);
     font-size: 1.4rem;
     line-height: 1.4;
     margin: 0
