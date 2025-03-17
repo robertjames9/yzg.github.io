@@ -6632,7 +6632,7 @@ body.no-scroll {
     border-radius: 8px;
     cursor: pointer;
     display: flex;
-    padding: 15px;
+    padding: 1rem;
     transition: background-color .3s ease, transform .3s ease
 }
 
@@ -6728,8 +6728,8 @@ body.no-scroll {
     color: #777;
     font-size: 1.4rem;
     font-style: italic;
-    margin-top: 1rem
-    text-align: center
+    margin-top: 1rem;
+    text-align: center;
 }
 
 .test-hint i {
