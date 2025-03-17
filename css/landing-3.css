@@ -3723,6 +3723,7 @@ body.no-scroll {
 .problems-section img {
     width: 100%;
     object-fit: cover;
+    margin-bottom: 2rem;
 }
 
 
