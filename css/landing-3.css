@@ -3723,7 +3723,6 @@ body.no-scroll {
 .problems-section img {
     width: 100%;
     object-fit: cover;
-    margin-bottom: 3rem;
 }
 
 
@@ -3826,7 +3825,6 @@ body.no-scroll {
 .problem-cards-container {
     display: grid;
     flex: 1;
-    gap: 1.2rem;
     grid-template-columns: repeat(2, 1fr)
 }
 
