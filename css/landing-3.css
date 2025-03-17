@@ -4400,6 +4400,13 @@ body.no-scroll {
     position: relative
 }
 
+.royal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 3rem;
+}   
+
 .royal-bg-effect {
     background-blend-mode: overlay;
     background-image: radial-gradient(circle at center, rgba(13, 13, 26, .7) 0, #0d0d1a 70%);
