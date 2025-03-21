@@ -161,9 +161,23 @@ html[lang="en"] .en-nav-item {
     text-align: center;
 }
 
+@media screen and (max-width: 768px) {
+    html[lang="en"] .hero-content h1 {
+        font-size: 2.5rem !important;
+    }
+
+    html[lang="en"] .hero-content h2 {
+        font-size: 1.5rem !important;
+    }
+
+    html[lang="en"] .hero-content p {
+        font-size: .8rem !important;
+    }
+}
+
 /* 修复英文版中的重叠问题 */
 html[lang="en"] .hero-content h1 {
-    font-size: 2rem; /* 调整英文版标题大小 */
+    font-size: 4rem; /* 调整英文版标题大小 */
 }
 
 /* 调整英文版按钮文本 */
@@ -239,12 +253,14 @@ html[lang="en"] .video-caption p {
         font-size: 14px;
         width: 100%; /* 确保宽度一致 */
         margin: 5px 0; /* 确保间距一致 */
+        text-align: center;
     }
     
     html[lang="en"] .nav-buttons .btn.accent {
         font-size: 14px;
         width: 100%; /* 确保宽度一致 */
         margin: 5px 0; /* 确保间距一致 */
+        text-align: center;
     }
     
     /* 英文版语言切换器样式 - 文字居中 */
